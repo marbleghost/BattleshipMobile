@@ -16,7 +16,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_startbildschirm);
 
         start = findViewById(R.id.spielstartenbutton);
-        anleitung = findViewById(R.id.anleitungbutton);
+        anleitung = findViewById(R.id.anleitungsbutton);
 
         start.setOnClickListener(this);
         anleitung.setOnClickListener(this);
