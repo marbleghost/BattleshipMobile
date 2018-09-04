@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">BattleshipMobile</string>
-    <string name="spielstart">Button</string>
+    <string name="spielstartenbutton">Spiel starten</string>
 </resources>
