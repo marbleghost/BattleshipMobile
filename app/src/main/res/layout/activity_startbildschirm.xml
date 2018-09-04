@@ -19,10 +19,10 @@
         app:layout_constraintVertical_bias="0.365" />
 
     <Button
-        android:id="@+id/anleitungbutton"
+        android:id="@+id/anleitungsbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/anleitungbutton"
+        android:text="@string/anleitungsbutton"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
