@@ -24,10 +24,10 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View e) {
         if (e.equals(start)) {
-
+            System.out.println("starten");
         }
         if (e.equals(anleitung)) {
-
+            System.out.println("anleitung");
         }
     }
 }
