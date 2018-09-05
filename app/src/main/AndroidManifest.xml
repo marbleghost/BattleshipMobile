@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Anleitungsbildschirm" />
-        <activity android:name=".Schiffesetzenbildschirm"></activity>
+        <activity android:name=".Schiffesetzen"></activity>
     </application>
 
 </manifest>

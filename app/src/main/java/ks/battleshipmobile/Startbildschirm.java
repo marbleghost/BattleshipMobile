@@ -14,6 +14,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_startbildschirm);
 
         //start = findViewById(R.id.spielstartenbutton);
