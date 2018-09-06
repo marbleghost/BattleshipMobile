@@ -70,12 +70,18 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
             }
         }
         if (e.equals(anleitung)) {
-            System.out.println("anleitung");
-            //TODO: Button soll Anleitungsbidlschirm öffnen
+
+        }
+        if (e.equals(leichteki)) {
+
         }
         if (e.equals(mittlereki)) {
             System.out.println("mittel");
         }
+        if (e.equals(schwierigeki)) {
+
+        }
+
     }
 
 }
