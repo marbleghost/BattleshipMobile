@@ -9,8 +9,8 @@ import android.widget.Button;
 
 public class Startbildschirm extends AppCompatActivity implements View.OnClickListener {
 
-    FloatingActionButton start = findViewById(R.id.button_spielauswahl);
-    FloatingActionButton anleitung = findViewById(R.id.button_anleitung);
+    FloatingActionButton start;
+    FloatingActionButton anleitung;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,8 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
          * Achtung! AndroidStudio markiert die "(FloatingActionButton)" Anweisung als ueberfluessig, ist diese
          *jedoch nicht angegeben, wirft der Logcat Fehlermeldungen aus
          */
-
+        start = (FloatingActionButton) findViewById(R.id.button_spielauswahl);
+        anleitung = (FloatingActionButton) findViewById(R.id.button_anleitung);
 
         start.setOnClickListener(this);
         anleitung.setOnClickListener(this);
@@ -31,6 +32,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View e) {
         if (e.equals(start)) {
+            Snackbar.make(e, "was auch immer das ist", Snackbar.LENGTH_LONG).setAction("action", null).show();
             System.out.println("starten");
             //TODO: Button soll weitere Buttons öffnen um ein bestimmten Spielmodus zu starten
         }
