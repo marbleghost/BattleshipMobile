@@ -1,6 +1,7 @@
 package ks.battleshipmobile;
 
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +9,8 @@ import android.widget.Button;
 
 public class Startbildschirm extends AppCompatActivity implements View.OnClickListener {
 
-    FloatingActionButton start;
-    FloatingActionButton anleitung;
+    FloatingActionButton start = findViewById(R.id.button_spielauswahl);
+    FloatingActionButton anleitung = findViewById(R.id.button_anleitung);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +22,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
          * Achtung! AndroidStudio markiert die "(FloatingActionButton)" Anweisung als ueberfluessig, ist diese
          *jedoch nicht angegeben, wirft der Logcat Fehlermeldungen aus
          */
-        start = (FloatingActionButton) findViewById(R.id.button_spielauswahl);
-        anleitung = (FloatingActionButton) findViewById(R.id.button_anleitung);
+
 
         start.setOnClickListener(this);
         anleitung.setOnClickListener(this);
