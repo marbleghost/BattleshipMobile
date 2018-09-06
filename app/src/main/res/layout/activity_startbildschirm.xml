@@ -15,6 +15,7 @@
         android:clickable="true"
         app:fabSize="normal"
         app:pressedTranslationZ="12dp"
+        app:backgroundTint="#e9ebf1"
         app:srcCompat="@android:drawable/ic_media_play" />
 
     <android.support.design.widget.FloatingActionButton
@@ -26,6 +27,7 @@
         android:clickable="true"
         app:fabSize="normal"
         app:pressedTranslationZ="12dp"
+        app:backgroundTint="#e9ebf1"
         app:srcCompat="@android:drawable/ic_menu_help" />
 
     <android.support.design.widget.FloatingActionButton
@@ -38,6 +40,7 @@
         android:visibility="invisible"
         app:fabSize="mini"
         app:pressedTranslationZ="12dp"
+        app:backgroundTint="#e9ebf1"
         app:srcCompat="@android:drawable/btn_star" />
 
     <android.support.design.widget.FloatingActionButton
@@ -51,6 +54,7 @@
         android:visibility="invisible"
         app:fabSize="mini"
         app:pressedTranslationZ="12dp"
+        app:backgroundTint="#e9ebf1"
         app:srcCompat="@android:drawable/btn_star" />
 
     <android.support.design.widget.FloatingActionButton
@@ -64,6 +68,7 @@
         android:visibility="invisible"
         app:fabSize="mini"
         app:pressedTranslationZ="12dp"
+        app:backgroundTint="#e9ebf1"
         app:srcCompat="@android:drawable/btn_star" />
 
 </android.support.design.widget.CoordinatorLayout>
