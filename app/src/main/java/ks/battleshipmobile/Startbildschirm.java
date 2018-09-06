@@ -13,8 +13,8 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
     FloatingActionButton start;
     FloatingActionButton anleitung;
-    FloatingActionButton kimittel, kileicht, kischwer;
-    boolean spielauswahloffen = false;
+    FloatingActionButton leichteki, mittlereki, schwierigeki;
+    boolean schwierigkeitsauswahloffen = false;
 
     Animation fab_oeffnen;
     Animation fab_schliessen;
@@ -31,15 +31,15 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
          */
         start = (FloatingActionButton) findViewById(R.id.button_spielauswahl);
         anleitung = (FloatingActionButton) findViewById(R.id.button_anleitung);
-        kileicht = (FloatingActionButton) findViewById(R.id.button_kileicht);
-        kimittel = (FloatingActionButton) findViewById(R.id.button_kimittel);
-        kischwer = (FloatingActionButton) findViewById(R.id.button_kischwer);
+        leichteki = (FloatingActionButton) findViewById(R.id.button_kileicht);
+        mittlereki = (FloatingActionButton) findViewById(R.id.button_kimittel);
+        schwierigeki = (FloatingActionButton) findViewById(R.id.button_kischwer);
 
         start.setOnClickListener(this);
         anleitung.setOnClickListener(this);
-        kimittel.setOnClickListener(this);
-        kileicht.setOnClickListener(this);
-        kischwer.setOnClickListener(this);
+        leichteki.setOnClickListener(this);
+        mittlereki.setOnClickListener(this);
+        schwierigeki.setOnClickListener(this);
 
         fab_oeffnen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_oeffnen);
         fab_schliessen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_schliessen);
@@ -50,30 +50,30 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     public void onClick(View e) {
         if (e.equals(start)) {
             //Snackbar.make(e, "was auch immer das ist", Snackbar.LENGTH_LONG).setAction("action", null).show();
-            if (spielauswahloffen == false) {
-                kileicht.startAnimation(fab_oeffnen);
-                kileicht.setClickable(true);
-                kimittel.startAnimation(fab_oeffnen);
-                kimittel.setClickable(true);
-                kischwer.startAnimation(fab_oeffnen);
-                kischwer.setClickable(true);
-                spielauswahloffen = true;
+            if (schwierigkeitsauswahloffen == false) { // Oeffnet das Auswahlfenster für den Schwierigkeitsgrad.
+                leichteki.startAnimation(fab_oeffnen);
+                leichteki.setClickable(true);
+                mittlereki.startAnimation(fab_oeffnen);
+                mittlereki.setClickable(true);
+                schwierigeki.startAnimation(fab_oeffnen);
+                schwierigeki.setClickable(true);
+                schwierigkeitsauswahloffen = true;
             }
-            else {
-                kileicht.startAnimation(fab_schliessen);
-                kileicht.setClickable(false);
-                kimittel.startAnimation(fab_schliessen);
-                kimittel.setClickable(false);
-                kischwer.startAnimation(fab_schliessen);
-                kischwer.setClickable(false);
-                spielauswahloffen = false;
+            else { //Schließt das Auswahlfenster, wenn es bereits offen ist.
+                leichteki.startAnimation(fab_schliessen);
+                leichteki.setClickable(false);
+                mittlereki.startAnimation(fab_schliessen);
+                mittlereki.setClickable(false);
+                schwierigeki.startAnimation(fab_schliessen);
+                schwierigeki.setClickable(false);
+                schwierigkeitsauswahloffen = false;
             }
         }
         if (e.equals(anleitung)) {
             System.out.println("anleitung");
             //TODO: Button soll Anleitungsbidlschirm öffnen
         }
-        if (e.equals(kimittel)) {
+        if (e.equals(mittlereki)) {
             System.out.println("mittel");
         }
     }
