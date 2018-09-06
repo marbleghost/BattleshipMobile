@@ -17,9 +17,6 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_startbildschirm);
 
-        //start = findViewById(R.id.spielstartenbutton);
-        //anleitung = findViewById(R.id.anleitungsbutton);
-
         /**
          * Achtung! AndroidStudio markiert die "(FloatingActionButton)" Anweisung als ueberfluessig, ist diese
          *jedoch nicht angegeben, wirft der Logcat Fehlermeldungen aus
@@ -31,7 +28,6 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         anleitung.setOnClickListener(this);
     }
 
-    //TODO: Wollen wir das wirklich alle in ein OnCklick packen? Das kostet Zeit wenn die App das alles durchlaufen muss
     @Override
     public void onClick(View e) {
         if (e.equals(start)) {
