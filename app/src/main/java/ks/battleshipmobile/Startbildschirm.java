@@ -57,6 +57,8 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
                 mittlereki.setClickable(true);
                 schwierigeki.startAnimation(fab_oeffnen);
                 schwierigeki.setClickable(true);
+                anleitung.setVisibility(View.GONE);
+                anleitung.setClickable(false);
                 schwierigkeitsauswahloffen = true;
             }
             else { //Schließt das Auswahlfenster, wenn es bereits offen ist.
@@ -66,6 +68,8 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
                 mittlereki.setClickable(false);
                 schwierigeki.startAnimation(fab_schliessen);
                 schwierigeki.setClickable(false);
+                anleitung.setVisibility(View.VISIBLE);
+                anleitung.setClickable(true);
                 schwierigkeitsauswahloffen = false;
             }
         }
