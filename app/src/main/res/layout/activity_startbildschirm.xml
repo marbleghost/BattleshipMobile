@@ -23,7 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:layout_marginBottom="220dp"
+        android:layout_marginBottom="250dp"
         android:clickable="true"
         app:fabSize="normal"
         app:pressedTranslationZ="12dp"
