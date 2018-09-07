@@ -1,5 +1,7 @@
 package ks.battleshipmobile;
 
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +9,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 public class Startbildschirm extends AppCompatActivity implements View.OnClickListener {
 
@@ -20,6 +22,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
     Animation fab_oeffnen;
     Animation fab_schliessen;
+    VideoView hganimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +44,18 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         textleichteki = (TextView) findViewById(R.id.textkileicht);
         textmittlereki = (TextView) findViewById(R.id.textkimittel);
         textschwierigeki = (TextView) findViewById(R.id.textkischwer);
+
+        hganimation = (VideoView) findViewById(R.id.hg_animation);
+        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.animationsdatei);
+        hganimation.setVideoURI(uri);
+        hganimation.start();
+
+        hganimation.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
 
         start.setOnClickListener(this);
         anleitung.setOnClickListener(this);
