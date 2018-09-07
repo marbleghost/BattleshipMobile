@@ -71,4 +71,24 @@
         app:backgroundTint="#e9ebf1"
         app:srcCompat="@android:drawable/btn_star" />
 
+    <TextView
+        android:id="@+id/textkileicht"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textkimittel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/textkischwer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="310dp"
+        android:layout_marginRight="150dp"
+        android:text="TextView" />
+
 </android.support.design.widget.CoordinatorLayout>
