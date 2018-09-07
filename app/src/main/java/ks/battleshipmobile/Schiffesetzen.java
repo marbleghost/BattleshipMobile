@@ -23,6 +23,8 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_schiffesetzen);
+
+        buttonListenerHinzufuegen();
     }
 
     public void buttonListenerHinzufuegen() {
