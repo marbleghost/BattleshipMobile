@@ -87,8 +87,9 @@
         android:id="@+id/textkischwer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="310dp"
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="300dp"
         android:layout_marginRight="150dp"
-        android:text="TextView" />
+        android:text="Schwierig" />
 
 </android.support.design.widget.CoordinatorLayout>
