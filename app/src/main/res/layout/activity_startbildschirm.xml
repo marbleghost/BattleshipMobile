@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".Startbildschirm">
 
+    <VideoView
+        android:id="@+id/hg_animation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/button_spielauswahl"
         android:layout_width="wrap_content"
@@ -102,10 +107,5 @@
         android:visibility="invisible"
         android:editable="false"
         android:text="Leicht" />
-
-    <VideoView
-        android:id="@+id/hg_animation"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </android.support.design.widget.CoordinatorLayout>
