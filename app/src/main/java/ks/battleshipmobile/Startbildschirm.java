@@ -57,14 +57,15 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         fab_schliessen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_schliessen);
 
         hganimview = (VideoView) findViewById(R.id.hg_animation);
-        Uri uri = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.animationsdatei);
+        Uri startanim = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.animationsdatei);
 
-        hganimview.setVideoURI(uri);
+        hganimview.setVideoURI(startanim);
         hganimview.start();
 
         hganimview.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
+                //auf false stellen, damit das Video nur einmal abgespielt wird
                 mp.setLooping(true);
             }
         });
