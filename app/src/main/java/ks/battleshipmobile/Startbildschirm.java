@@ -4,12 +4,14 @@ import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.VideoView;
 import android.net.Uri;
@@ -23,6 +25,9 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     Animation fab_oeffnen;
     Animation fab_schliessen;
     VideoView hganimview;
+
+    EditText spielername;
+    Button weiter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,16 +115,34 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
         }
         if (e.equals(leichteki)) {
-
+            spielStarten();
         }
         if (e.equals(mittlereki)) {
-            Intent intent = new Intent(this, Schiffesetzen.class);
-            startActivity(intent);
+            spielStarten();
         }
         if (e.equals(schwierigeki)) {
-
+            spielStarten();
         }
 
+    }
+
+    public void spielStarten() {
+        AlertDialog.Builder popupbuilder = new AlertDialog.Builder(Startbildschirm.this);
+        View popupview = getLayoutInflater().inflate(R.layout.popup_spielername, null);
+        spielername = (EditText) popupview.findViewById(R.id.label_spielername_eigeben);
+        weiter = (Button) popupview.findViewById(R.id.button_spierlername_weiter);
+
+        weiter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Startbildschirm.this, Schiffesetzen.class);
+                startActivity(intent);
+            }
+        });
+
+        popupbuilder.setView(popupview);
+        AlertDialog dialog = popupbuilder.create();
+        dialog.show();
     }
 
 }
