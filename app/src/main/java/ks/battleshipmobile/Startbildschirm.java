@@ -16,9 +16,7 @@ import android.net.Uri;
 
 public class Startbildschirm extends AppCompatActivity implements View.OnClickListener {
 
-    FloatingActionButton start;
-    FloatingActionButton anleitung;
-    FloatingActionButton leichteki, mittlereki, schwierigeki;
+    FloatingActionButton start, anleitung, leichteki, mittlereki, schwierigeki;
     TextView textleichteki, textmittlereki, textschwierigeki;
     boolean schwierigkeitsauswahloffen = false;
 
@@ -33,7 +31,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         setContentView(R.layout.activity_startbildschirm);
 
         /**
-         * Achtung! AndroidStudio markiert die "(FloatingActionButton)" Anweisung als ueberfluessig, ist diese
+         * Achtung! AndroidStudio markiert die "(FloatingActionButton)" Anweisung (und die der anderen) als ueberfluessig, ist diese
          *jedoch nicht angegeben, wirft der Logcat Fehlermeldungen aus
          */
         start = (FloatingActionButton) findViewById(R.id.button_spielauswahl);
@@ -47,15 +45,18 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         textmittlereki = (TextView) findViewById(R.id.textkimittel);
         textschwierigeki = (TextView) findViewById(R.id.textkischwer);
 
+        //OnClickListener fuer jeden Button initialisieren
         start.setOnClickListener(this);
         anleitung.setOnClickListener(this);
         leichteki.setOnClickListener(this);
         mittlereki.setOnClickListener(this);
         schwierigeki.setOnClickListener(this);
 
+        //Animationsdateien
         fab_oeffnen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_oeffnen);
         fab_schliessen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_schliessen);
 
+        //VideoViewer fuer die Hintergundanimation hinzufuegen und Animation starten
         hganimview = (VideoView) findViewById(R.id.hg_animation);
         Uri startanim = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.animationsdatei);
 
