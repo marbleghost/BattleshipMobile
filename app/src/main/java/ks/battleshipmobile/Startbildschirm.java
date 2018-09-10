@@ -63,7 +63,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
         //VideoViewer fuer die Hintergundanimation hinzufuegen und Animation starten
         hganimview = (VideoView) findViewById(R.id.hg_animation);
-        Uri startanim = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.animationsdatei);
+        Uri startanim = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.schiffanimation_einfahren);
 
         hganimview.setVideoURI(startanim);
         hganimview.start();
