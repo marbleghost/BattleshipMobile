@@ -16,6 +16,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         R.id.g1, R.id.g2, R.id.g3, R.id.g4, R.id.g5, R.id.g6, R.id.g7, R.id.g8,
                         R.id.h1, R.id.h2, R.id.h3, R.id.h4, R.id.h5, R.id.h6, R.id.h7, R.id.h8};
     Button [][] spielfeld = new Button[8][8];
+    int [][] spielfeldbesetzung = new int [8][8];
 
 
     @Override
@@ -41,6 +42,23 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view) {
 
+        for (int i=0; i<8; i++) {
+            for (int j=0; j<8; j++) {
+                if (view.equals(spielfeld[i][j])) {
+                    if (spielfeldbesetzung[i][j] == 0) {
+                        spielfeldbesetzung[i][j] = 1;
+                        spielfeld[i][j].setBackgroundColor(1);
+                    }
+                    else if (spielfeldbesetzung[i][j] == 1) {
+                        spielfeldbesetzung[i][j] = 0;
+                        spielfeld[i][j].setBackgroundColor(0xFF33B5E5);
+                    }
+
+                }
+            }
+        }
+
+        /**
         if (view.equals(spielfeld[0][0])) {
             System.out.println("oben links");
         }
@@ -52,6 +70,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         if (view.equals(spielfeld[7][7])) {
             System.out.println("unten rechts");
         }
+         */
 
     }
 }
