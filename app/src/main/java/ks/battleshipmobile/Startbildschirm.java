@@ -50,6 +50,8 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         textmittlereki = (TextView) findViewById(R.id.textkimittel);
         textschwierigeki = (TextView) findViewById(R.id.textkischwer);
 
+
+
         //OnClickListener fuer jeden Button initialisieren
         start.setOnClickListener(this);
         anleitung.setOnClickListener(this);
@@ -57,11 +59,13 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         mittlereki.setOnClickListener(this);
         schwierigeki.setOnClickListener(this);
 
+
+
         //Animationsdateien
         fab_oeffnen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_oeffnen);
         fab_schliessen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_schliessen);
 
-        //VideoViewer fuer die Hintergundanimation hinzufuegen und Animation starten
+        //VideoViewer fuer die Hintergrundanimation hinzufuegen und Animation starten
         hganimview = (VideoView) findViewById(R.id.hg_animation);
         Uri startanim = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.schiffanimation_einfahren);
 
@@ -83,32 +87,10 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         if (e.equals(start)) {
             //Snackbar.make(e, "was auch immer das ist", Snackbar.LENGTH_LONG).setAction("action", null).show();
             if (schwierigkeitsauswahloffen == false) { // Oeffnet das Auswahlfenster für den Schwierigkeitsgrad.
-                leichteki.startAnimation(fab_oeffnen);
-                textleichteki.startAnimation(fab_oeffnen);
-                leichteki.setClickable(true);
-                mittlereki.startAnimation(fab_oeffnen);
-                textmittlereki.startAnimation(fab_oeffnen);
-                mittlereki.setClickable(true);
-                schwierigeki.startAnimation(fab_oeffnen);
-                textschwierigeki.startAnimation(fab_oeffnen);
-                schwierigeki.setClickable(true);
-                anleitung.setVisibility(View.GONE);
-                anleitung.setClickable(false);
-                schwierigkeitsauswahloffen = true;
+                schwierigkeitsstufenEinblenden();
             }
             else { //Schließt das Auswahlfenster, wenn es bereits offen ist.
-                leichteki.startAnimation(fab_schliessen);
-                textleichteki.startAnimation(fab_schliessen);
-                leichteki.setClickable(false);
-                mittlereki.startAnimation(fab_schliessen);
-                textmittlereki.startAnimation(fab_schliessen);
-                mittlereki.setClickable(false);
-                schwierigeki.startAnimation(fab_schliessen);
-                textschwierigeki.startAnimation(fab_schliessen);
-                schwierigeki.setClickable(false);
-                anleitung.setVisibility(View.VISIBLE);
-                anleitung.setClickable(true);
-                schwierigkeitsauswahloffen = false;
+                schwierigkeitsstufenausblenden();
             }
         }
         if (e.equals(anleitung)) {
@@ -135,6 +117,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         weiter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String name = spielername.getText().toString();
                 Intent intent = new Intent(Startbildschirm.this, Schiffesetzen.class);
                 startActivity(intent);
             }
@@ -143,6 +126,36 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         popupbuilder.setView(popupview);
         AlertDialog dialog = popupbuilder.create();
         dialog.show();
+    }
+
+    public void schwierigkeitsstufenEinblenden() {
+        leichteki.startAnimation(fab_oeffnen);
+        textleichteki.startAnimation(fab_oeffnen);
+        leichteki.setClickable(true);
+        mittlereki.startAnimation(fab_oeffnen);
+        textmittlereki.startAnimation(fab_oeffnen);
+        mittlereki.setClickable(true);
+        schwierigeki.startAnimation(fab_oeffnen);
+        textschwierigeki.startAnimation(fab_oeffnen);
+        schwierigeki.setClickable(true);
+        anleitung.setVisibility(View.GONE);
+        anleitung.setClickable(false);
+        schwierigkeitsauswahloffen = true;
+    }
+
+    public void schwierigkeitsstufenausblenden() {
+        leichteki.startAnimation(fab_schliessen);
+        textleichteki.startAnimation(fab_schliessen);
+        leichteki.setClickable(false);
+        mittlereki.startAnimation(fab_schliessen);
+        textmittlereki.startAnimation(fab_schliessen);
+        mittlereki.setClickable(false);
+        schwierigeki.startAnimation(fab_schliessen);
+        textschwierigeki.startAnimation(fab_schliessen);
+        schwierigeki.setClickable(false);
+        anleitung.setVisibility(View.VISIBLE);
+        anleitung.setClickable(true);
+        schwierigkeitsauswahloffen = false;
     }
 
 }
