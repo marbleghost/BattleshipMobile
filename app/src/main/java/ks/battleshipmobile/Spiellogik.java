@@ -1,5 +1,14 @@
 package ks.battleshipmobile;
 
+/**
+ * 0 = frei
+ * 1 = Schiff gesetzt
+ * 2 = Schiffsumgebung, wo nichts gesetzt werden darf
+ * 4 = kein Treffer gelanden
+ * 5 = Treffer gelandet
+ * 6 = Schiff versenkt
+ */
+
 public class Spiellogik {
 
     int [][] spieler1 = new int[8][8];
