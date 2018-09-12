@@ -67,18 +67,21 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
         //VideoViewer fuer die Hintergrundanimation hinzufuegen und Animation starten
         hganimview = (VideoView) findViewById(R.id.hg_animation);
-        Uri startanim = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.schiffanimation_einfahren);
+        Uri anim_steigendes_wasser = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_ansteigendes_wasser);
+        Uri anim_einfahren_schiff = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_einfahren_schiff);
+        Uri anim_schiff_idle = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_schiff_idle);
 
-        hganimview.setVideoURI(startanim);
+        hganimview.setVideoURI(anim_steigendes_wasser);
         hganimview.start();
 
         hganimview.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 //auf false stellen, damit das Video nur einmal abgespielt wird
-                mp.setLooping(true);
+                mp.setLooping(false);
             }
         });
+
 
     }
 
