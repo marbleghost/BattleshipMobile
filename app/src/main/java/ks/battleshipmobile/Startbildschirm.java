@@ -72,7 +72,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         Uri anim_steigendes_wasser = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_ansteigendes_wasser);
         final Uri anim_einfahren_schiff = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_einfahren_schiff);
         final Uri anim_schiff_idle = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_schiff_idle);
-        Uri anim_schiff_sinkend = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_schiff_sinkend);
+        final Uri anim_schiff_sinkend = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_schiff_sinkend);
 
         hganimview.setVideoURI(anim_steigendes_wasser);
 
@@ -94,6 +94,9 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
                 }
                 else if (anim_zaehler == 1) {
                     hganimview.setVideoURI(anim_schiff_idle);
+                }
+                else if (anim_zaehler == 2) {
+                    hganimview.setVideoURI(anim_schiff_sinkend);
                 }
 
             }
