@@ -87,7 +87,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
                 anleitung.startAnimation(fab_gross_oeffnen);
                 anleitung.setClickable(true);
             }
-        }, 7000);
+        }, 6000);
 
         hganimview.setVideoURI(anim_steigendes_wasser);
 
