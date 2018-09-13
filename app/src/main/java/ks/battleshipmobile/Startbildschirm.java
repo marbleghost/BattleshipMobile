@@ -23,13 +23,15 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     TextView textleichteki, textmittlereki, textschwierigeki;
     boolean schwierigkeitsauswahloffen = false;
 
-    Animation fab_oeffnen;
-    Animation fab_schliessen;
+    Animation fab_oeffnen, fab_gross_oeffnen;
+    Animation fab_schliessen, fab_gross_schliessen;
     VideoView hganimview;
     private int anim_zaehler = 0;
 
     EditText spielername;
     Button weiter;
+
+    private Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +68,8 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         //Animationsdateien
         fab_oeffnen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_oeffnen);
         fab_schliessen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_schliessen);
+        fab_gross_oeffnen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_gross_oeffnen);
+        fab_gross_schliessen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_gross_schliessen);
 
         //VideoViewer fuer die Hintergrundanimation hinzufuegen und Animation starten
         hganimview = (VideoView) findViewById(R.id.hg_animation);
@@ -73,6 +77,17 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         final Uri anim_einfahren_schiff = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_einfahren_schiff);
         final Uri anim_schiff_idle = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_schiff_idle);
         final Uri anim_schiff_sinkend = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_schiff_sinkend);
+
+        //Wenn die Idle Animation gestartet ist, werden der Start und Anleitungsbutton eingeblendet
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                start.startAnimation(fab_gross_oeffnen);
+                start.setClickable(true);
+                anleitung.startAnimation(fab_gross_oeffnen);
+                anleitung.setClickable(true);
+            }
+        }, 7000);
 
         hganimview.setVideoURI(anim_steigendes_wasser);
 
@@ -102,7 +117,6 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-
     }
 
     @Override
@@ -131,8 +145,6 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
     }
 
-    private Handler handler = new Handler();
-
     public void spielStarten() {
         AlertDialog.Builder popupbuilder = new AlertDialog.Builder(Startbildschirm.this);
         View popupview = getLayoutInflater().inflate(R.layout.popup_spielername, null);
@@ -153,7 +165,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
                         Intent intent = new Intent(Startbildschirm.this, Schiffesetzen.class);
                         startActivity(intent);
                     }
-                }, 4000);
+                }, 3500);
 
             }
         });
@@ -173,7 +185,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         schwierigeki.startAnimation(fab_oeffnen);
         textschwierigeki.startAnimation(fab_oeffnen);
         schwierigeki.setClickable(true);
-        anleitung.setVisibility(View.GONE);
+        anleitung.startAnimation(fab_gross_schliessen);
         anleitung.setClickable(false);
         schwierigkeitsauswahloffen = true;
     }
@@ -188,7 +200,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         schwierigeki.startAnimation(fab_schliessen);
         textschwierigeki.startAnimation(fab_schliessen);
         schwierigeki.setClickable(false);
-        anleitung.setVisibility(View.VISIBLE);
+        anleitung.startAnimation(fab_gross_oeffnen);
         anleitung.setClickable(true);
         schwierigkeitsauswahloffen = false;
     }
