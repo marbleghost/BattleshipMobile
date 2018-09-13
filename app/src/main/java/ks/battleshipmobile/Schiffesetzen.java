@@ -46,7 +46,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
-    public void onClick(View view) {
+    public void onClick(View view) { // TODO: Wenn das Feld mit 3 Markiert ist, muss ausgegeben werden, dass keine Schiffe nebeneinander gesetzt werden dürfen.
 
         for (int i=0; i<8; i++) {
             for (int j=0; j<8; j++) {
@@ -54,11 +54,15 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                     System.out.println(spielfeldbesetzung[i][j]);
                     if (spielfeldbesetzung[i][j] == 0) {
                         spielfeldbesetzung[i][j] = 1;
-                        spielfeld[i][j].setBackgroundColor(1);
+                        //spielfeld[i][j].setBackgroundColor(1);
+                        logik.umgebungMarkieren(i, j, spielfeldbesetzung);
+                        logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                     }
                     else if (spielfeldbesetzung[i][j] == 1) {
                         spielfeldbesetzung[i][j] = 0;
-                        spielfeld[i][j].setBackgroundColor(0xFF33B5E5);
+                        //spielfeld[i][j].setBackgroundColor(0xFF33B5E5);
+                        logik.markierungenEntfernen(i, j, spielfeldbesetzung);
+                        logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                     }
 
                 }
