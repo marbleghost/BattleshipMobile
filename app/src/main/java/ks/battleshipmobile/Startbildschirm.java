@@ -121,12 +121,15 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         }
         if (e.equals(leichteki)) {
             spielStarten();
+            anim_zaehler = 2;
         }
         if (e.equals(mittlereki)) {
             spielStarten();
+            anim_zaehler = 2;
         }
         if (e.equals(schwierigeki)) {
             spielStarten();
+            anim_zaehler = 2;
         }
 
     }
