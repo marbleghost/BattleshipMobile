@@ -6,9 +6,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,7 +27,6 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     Animation fab_schliessen;
     VideoView hganimview;
     private int anim_zaehler = 0;
-
 
     EditText spielername;
     Button weiter;
@@ -119,19 +120,18 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
         }
         if (e.equals(leichteki)) {
-            //anim_zaehler = 2;
             spielStarten();
         }
         if (e.equals(mittlereki)) {
-            //anim_zaehler = 2;
             spielStarten();
         }
         if (e.equals(schwierigeki)) {
-            //anim_zaehler = 2;
             spielStarten();
         }
 
     }
+
+    private Handler handler = new Handler();
 
     public void spielStarten() {
         AlertDialog.Builder popupbuilder = new AlertDialog.Builder(Startbildschirm.this);
@@ -142,15 +142,19 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         weiter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = spielername.getText().toString();
-                Intent intent = new Intent(Startbildschirm.this, Schiffesetzen.class);
                 anim_zaehler = 2;
-                try {
-                    Thread.sleep(400);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                startActivity(intent);
+                spielername.onEditorAction(EditorInfo.IME_ACTION_DONE);
+
+                //Der neue Bildschirm wird erst geoeffnet wenn die Animation des sinkenden Schiffes durch ist
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        String name = spielername.getText().toString();
+                        Intent intent = new Intent(Startbildschirm.this, Schiffesetzen.class);
+                        startActivity(intent);
+                    }
+                }, 4000);
+
             }
         });
 
