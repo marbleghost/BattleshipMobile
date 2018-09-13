@@ -175,9 +175,9 @@ public class Spiellogik {
         }
     }
 
-    public void farbeAnpassen(int [][] tempInt, Button[][] tempButton) {
-        for (int i = 0; i<7; i++) {
-            for (int j = 0; j<7; j++) {
+    public void farbeAnpassen(int [][] tempInt, Button[][] tempButton) { //TODO: statt der Farbe soll ein Symbol erscheinen
+        for (int i = 0; i<8; i++) {
+            for (int j = 0; j<8; j++) {
                 if (tempInt[i][j] == 0 || tempInt[i][j] == 3) {
                     tempButton[i][j].setBackgroundColor(0xFF33B5E5);
                 }
