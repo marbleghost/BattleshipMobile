@@ -25,6 +25,8 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     Animation fab_oeffnen;
     Animation fab_schliessen;
     VideoView hganimview;
+    private int anim_zaehler = 0;
+
 
     EditText spielername;
     Button weiter;
@@ -69,7 +71,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         hganimview = (VideoView) findViewById(R.id.hg_animation);
         Uri anim_steigendes_wasser = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_ansteigendes_wasser);
         final Uri anim_einfahren_schiff = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_einfahren_schiff);
-        Uri anim_schiff_idle = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_schiff_idle);
+        final Uri anim_schiff_idle = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_schiff_idle);
         Uri anim_schiff_sinkend = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_schiff_sinkend);
 
         hganimview.setVideoURI(anim_steigendes_wasser);
@@ -85,7 +87,15 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         hganimview.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mediaplayer) {
-                hganimview.setVideoURI(anim_einfahren_schiff);
+
+                if (anim_zaehler == 0) {
+                    hganimview.setVideoURI(anim_einfahren_schiff);
+                    anim_zaehler++;
+                }
+                else if (anim_zaehler == 1) {
+                    hganimview.setVideoURI(anim_schiff_idle);
+                }
+
             }
         });
 
