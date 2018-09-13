@@ -3,7 +3,6 @@ package ks.battleshipmobile;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -120,15 +119,15 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
         }
         if (e.equals(leichteki)) {
-            anim_zaehler = 2;
+            //anim_zaehler = 2;
             spielStarten();
         }
         if (e.equals(mittlereki)) {
-            anim_zaehler = 2;
+            //anim_zaehler = 2;
             spielStarten();
         }
         if (e.equals(schwierigeki)) {
-            anim_zaehler = 2;
+            //anim_zaehler = 2;
             spielStarten();
         }
 
@@ -145,6 +144,12 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
             public void onClick(View v) {
                 String name = spielername.getText().toString();
                 Intent intent = new Intent(Startbildschirm.this, Schiffesetzen.class);
+                anim_zaehler = 2;
+                try {
+                    Thread.sleep(400);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
                 startActivity(intent);
             }
         });
@@ -183,5 +188,4 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         anleitung.setClickable(true);
         schwierigkeitsauswahloffen = false;
     }
-
 }
