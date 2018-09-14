@@ -346,22 +346,22 @@ public class Spiellogik {
      */
     public boolean esLiegtEineMarkierungAn(int n, int m, int[][] temp) {
         if (n>0) {
-            if (temp[n-1][m] == 3) {
+            if (temp[n-1][m] == 3 || temp[n-1][m] == 2) {
                 return true;
             }
         }
         if (n<7) {
-            if (temp[n+1][m] == 3) {
+            if (temp[n+1][m] == 3 || temp[n+1][m] == 2) {
                 return true;
             }
         }
         if (m>0) {
-            if (temp[n][m-1] == 3) {
+            if (temp[n][m-1] == 3 || temp[n][m-1] == 2) {
                 return true;
             }
         }
         if (m<7) {
-            if (temp[n][m+1] == 3) {
+            if (temp[n][m+1] == 3 || temp[n][m+1] == 2) {
                 return true;
             }
         }
