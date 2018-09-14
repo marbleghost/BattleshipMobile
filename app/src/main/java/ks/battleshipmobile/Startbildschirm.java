@@ -148,7 +148,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
     /**
      * Sobald ein Button zum Spielstart gedrueckt wird, wird diese Methode aufgerufen.
-     * Sie oeffnet eine Art Popup Fenster (AlertDialog) und fordert den Spieler zu der Eingabe
+     * Sie oeffnet ein Popup Fenster (AlertDialog) und fordert den Spieler zu der Eingabe
      * seines Namens auf
      */
     public void spielStarten() {
@@ -166,6 +166,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
                 //Wenn der Weiter-Button geklickt wurde, wird ebendieser unklickbar und das Textfeld uneditierbar (solange Animation laeuft)
                 weiter.setEnabled(false);
                 spielername.setEnabled(false);
+                weiter.setText("Bitte warten");
 
                 //Der Spielername wird ermittelt. Bei keiner Einagbe wird standartmaessig "Spieler" verwendet
                  final String name;
