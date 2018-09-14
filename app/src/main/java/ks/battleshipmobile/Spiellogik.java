@@ -5,6 +5,7 @@ import android.widget.Button;
 /**
  * 0 = frei
  * 1 = Schiff gesetzt
+ * 2 = Schiffsumgebung, welches an zwei Schiffe grenzt
  * 3 = Schiffsumgebung, wo nichts gesetzt werden darf
  * 4 = kein Treffer gelanden
  * 5 = Treffer gelandet
@@ -46,15 +47,27 @@ public class Spiellogik {
         if (n>0) { //Wenn es nicht an der oberen Kante des Spielfeldes liegt.
             if (temp[n-1][m] == 1) {
                 if (m>0) { //Wenn es nicht an der linken Kante des Spielfeldes liegt.
-                    temp[n-1][m-1] = 3;
-                    if (temp[n][m-1] != 3) {
+                    if (temp[n-1][m-1] == 3 || temp[n-1][m-1] == 2) {
+                        temp[n-1][m-1] = 2;
+                    }
+                    else temp[n-1][m-1] = 3;
+                    if (temp[n][m-1] != 3 && temp[n][m-1] != 2) {
                         temp[n][m-1] = 3;
+                    }
+                    else if (temp[n][m-1] == 3) {
+                        temp[n][m-1] = 2;
                     }
                 }
                 if (m<7) {
-                    temp[n-1][m+1] = 3;
-                    if (temp[n][m+1] != 3) {
+                    if (temp[n-1][m+1] == 3 || temp[n-1][m+1] == 2) {
+                        temp[n-1][m+1] = 2;
+                    }
+                    else temp[n-1][m+1] = 3;
+                    if (temp[n][m+1] != 3 && temp[n][m+1] != 2) {
                         temp[n][m+1] = 3;
+                    }
+                    else if (temp[n][m+1] == 3) {
+                        temp[n][m+1] = 2;
                     }
                 }
             }
@@ -62,15 +75,27 @@ public class Spiellogik {
         if (n<7) {
             if (temp[n+1][m] == 1) {
                 if (m>0) {
-                    temp[n+1][m-1] = 3;
-                    if (temp[n][m-1] != 3) {
+                    if (temp[n+1][m-1] == 3 || temp[n+1][m-1] == 2) {
+                        temp[n+1][m-1] = 2;
+                    }
+                    else temp[n+1][m-1] = 3;
+                    if (temp[n][m-1] != 3 && temp[n][m-1] != 2) {
                         temp[n][m-1] = 3;
+                    }
+                    else if (temp[n][m-1] == 3) {
+                        temp[n][m-1] = 2;
                     }
                 }
                 if (m<7) {
-                    temp[n+1][m+1] = 3;
-                    if (temp[n][m+1] != 3) {
+                    if (temp[n+1][m+1] == 3 || temp[n+1][m+1] == 2) {
+                        temp[n+1][m+1] = 2;
+                    }
+                    else temp[n+1][m+1] = 3;
+                    if (temp[n][m+1] != 3 && temp[n][m+1] != 2) {
                         temp[n][m+1] = 3;
+                    }
+                    else if (temp[n][m+1] == 3) {
+                        temp[n][m+1] = 2;
                     }
                 }
             }
@@ -78,15 +103,27 @@ public class Spiellogik {
         if (m>0) {
             if (temp[n][m-1] == 1) {
                 if (n>0) {
-                    temp[n-1][m-1] = 3;
-                    if (temp[n-1][m] != 3) {
+                    if (temp[n-1][m-1] == 3 || temp[n-1][m-1] == 2) {
+                        temp[n-1][m-1] = 2;
+                    }
+                    else temp[n-1][m-1] = 3;
+                    if (temp[n-1][m] != 3 && temp[n-1][m] != 2) {
                         temp[n-1][m] = 3;
+                    }
+                    else if (temp[n-1][m] == 3) {
+                        temp[n-1][m] = 2;
                     }
                 }
                 if (n<7) {
-                    temp[n+1][m-1] = 3;
-                    if (temp[n+1][m] != 3) {
+                    if (temp[n+1][m-1] == 3 || temp[n+1][m-1] == 2) {
+                        temp[n+1][m-1] = 2;
+                    }
+                    else temp[n+1][m-1] = 3;
+                    if (temp[n+1][m] != 3 && temp[n+1][m] != 2) {
                         temp[n+1][m] = 3;
+                    }
+                    else if (temp[n+1][m] == 3) {
+                        temp[n+1][m] = 2;
                     }
                 }
             }
@@ -94,15 +131,27 @@ public class Spiellogik {
         if (m<7) {
             if (temp[n][m+1] == 1) {
                 if (n>0) {
-                    temp[n-1][m+1] = 3;
-                    if (temp[n-1][m] != 3) {
+                    if (temp[n-1][m+1] == 3 || temp[n-1][m+1] == 2) {
+                        temp[n-1][m+1] = 2;
+                    }
+                    else temp[n-1][m+1] = 3;
+                    if (temp[n-1][m] != 3 && temp[n-1][m] != 2) {
                         temp[n-1][m] = 3;
+                    }
+                    else if (temp[n-1][m] == 3) {
+                        temp[n-1][m] = 2;
                     }
                 }
                 if (n<7) {
-                    temp[n+1][m+1] = 3;
-                    if (temp[n+1][m] != 3) {
+                    if (temp[n+1][m+1] == 3 || temp[n+1][m+1] == 2) {
+                        temp[n+1][m+1] = 2;
+                    }
+                    else temp[n+1][m+1] = 3;
+                    if (temp[n+1][m] != 3 && temp[n+1][m] != 2) {
                         temp[n+1][m] = 3;
+                    }
+                    else if (temp[n+1][m] == 3) {
+                        temp[n+1][m] = 2;
                     }
                 }
             }
@@ -123,20 +172,32 @@ public class Spiellogik {
                 if (temp[n-1][m] == 3) {
                     temp[n-1][m] = 0;
                 }
+                else if (temp[n-1][m] == 2) {
+                    temp[n-1][m] = 3;
+                }
             }
             if (n<7) {
                 if (temp[n+1][m] == 3) {
                     temp[n+1][m] = 0;
+                }
+                else if (temp[n+1][m] == 2) {
+                    temp[n+1][m] = 3;
                 }
             }
             if (m>0) {
                 if (temp[n][m-1] == 3) {
                     temp[n][m-1] = 0;
                 }
+                else if (temp[n][m-1] == 2) {
+                    temp[n][m-1] = 3;
+                }
             }
             if (m<7) {
                 if (temp[n][m+1] == 3) {
                     temp[n][m+1] = 0;
+                }
+                else if (temp[n][m+1] == 2) {
+                    temp[n][m+1] = 3;
                 }
             }
             for (int i=0; i<8; i++) {
@@ -146,20 +207,32 @@ public class Spiellogik {
                             if (temp[i-1][j] == 3) {
                                 temp[i-1][j] = 0;
                             }
+                            else if (temp[i-1][j] == 2) {
+                                temp[i-1][j] = 3;
+                            }
                         }
                         if (i<7) {
                             if (temp[i+1][j] == 3) {
                                 temp[i+1][j] = 0;
+                            }
+                            else if (temp[i+1][j] == 2) {
+                                temp[i+1][j] = 3;
                             }
                         }
                         if (j>0) {
                             if (temp[i][j-1] == 3) {
                                 temp[i][j-1] = 0;
                             }
+                            else if (temp[i][j-1] == 2) {
+                                temp[i][j-1] = 3;
+                            }
                         }
                         if (j<7) {
                             if (temp[i][j+1] == 3) {
                                 temp[i][j+1] = 0;
+                            }
+                            else if (temp[i][j+1] == 2) {
+                                temp[i][j+1] = 3;
                             }
                         }
                     }
