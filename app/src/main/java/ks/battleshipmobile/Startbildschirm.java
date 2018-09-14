@@ -30,6 +30,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
     EditText spielername;
     Button weiter;
+    String SPIELERNAME_UEBERGABE;
 
     private Handler handler = new Handler();
 
@@ -145,6 +146,11 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
     }
 
+    /**
+     * Sobald ein Button zum Spielstart gedrueckt wird, wird diese Methode aufgerufen.
+     * Sie oeffnet eine Art Popup Fenster (AlertDialog) und fordert den Spieler zu der Eingabe
+     * seines Namens auf
+     */
     public void spielStarten() {
         AlertDialog.Builder popupbuilder = new AlertDialog.Builder(Startbildschirm.this);
         View popupview = getLayoutInflater().inflate(R.layout.popup_spielername, null);
@@ -157,15 +163,29 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
                 anim_zaehler = 2;
                 spielername.onEditorAction(EditorInfo.IME_ACTION_DONE);
 
+                //Wenn der Weiter-Button geklickt wurde, wird ebendieser unklickbar und das Textfeld uneditierbar (solange Animation laeuft)
+                weiter.setEnabled(false);
+                spielername.setEnabled(false);
+
+                //Der Spielername wird ermittelt. Bei keiner Einagbe wird standartmaessig "Spieler" verwendet
+                 final String name;
+
+                if (spielername.getText().toString().length() == 0) {
+                    name = "Spieler";
+                }
+                else {
+                    name = spielername.getText().toString();
+                }
+
                 //Der neue Bildschirm wird erst geoeffnet wenn die Animation des sinkenden Schiffes durch ist
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        String name = spielername.getText().toString();
                         Intent intent = new Intent(Startbildschirm.this, Schiffesetzen.class);
+                        intent.putExtra(SPIELERNAME_UEBERGABE, name);
                         startActivity(intent);
                     }
-                }, 3500);
+                }, 3050);
 
             }
         });
