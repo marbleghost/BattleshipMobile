@@ -5,9 +5,7 @@ import android.widget.Button;
 /**
  * 0 = frei
  * 1 = Schiff gesetzt
- * -1 = Gesetztes Schiffsteil wieder zurueckgezogen (Wird benoetigt, um die umliegenden Flaechen effizient wieder freizugeben.
- * 2 = Schiffsumgebung, wo nichts gesetzt werden darf
- * 3 = Umgebung des Schiffteils bereits als unsetzbar markiert
+ * 3 = Schiffsumgebung, wo nichts gesetzt werden darf
  * 4 = kein Treffer gelanden
  * 5 = Treffer gelandet
  * 6 = Schiff versenkt
@@ -32,46 +30,6 @@ public class Spiellogik {
 
     public int getGesamtSchiffsteile() {
         return gesamtSchiffsteile;
-    }
-
-    /**
-     * Diese Methode setzt die Felder um das Schiff auf den Wert 2, sodass spaeter
-     * diese Felder nicht mehr besetzt werden koennen (nur Felder mit dem Wert 0
-     * koennen besetzt werden).
-     * @param n
-     * @param m
-     * @author Kirsten und Serdar
-     */
-    public void markiereSchiffUmgebung(int n, int m, int [][] temp) {
-
-        if (n>0) {
-            n--;
-            if (temp[n][m] == 0) {
-                temp[n][m] = 2;
-            }
-            n++;
-        }
-        if (m<7) {
-            m++;
-            if (temp[n][m] == 0) {
-                temp[n][m] = 2;
-            }
-            m--;
-        }
-        if (n<7) {
-            n++;
-            if (temp[n][m] == 0) {
-                temp[n][m] = 2;
-            }
-            n--;
-        }
-        if (m>0) {
-            m--;
-            if (temp[n][m] == 0) {
-                temp[n][m] = 2;
-            }
-            m++;
-        }
     }
 
 
@@ -151,26 +109,61 @@ public class Spiellogik {
         }
     }
 
+    /**
+     * Entfernt die Markierungen, die ein Schiffsteil umgibt.
+     * Wird in der Schiffesetzen klasse im OnClick fuer die Buttons aufgerufen.
+     * @param n
+     * @param m
+     * @param temp
+     */
     public void markierungenEntfernen(int n, int m, int[][] temp) {
 
-        if (n>0) {
-            if (temp[n-1][m] == 3) {
-                temp[n-1][m] = 0;
+        if (esLiegtEinSchiffsteilAn(n, m, temp)) {
+            if (n>0) {
+                if (temp[n-1][m] == 3) {
+                    temp[n-1][m] = 0;
+                }
             }
-        }
-        if (n<7) {
-            if (temp[n+1][m] == 3) {
-                temp[n+1][m] = 0;
+            if (n<7) {
+                if (temp[n+1][m] == 3) {
+                    temp[n+1][m] = 0;
+                }
             }
-        }
-        if (m>0) {
-            if (temp[n][m-1] == 3) {
-                temp[n][m-1] = 0;
+            if (m>0) {
+                if (temp[n][m-1] == 3) {
+                    temp[n][m-1] = 0;
+                }
             }
-        }
-        if (m<7) {
-            if (temp[n][m+1] == 3) {
-                temp[n][m+1] = 0;
+            if (m<7) {
+                if (temp[n][m+1] == 3) {
+                    temp[n][m+1] = 0;
+                }
+            }
+            for (int i=0; i<8; i++) {
+                for (int j=0; j<8; j++) {
+                    if (einzelnesSchiffsteilMitMarkierterUmgebung(i, j, temp)) {
+                        if (i>0) {
+                            if (temp[i-1][j] == 3) {
+                                temp[i-1][j] = 0;
+                            }
+                        }
+                        if (i<7) {
+                            if (temp[i+1][j] == 3) {
+                                temp[i+1][j] = 0;
+                            }
+                        }
+                        if (j>0) {
+                            if (temp[i][j-1] == 3) {
+                                temp[i][j-1] = 0;
+                            }
+                        }
+                        if (j<7) {
+                            if (temp[i][j+1] == 3) {
+                                temp[i][j+1] = 0;
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -188,4 +181,123 @@ public class Spiellogik {
         }
     }
 
+    /**
+     * Ueberprueft, ob der ein Schiffsteil platziert werden kann. Wenn an dem feld mehr als nur ein angrenzendes Schiffsteil liegt,
+     * wird false zurueckgegeben.
+     * @param n
+     * @param m
+     * @param temp
+     * @return
+     */
+    public boolean platzIstBesetzbar(int n, int m, int[][] temp) {
+        int k = 0;
+        boolean oben = false; //Felder sind 0.
+        boolean unten = false;
+        boolean rechts = false;
+        boolean links = false;
+
+        if (temp[n][m] == 0) {
+            if (n>0) {
+                if (temp[n-1][m] == 1) {
+                    k++;
+                    oben = true;
+                }
+            }
+            if (n<7) {
+                if (temp[n+1][m] == 1) {
+                    k++;
+                    unten = true;
+                }
+            }
+            if (m>0) {
+                if (temp[n][m-1] == 1) {
+                    k++;
+                    links = true;
+                }
+            }
+            if (m<7) {
+                if (temp[n][m+1] == 1) {
+                    k++;
+                    rechts = true;
+                }
+            }
+
+            if (k>2 || (oben == true && (rechts == true || links == true)) || (unten == true && (rechts == true || links == true))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Ueberprueft, ob ein Schiffsteil an ein anderes Teil grenzt, damit es, wenn es entfernt wird, keine Markierungen loescht,
+     * die benoetigt werden.
+     * Wird in markierungenEntfernen aufgerufen.
+     * @param n
+     * @param m
+     * @param temp
+     * @return
+     */
+    public boolean esLiegtEinSchiffsteilAn(int n, int m, int[][] temp) {
+        if (n>0) {
+            if (temp[n-1][m] == 1) {
+                return true;
+            }
+        }
+        if (n<7) {
+            if (temp[n+1][m] == 1) {
+                return true;
+            }
+        }
+        if (m>0) {
+            if (temp[n][m-1] == 1) {
+                return true;
+            }
+        }
+        if (m<7) {
+            if (temp[n][m+1] == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public boolean esLiegtEineMarkierungAn(int n, int m, int[][] temp) {
+        if (n>0) {
+            if (temp[n-1][m] == 3) {
+                return true;
+            }
+        }
+        if (n<7) {
+            if (temp[n+1][m] == 3) {
+                return true;
+            }
+        }
+        if (m>0) {
+            if (temp[n][m-1] == 3) {
+                return true;
+            }
+        }
+        if (m<7) {
+            if (temp[n][m+1] == 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Wird benoetigt, wenn ein mittleres Schiffsteil eines laengeren Schiffs entfernt wird,
+     * damit die markierten Felder um die Schiffsteile, welche an keinem anderen Schiffsteil liegen,
+     * wieder freigegeben werden koennen.
+     */
+    public boolean einzelnesSchiffsteilMitMarkierterUmgebung(int n, int m, int[][] temp) {
+        if (esLiegtEinSchiffsteilAn(n, m, temp) == false && temp[n][m] == 1) {
+            if (esLiegtEineMarkierungAn(n, m, temp)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -18,7 +18,7 @@
         <TableRow
             android:id="@+id/zeile1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/a1"
@@ -74,7 +74,7 @@
         <TableRow
             android:id="@+id/zeile2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/b1"
@@ -128,7 +128,7 @@
         <TableRow
             android:id="@+id/zeile3"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/c1"
@@ -183,7 +183,7 @@
         <TableRow
             android:id="@+id/zeile4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent">
 
             <Button
                 android:id="@+id/d1"
@@ -238,7 +238,7 @@
             android:id="@+id/zeile5"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:layout_editor_absoluteY="64dp" >
+            tools:layout_editor_absoluteY="64dp">
 
             <Button
                 android:id="@+id/e1"

@@ -52,7 +52,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             for (int j=0; j<8; j++) {
                 if (view.equals(spielfeld[i][j])) {
                     System.out.println(spielfeldbesetzung[i][j]);
-                    if (spielfeldbesetzung[i][j] == 0) {
+                    if (spielfeldbesetzung[i][j] == 0 && logik.platzIstBesetzbar(i, j, spielfeldbesetzung)) {
                         spielfeldbesetzung[i][j] = 1;
                         //spielfeld[i][j].setBackgroundColor(1);
                         logik.umgebungMarkieren(i, j, spielfeldbesetzung);
