@@ -47,10 +47,10 @@ public class Spiellogik {
         if (n>0) { //Wenn es nicht an der oberen Kante des Spielfeldes liegt.
             if (temp[n-1][m] == 1) {
                 if (m>0) { //Wenn es nicht an der linken Kante des Spielfeldes liegt.
-                    if (temp[n-1][m-1] == 3 || temp[n-1][m-1] == 2) {
-                        temp[n-1][m-1] = 2;
+                    if (temp[n-1][m-1] != 2) {
+                        temp[n-1][m-1] = 3;
                     }
-                    else temp[n-1][m-1] = 3;
+
                     if (temp[n][m-1] != 3 && temp[n][m-1] != 2) {
                         temp[n][m-1] = 3;
                     }
@@ -59,10 +59,10 @@ public class Spiellogik {
                     }
                 }
                 if (m<7) {
-                    if (temp[n-1][m+1] == 3 || temp[n-1][m+1] == 2) {
-                        temp[n-1][m+1] = 2;
+                    if (temp[n-1][m+1] != 2) {
+                        temp[n-1][m+1] = 3;
                     }
-                    else temp[n-1][m+1] = 3;
+
                     if (temp[n][m+1] != 3 && temp[n][m+1] != 2) {
                         temp[n][m+1] = 3;
                     }
@@ -75,10 +75,10 @@ public class Spiellogik {
         if (n<7) {
             if (temp[n+1][m] == 1) {
                 if (m>0) {
-                    if (temp[n+1][m-1] == 3 || temp[n+1][m-1] == 2) {
-                        temp[n+1][m-1] = 2;
+                    if (temp[n+1][m-1] != 2) {
+                        temp[n+1][m-1] = 3;
                     }
-                    else temp[n+1][m-1] = 3;
+
                     if (temp[n][m-1] != 3 && temp[n][m-1] != 2) {
                         temp[n][m-1] = 3;
                     }
@@ -87,10 +87,10 @@ public class Spiellogik {
                     }
                 }
                 if (m<7) {
-                    if (temp[n+1][m+1] == 3 || temp[n+1][m+1] == 2) {
-                        temp[n+1][m+1] = 2;
+                    if (temp[n+1][m+1] != 2) {
+                        temp[n+1][m+1] = 3;
                     }
-                    else temp[n+1][m+1] = 3;
+
                     if (temp[n][m+1] != 3 && temp[n][m+1] != 2) {
                         temp[n][m+1] = 3;
                     }
@@ -103,10 +103,10 @@ public class Spiellogik {
         if (m>0) {
             if (temp[n][m-1] == 1) {
                 if (n>0) {
-                    if (temp[n-1][m-1] == 3 || temp[n-1][m-1] == 2) {
-                        temp[n-1][m-1] = 2;
+                    if (temp[n-1][m-1] != 2) {
+                        temp[n-1][m-1] = 3;
                     }
-                    else temp[n-1][m-1] = 3;
+
                     if (temp[n-1][m] != 3 && temp[n-1][m] != 2) {
                         temp[n-1][m] = 3;
                     }
@@ -115,10 +115,10 @@ public class Spiellogik {
                     }
                 }
                 if (n<7) {
-                    if (temp[n+1][m-1] == 3 || temp[n+1][m-1] == 2) {
-                        temp[n+1][m-1] = 2;
+                    if (temp[n+1][m-1] != 2) {
+                        temp[n+1][m-1] = 3;
                     }
-                    else temp[n+1][m-1] = 3;
+
                     if (temp[n+1][m] != 3 && temp[n+1][m] != 2) {
                         temp[n+1][m] = 3;
                     }
@@ -131,10 +131,10 @@ public class Spiellogik {
         if (m<7) {
             if (temp[n][m+1] == 1) {
                 if (n>0) {
-                    if (temp[n-1][m+1] == 3 || temp[n-1][m+1] == 2) {
-                        temp[n-1][m+1] = 2;
+                    if (temp[n-1][m+1] != 2) {
+                        temp[n-1][m+1] = 3;
                     }
-                    else temp[n-1][m+1] = 3;
+
                     if (temp[n-1][m] != 3 && temp[n-1][m] != 2) {
                         temp[n-1][m] = 3;
                     }
@@ -143,8 +143,8 @@ public class Spiellogik {
                     }
                 }
                 if (n<7) {
-                    if (temp[n+1][m+1] == 3 || temp[n+1][m+1] == 2) {
-                        temp[n+1][m+1] = 2;
+                    if (temp[n+1][m+1] != 2) {
+                        temp[n+1][m+1] = 3;
                     }
                     else temp[n+1][m+1] = 3;
                     if (temp[n+1][m] != 3 && temp[n+1][m] != 2) {
