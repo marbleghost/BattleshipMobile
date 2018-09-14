@@ -208,7 +208,7 @@ public class Spiellogik {
                                 temp[i-1][j] = 0;
                             }
                             else if (temp[i-1][j] == 2) {
-                                temp[i-1][j] = 3;
+                                temp[i-1][j] = 0;
                             }
                         }
                         if (i<7) {
@@ -216,7 +216,7 @@ public class Spiellogik {
                                 temp[i+1][j] = 0;
                             }
                             else if (temp[i+1][j] == 2) {
-                                temp[i+1][j] = 3;
+                                temp[i+1][j] = 0;
                             }
                         }
                         if (j>0) {
@@ -224,7 +224,7 @@ public class Spiellogik {
                                 temp[i][j-1] = 0;
                             }
                             else if (temp[i][j-1] == 2) {
-                                temp[i][j-1] = 3;
+                                temp[i][j-1] = 0;
                             }
                         }
                         if (j<7) {
@@ -232,7 +232,7 @@ public class Spiellogik {
                                 temp[i][j+1] = 0;
                             }
                             else if (temp[i][j+1] == 2) {
-                                temp[i][j+1] = 3;
+                                temp[i][j+1] = 0;
                             }
                         }
                     }
