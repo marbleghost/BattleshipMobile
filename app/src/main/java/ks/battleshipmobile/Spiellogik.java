@@ -262,7 +262,15 @@ public class Spiellogik {
         return false;
     }
 
-
+    /**
+     * Ueberprueft, ob um ein bestimmtes Feld herum Markierungen liegen.
+     * Diese Methode wird fuer die Methode einzelnesSchiffMitMarkierterUmgebung aufgerufen, damit man Markierungen von Schiffsteilen,
+     * die an keinen anderen Schiffsteilen liegen, entfernen kann.
+     * @param n
+     * @param m
+     * @param temp
+     * @return
+     */
     public boolean esLiegtEineMarkierungAn(int n, int m, int[][] temp) {
         if (n>0) {
             if (temp[n-1][m] == 3) {
