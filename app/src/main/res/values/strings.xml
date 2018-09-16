@@ -3,4 +3,7 @@
     <string name="spielername_eingeben">Bitte Spielernamen eingeben:</string>
     <string name="spielername">Spieler</string>
     <string name="button_weiter">Weiter</string>
+    <string name="button_vierer">Vierer</string>
+    <string name="button_dreier">Dreier</string>
+    <string name="button_zweier">Zweier</string>
 </resources>
