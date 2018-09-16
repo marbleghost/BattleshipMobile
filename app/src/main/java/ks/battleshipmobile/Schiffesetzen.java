@@ -60,10 +60,10 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         }
     };
 
-    /*@Override
+    @Override
     public void onClick(View view) { // TODO: Wenn das Feld mit 3 Markiert ist, muss ausgegeben werden, dass keine Schiffe nebeneinander gesetzt werden dürfen.
 
-        for (int i=0; i<8; i++) {
+        /*for (int i=0; i<8; i++) {
             for (int j=0; j<8; j++) {
                 if (view.equals(spielfeld[i][j])) {
                     System.out.println(spielfeldbesetzung[i][j]);
@@ -82,8 +82,8 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
                 }
             }
-        }
-    }*/
+        }*/
+    }
 
 
 }
