@@ -36,13 +36,17 @@ public class Spiellogik {
         return passt;
     }
 
+    public int getSpieler() {
+        return spieler;
+    }
+
     /**
      * Fuer moeglichen lokalen Zweispieler oder KI Nutzung,
      * Wechsel des Spielers.
      * Bei KI Nutzung: spieler = 1 ist der physikalische Spieler, spieler = 2 die KI
      */
     public void spielerWechsel() {
-        if (spieler < 2) {
+        if (getSpieler() < 2) {
             spieler++;
         }
         else {
@@ -61,7 +65,8 @@ public class Spiellogik {
     }
 
     /**
-     * Methode ueberprueft vor jedem Spielerwechsel, ob auf dem Spielfeld des Gegners noch Schiffteile sind, die noch nicht getroffen wurden.
+     * Methode ueberprueft vor jedem Spielerwechsel, ob auf dem Spielfeld des Gegners noch Schiffteile sind,
+     * die noch nicht getroffen wurden.
      * Es wird jedes einzelne Feld untersucht und immer, wenn ein Feld nicht den Wert 1 hat,
      * also sich auf dem Feld kein ungetroffenes Schiff befindet, wird zaehler inkrementiert.
      * Da wir 64 Felder haben, wird geschaut, ob zaehler den Wert 64 hat.
@@ -335,7 +340,8 @@ public class Spiellogik {
     }
 
     /**
-     * Ueberprueft, ob ein Schiff versenkt wurde, indem von jedem getroffenen Schiffsteil die umliegenden Punkte untersucht werden und daraufhin ueberprueft wird,
+     * Ueberprueft, ob ein Schiff versenkt wurde, indem von jedem getroffenen Schiffsteil die umliegenden
+     * Punkte untersucht werden und daraufhin ueberprueft wird,
      * ob sich dort noch ein ungetroffenes Teil befindet.
      * @param n
      * @param m
@@ -387,6 +393,45 @@ public class Spiellogik {
             versenkt = false;
         }
         return versenkt;
+    }
+
+    /**
+     * Ueberschreibt die Arrays Spieler1 und Spieler2 mit den Daten des Arrays Temp
+     */
+    public void setzeSpielfeldSpieler1() {
+        for (int n = 0; n<feldgroesse; n++) {
+            for (int m = 0; m<feldgroesse; m++) {
+                spieler1[n][m] = temp[n][m];
+            }
+        }
+    }
+
+    public void setzeSpielfeldSpieler2() {
+        for (int n = 0; n<feldgroesse; n++) {
+            for (int m = 0; m<feldgroesse; m++) {
+                spieler2[n][m] = temp[n][m];
+            }
+        }
+    }
+
+    /**
+     * Ueberschreibt das Array Temp mit den Daten vom Array des jeweiligen Spielers
+     */
+    public void setzeTemp() {
+        if (getSpieler() == 1) {
+            for (int n = 0; n<feldgroesse; n++) {
+                for (int m = 0; m<feldgroesse; m++) {
+                    temp[n][m] = spieler2[n][m];
+                }
+            }
+        }
+        else if (getSpieler() == 2) {
+            for (int n = 0; n<feldgroesse; n++) {
+                for (int m = 0; m<feldgroesse; m++) {
+                    temp[n][m] = spieler1[n][m];
+                }
+            }
+        }
     }
 
 }
