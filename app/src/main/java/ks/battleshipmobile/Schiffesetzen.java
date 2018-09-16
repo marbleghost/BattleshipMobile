@@ -2,6 +2,7 @@ package ks.battleshipmobile;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.DragEvent;
 import android.view.View;
 import android.widget.Button;
 
@@ -39,13 +40,27 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         for (int i=0; i<8; i++) {
             for (int j=0; j<8; j++) {
                 spielfeld[i][j] = (Button) findViewById(idArray[k]);
-                spielfeld[i][j].setOnClickListener(this);
+                spielfeld[i][j].setOnDragListener(dragListener);
                 k++;
             }
         }
     }
 
-    @Override
+    View.OnLongClickListener longClickListener = new View.OnLongClickListener() {
+        @Override
+        public boolean onLongClick(View view) {
+            return false;
+        }
+    };
+
+    View.OnDragListener dragListener = new View.OnDragListener() {
+        @Override
+        public boolean onDrag(View view, DragEvent dragEvent) {
+            return false;
+        }
+    };
+
+    /*@Override
     public void onClick(View view) { // TODO: Wenn das Feld mit 3 Markiert ist, muss ausgegeben werden, dass keine Schiffe nebeneinander gesetzt werden dürfen.
 
         for (int i=0; i<8; i++) {
@@ -68,20 +83,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                 }
             }
         }
+    }*/
 
-        /**
-        if (view.equals(spielfeld[0][0])) {
-            System.out.println("oben links");
-        }
 
-        if (view.equals(spielfeld[7][0])) {
-            System.out.println("unten links");
-        }
-
-        if (view.equals(spielfeld[7][7])) {
-            System.out.println("unten rechts");
-        }
-         */
-
-    }
 }
