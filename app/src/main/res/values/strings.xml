@@ -6,4 +6,6 @@
     <string name="button_vierer">Vierer</string>
     <string name="button_dreier">Dreier</string>
     <string name="button_zweier">Zweier</string>
+    <string name="horizontal">Horizontal</string>
+    <string name="vertikal">Vertikal</string>
 </resources>
