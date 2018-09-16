@@ -3,402 +3,390 @@ package ks.battleshipmobile;
 import android.widget.Button;
 
 /**
- * 0 = frei
- * 1 = Schiff gesetzt
- * 2 = Schiffsumgebung, welches an zwei Schiffe grenzt
- * 3 = Schiffsumgebung, wo nichts gesetzt werden darf
- * 4 = kein Treffer gelanden
- * 5 = Treffer gelandet
- * 6 = Schiff versenkt
+ * 0-unbelegt/frei
+ * 1-Schiff gesetzt
+ * 2-Gegnerisches Schiffteil getroffen
+ * 3-Kein Treffer
+ * 4-Platz um ein gesetztes Schiff drumherum, in welchem kein Schiff gesetzt werden darf
+ * 6-Schiff versenkt
  */
 
 public class Spiellogik {
 
+    int spieler = 1;
+    int feldgroesse = 8;
+
     int [][] spieler1 = new int[8][8];
     int [][] spieler2 = new int[8][8];
-    //int [][] temp = new int[8][8];
+    int [][] temp = new int[8][8];
 
+    //Groesse der Schiffe
     final int viererSchiff = 4;
     final int dreierSchiff = 3;
     final int zweierSchiff = 2;
 
+    //Anzahl der Schiffe
     int anzahlVierer = 1;
     int anzahlDreier = 2;
     int anzahlZweier = 3;
 
-    int gesamtSchiffsteile = (anzahlVierer * viererSchiff) + (anzahlDreier * dreierSchiff) + (anzahlZweier * zweierSchiff);
+    boolean passt;
 
-
-    public int getGesamtSchiffsteile() {
-        return gesamtSchiffsteile;
+    public boolean getPasst() {
+        return passt;
     }
 
-
     /**
-     * Diese Methode sorgt dafuer, dass Schiffe entweder horizontal oder vertikal gesetzt werden koennen.
-     * Die Methode guckt sich die Umliegenden Flaechen eines Schiffsteils an und wenn es ein angrenzendes Schiffateil entdeckt,
-     * blockiert es je nach dem ob die Schiffsteile horizontal oder vertikal aneinander grenzen die anderen Richtungen.
-     * @param n
-     * @param m
-     * @param temp
+     * Fuer moeglichen lokalen Zweispieler oder KI Nutzung,
+     * Wechsel des Spielers.
+     * Bei KI Nutzung: spieler = 1 ist der physikalische Spieler, spieler = 2 die KI
      */
-    public void umgebungMarkieren(int n, int m, int [][] temp) {
-
-        if (n>0) { //Wenn es nicht an der oberen Kante des Spielfeldes liegt.
-            if (temp[n-1][m] == 1) {
-                if (m>0) { //Wenn es nicht an der linken Kante des Spielfeldes liegt.
-                    if (temp[n-1][m-1] == 0) {
-                        temp[n-1][m-1] = 3;
-                    }
-                    else if (m-2>0 && temp[n-1][m-1] == 3 && temp[n-1][m-2] == 1) {
-                        temp[n-1][m-1] = 2;
-                    }
-                    if (temp[n][m-1] != 3 && temp[n][m-1] != 2) {
-                        temp[n][m-1] = 3;
-                    }
-                    else if (m-2>0 && temp[n][m-1] == 3 && temp[n][m-2] == 1) {
-                        temp[n][m-1] = 2;
-                    }
-                }
-                if (m<7) {
-                    if (temp[n-1][m+1] == 0) {
-                        temp[n-1][m+1] = 3;
-                    }
-                    else if (m+2<7 && temp[n-1][m+1] == 3 && temp[n-1][m+2] == 1) {
-                        temp[n-1][m+1] = 2;
-                    }
-                    if (temp[n][m+1] != 3 && temp[n][m+1] != 2) {
-                        temp[n][m+1] = 3;
-                    }
-                    else if (m+2<7 && temp[n][m+1] == 3 && temp[n][m+2] == 1) {
-                        temp[n][m+1] = 2;
-                    }
-                }
-            }
-
+    public void spielerWechsel() {
+        if (spieler < 2) {
+            spieler++;
         }
-        else if (n<7) {
-            if (temp[n+1][m] == 1) {
-                if (m>0) {
-                    if (temp[n+1][m-1] == 0) {
-                        temp[n+1][m-1] = 3;
-                    }
-                    else if (m-2>0 && temp[n+1][m-1] == 3 && temp[n+1][m-2] == 1) {
-                        temp[n+1][m-1] = 2;
-                    }
-                    if (temp[n][m-1] != 3 && temp[n][m-1] != 2) {
-                        temp[n][m-1] = 3;
-                    }
-                    else if (m-2>0 && temp[n][m-1] == 3 && temp [n][m-2] == 1) {
-                        temp[n][m-1] = 2;
-                    }
-                }
-                if (m<7) {
-                    if (temp[n+1][m+1] == 0) {
-                        temp[n+1][m+1] = 3;
-                    }
-                    else if (m+2<7 && temp[n+1][m+1] == 3 && temp[n+1][m+2] == 1) {
-                        temp[n+1][m+1] = 2;
-                    }
-                    if (temp[n][m+1] != 3 && temp[n][m+1] != 2) {
-                        temp[n][m+1] = 3;
-                    }
-                    else if (m+2<7 && temp[n][m+1] == 3 && temp[n][m+2] == 1) {
-                        temp[n][m+1] = 2;
-                    }
-                }
-            }
+        else {
+            spieler = 1;
+        }
 
-        }
-        if (m>0) {
-            if (temp[n][m-1] == 1) {
-                if (n>0) {
-                    if (temp[n-1][m-1] == 0) {
-                        temp[n-1][m-1] = 3;
-                    }
-                    else if (n-2>0 && temp[n-1][m-1] == 3 && temp[n-2][m-1] == 1) {
-                        temp[n-1][m-1] = 2;
-                    }
-                    if (temp[n-1][m] != 3 && temp[n-1][m] != 2) {
-                        temp[n-1][m] = 3;
-                    }
-                    else if (n-2>0 && temp[n-1][m] == 3 && temp [n-2][m] == 1) {
-                        temp[n-1][m] = 2;
-                    }
-                }
-                if (n<7) {
-                    if (temp[n+1][m-1] == 0) {
-                        temp[n+1][m-1] = 3;
-                    }
-                    else if (n+2<7 && temp[n+1][m-1] == 3 && temp[n+2][m-1] == 1) {
-                        temp[n+1][m-1] = 2;
-                    }
-                    if (temp[n+1][m] != 3 && temp[n+1][m] != 2) {
-                        temp[n+1][m] = 3;
-                    }
-                    else if (n+2<7 && temp[n+1][m] == 3 && temp [n+2][m] == 1) {
-                        temp[n+1][m] = 2;
-                    }
-                }
-            }
-
-        }
-        else if (m<7) {
-            if (temp[n][m+1] == 1) {
-                if (n>0) {
-                    if (temp[n-1][m+1] == 0) {
-                        temp[n-1][m+1] = 3;
-                    }
-                    else if (n-2>0 && temp[n-1][m+1] == 3 && temp[n-2][m+1] == 1) {
-                        temp[n-1][m+1] = 2;
-                    }
-                    if (temp[n-1][m] != 3 && temp[n-1][m] != 2) {
-                        temp[n-1][m] = 3;
-                    }
-                    else if (n-2>0 && temp[n-1][m] == 3 && temp [n-2][m] == 1) {
-                        temp[n-1][m] = 2;
-                    }
-                }
-                if (n<7) {
-                    if (temp[n+1][m+1] == 0) {
-                        temp[n+1][m+1] = 3;
-                    }
-                    else if (n+2<7 && temp[n+1][m+1] == 3 && temp[n+2][m+1] == 1) {
-                        temp[n+1][m+1] = 2;
-                    }
-                    if (temp[n+1][m] != 3 && temp[n+1][m] != 2) {
-                        temp[n+1][m] = 3;
-                    }
-                    else if (n+2<7 && temp[n+1][m] == 3 && temp[n+2][m] == 1) {
-                        temp[n+1][m] = 2;
-                    }
-                }
-            }
-        }
     }
 
     /**
-     * Entfernt die Markierungen, die ein Schiffsteil umgibt.
-     * Wird in der Schiffesetzen klasse im OnClick fuer die Buttons aufgerufen.
-     * @param n
-     * @param m
-     * @param temp
+     * Schiffsanzahl wird wieder auf den Ausgangswert zurueck gesetzt
      */
-    public void markierungenEntfernen(int n, int m, int[][] temp) {
+    public void setSchiffsanzahl() {
+        anzahlVierer = 1;
+        anzahlDreier = 2;
+        anzahlZweier = 3;
+    }
 
-        if (esLiegtEinSchiffsteilAn(n, m, temp)) {
-            if (n>0) {
-                if (temp[n-1][m] == 3) {
-                    temp[n-1][m] = 0;
-                }
-                else if (temp[n-1][m] == 2) {
-                    temp[n-1][m] = 3;
-                }
-            }
-            if (n<7) {
-                if (temp[n+1][m] == 3) {
-                    temp[n+1][m] = 0;
-                }
-                else if (temp[n+1][m] == 2) {
-                    temp[n+1][m] = 3;
-                }
-            }
-            if (m>0) {
-                if (temp[n][m-1] == 3) {
-                    temp[n][m-1] = 0;
-                }
-                else if (temp[n][m-1] == 2) {
-                    temp[n][m-1] = 3;
-                }
-            }
-            if (m<7) {
-                if (temp[n][m+1] == 3) {
-                    temp[n][m+1] = 0;
-                }
-                else if (temp[n][m+1] == 2) {
-                    temp[n][m+1] = 3;
-                }
-            }
-            for (int i=0; i<8; i++) {
-                for (int j=0; j<8; j++) {
-                    if (einzelnesSchiffsteilMitMarkierterUmgebung(i, j, temp)) {
-                        if (i>0) {
-                            if (temp[i-1][j] == 3) {
-                                temp[i-1][j] = 0;
-                            }
-                            else if (temp[i-1][j] == 2) {
-                                temp[i-1][j] = 0;
-                            }
-                        }
-                        if (i<7) {
-                            if (temp[i+1][j] == 3) {
-                                temp[i+1][j] = 0;
-                            }
-                            else if (temp[i+1][j] == 2) {
-                                temp[i+1][j] = 0;
-                            }
-                        }
-                        if (j>0) {
-                            if (temp[i][j-1] == 3) {
-                                temp[i][j-1] = 0;
-                            }
-                            else if (temp[i][j-1] == 2) {
-                                temp[i][j-1] = 0;
-                            }
-                        }
-                        if (j<7) {
-                            if (temp[i][j+1] == 3) {
-                                temp[i][j+1] = 0;
-                            }
-                            else if (temp[i][j+1] == 2) {
-                                temp[i][j+1] = 0;
-                            }
-                        }
-                    }
+    /**
+     * Methode ueberprueft vor jedem Spielerwechsel, ob auf dem Spielfeld des Gegners noch Schiffteile sind, die noch nicht getroffen wurden.
+     * Es wird jedes einzelne Feld untersucht und immer, wenn ein Feld nicht den Wert 1 hat,
+     * also sich auf dem Feld kein ungetroffenes Schiff befindet, wird zaehler inkrementiert.
+     * Da wir 64 Felder haben, wird geschaut, ob zaehler den Wert 64 hat.
+     * Wenn ja, wird gewonnen auf true gesetzt.
+     * Wenn nicht, bleibt es auf false.
+     */
+    public boolean gewonnen() {
+        boolean gewonnen = false;
+        int zaehler = 0;
+        for (int n=0; n<feldgroesse; n++) {
+            for (int m=0; m<feldgroesse; m++) {
+                if (temp[n][m] != 1) {
+                    zaehler++;
                 }
             }
         }
+        if (zaehler == feldgroesse*feldgroesse) {
+            gewonnen = true;
+        }
+        return gewonnen;
     }
 
-    public void farbeAnpassen(int [][] tempInt, Button[][] tempButton) { //TODO: statt der Farbe soll ein Symbol erscheinen
-        for (int i = 0; i<8; i++) {
-            for (int j = 0; j<8; j++) {
-                if (tempInt[i][j] == 0 || tempInt[i][j] == 3) {
-                    tempButton[i][j].setBackgroundColor(0xFF33B5E5);
+    /**
+     * Methode, um die Schiffe je nach Groeße und Richtung zu setzen.
+     */
+    public void schiffeSetzen(int groesse, boolean vertikal, int n, int m) {
+
+        passtDasSchiff(groesse, vertikal, n, m);
+        if (getPasst() == true) {
+            for (int i = 0; i<groesse;i++) {
+                if (vertikal == true) {
+                    if (getPasst() == true) {
+                        temp[n][m] = 1;
+                        testeSchiffUmgebung(n, m);
+                        n++;
+                    }
                 }
-                else if (tempInt[i][j] == 1) {
-                    tempButton[i][j].setBackgroundColor(1);
+                else {
+                    temp[n][m] = 1;
+                    testeSchiffUmgebung(n,m);
+                    m++;
                 }
             }
+        }
+        else if (getPasst() == false) {
+            System.err.println("Nicht genug Platz!");
         }
     }
 
     /**
-     * Ueberprueft, ob der ein Schiffsteil platziert werden kann. Wenn an dem feld mehr als nur ein angrenzendes Schiffsteil liegt,
-     * wird false zurueckgegeben.
+     * Ueberprueft, ob das Schiff auf die ausgewaehlten Felder passt.
+     * Variable passt wird auf true gesetzt, wenn das Schiff gesetzt werden kann.
+     * Variable passt wird auf false gesetzt, wenn das Schiff nicht gesetzt werden kann.
+     * Es werden verschiedene boolsche Werte gesetzt, damit fuer jeden Teil des Schiffes
+     * getestet werden kann, ob das Feld belegbar ist.
+     * Eine kuerzere Variante mit mehreren Schleifen war leider nicht moeglich, da die
+     * Werte nicht korrekt gesetzt wurden.
+     * @param groesse
+     * @param vertikal
      * @param n
      * @param m
-     * @param temp
      * @return
+     * @author Kirsten und Serdar
      */
-    public boolean platzIstBesetzbar(int n, int m, int[][] temp) {
-        int k = 0;
-        boolean oben = false; //Felder sind 0.
-        boolean unten = false;
-        boolean rechts = false;
-        boolean links = false;
+    public boolean passtDasSchiff(int groesse, boolean vertikal, int n, int m) {
 
-        if (temp[n][m] == 0) {
-            if (n>0) {
-                if (temp[n-1][m] == 1) {
-                    k++;
-                    oben = true;
+        passt = true;
+        boolean eins;
+        boolean zwei;
+        boolean drei;
+        boolean vier;
+        boolean fuenf;
+
+        if (vertikal == true) {
+            if (groesse == 4 && groesse + n <= feldgroesse) {
+                if (temp[n][m] == 0) {
+                    eins = true;
+                    n++;
                 }
-            }
-            if (n<7) {
-                if (temp[n+1][m] == 1) {
-                    k++;
-                    unten = true;
+                else eins = false;
+
+                if (temp[n][m] == 0) {
+                    zwei = true;
+                    n++;
                 }
-            }
-            if (m>0) {
-                if (temp[n][m-1] == 1) {
-                    k++;
-                    links = true;
+                else zwei = false;
+
+                if (temp[n][m] == 0) {
+                    drei = true;
+                    n++;
                 }
-            }
-            if (m<7) {
-                if (temp[n][m+1] == 1) {
-                    k++;
-                    rechts = true;
+                else drei = false;
+
+                if (temp[n][m] == 0) {
+                    vier = true;
                 }
+                else vier = false;
+
+                if (eins == true && zwei == true && drei == true && vier == true) {
+                    passt = true;
+                }
+                else passt = false;
             }
 
-            if (k>2 || (oben == true && (rechts == true || links == true)) || (unten == true && (rechts == true || links == true))) {
-                return false;
+            else if (groesse == 3 && groesse + n <= feldgroesse) {
+                if (temp[n][m] == 0) {
+                    eins = true;
+                    n++;
+                }
+                else eins = false;
+
+                if (temp[n][m] == 0) {
+                    zwei = true;
+                    n++;
+                }
+                else zwei = false;
+
+                if (temp[n][m] == 0) {
+                    drei = true;
+                }
+                else drei = false;
+
+                if (eins == true && zwei == true && drei == true) {
+                    passt = true;
+                }
+                else passt = false;
+            }
+
+            else if (groesse == 2 && groesse + n <= feldgroesse) {
+                if (temp[n][m] == 0) {
+                    eins = true;
+                    n++;
+                }
+                else eins = false;
+
+                if (temp[n][m] == 0) {
+                    zwei = true;
+                }
+                else zwei = false;
+
+                if (eins == true && zwei == true) {
+                    passt = true;
+                }
+                else passt = false;
+            }
+
+            else {
+                passt = false;
             }
         }
-        return true;
+
+        if (vertikal == false) {
+            if (groesse == 4 && groesse + m <= feldgroesse) {
+                if (temp[n][m] == 0) {
+                    eins = true;
+                    m++;
+                }
+                else eins = false;
+
+                if (temp[n][m] == 0) {
+                    zwei = true;
+                    m++;
+                }
+                else zwei = false;
+
+                if (temp[n][m] == 0) {
+                    drei = true;
+                    m++;
+                }
+                else drei = false;
+
+                if (temp[n][m] == 0) {
+                    vier = true;
+                }
+                else vier = false;
+
+                if (eins == true && zwei == true && drei == true && vier == true) {
+                    passt = true;
+                }
+                else passt = false;
+            }
+
+            else if (groesse == 3 && groesse + m <= feldgroesse) {
+                if (temp[n][m] == 0) {
+                    eins = true;
+                    m++;
+                }
+                else eins = false;
+
+                if (temp[n][m] == 0) {
+                    zwei = true;
+                    m++;
+                }
+                else zwei = false;
+
+                if (temp[n][m] == 0) {
+                    drei = true;
+                }
+                else drei = false;
+
+                if (eins == true && zwei == true && drei == true) {
+                    passt = true;
+                }
+                else passt = false;
+            }
+
+            else if (groesse == 2 && groesse + m <= feldgroesse) {
+                if (temp[n][m] == 0) {
+                    eins = true;
+                    m++;
+                }
+                else eins = false;
+
+                if (temp[n][m] == 0) {
+                    zwei = true;
+                }
+                else zwei = false;
+
+                if (eins == true && zwei == true) {
+                    passt = true;
+                }
+                else passt = false;
+            }
+
+            else {
+                passt = false;
+            }
+        }
+
+        return passt;
     }
 
     /**
-     * Ueberprueft, ob ein Schiffsteil an ein anderes Teil grenzt, damit es, wenn es entfernt wird, keine Markierungen loescht,
-     * die benoetigt werden.
-     * Wird in markierungenEntfernen aufgerufen.
+     * Diese Methode setzt die Felder um das Schiff auf den Wert 4, sodass spaeter
+     * diese Felder nicht mehr besetzt werden koennen (nur Felder mit dem Wert 0
+     * koennen besetzt werden).
      * @param n
      * @param m
-     * @param temp
-     * @return
+     * @author Kirsten und Serdar
      */
-    public boolean esLiegtEinSchiffsteilAn(int n, int m, int[][] temp) {
+    public void testeSchiffUmgebung(int n, int m) {
+
         if (n>0) {
-            if (temp[n-1][m] == 1) {
-                return true;
+            n--;
+            if (temp[n][m] == 0) {
+                temp[n][m] = 4;
             }
+            n++;
         }
-        if (n<7) {
-            if (temp[n+1][m] == 1) {
-                return true;
+        if (m<9) {
+            m++;
+            if (temp[n][m] == 0) {
+                temp[n][m] = 4;
             }
+            m--;
+        }
+        if (n<9) {
+            n++;
+            if (temp[n][m] == 0) {
+                temp[n][m] = 4;
+            }
+            n--;
         }
         if (m>0) {
-            if (temp[n][m-1] == 1) {
-                return true;
+            m--;
+            if (temp[n][m] == 0) {
+                temp[n][m] = 4;
             }
+            m++;
         }
-        if (m<7) {
-            if (temp[n][m+1] == 1) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
-     * Ueberprueft, ob um ein bestimmtes Feld herum Markierungen liegen.
-     * Diese Methode wird fuer die Methode einzelnesSchiffMitMarkierterUmgebung aufgerufen, damit man Markierungen von Schiffsteilen,
-     * die an keinen anderen Schiffsteilen liegen, entfernen kann.
+     * Ueberprueft, ob ein Schiff versenkt wurde, indem von jedem getroffenen Schiffsteil die umliegenden Punkte untersucht werden und daraufhin ueberprueft wird,
+     * ob sich dort noch ein ungetroffenes Teil befindet.
      * @param n
      * @param m
-     * @param temp
      * @return
      */
-    public boolean esLiegtEineMarkierungAn(int n, int m, int[][] temp) {
+    public boolean testeSchiffVersenkt(int n, int m) {
+        boolean versenkt;
+        boolean a = false;
+        boolean b = false;
+        boolean c = false;
+        boolean d = false;
+
         if (n>0) {
-            if (temp[n-1][m] == 3 || temp[n-1][m] == 2) {
-                return true;
+            n--;
+            if (temp[n][m] != 1) {
+                n++;
+                a = true;
             }
+            else n++;
         }
-        if (n<7) {
-            if (temp[n+1][m] == 3 || temp[n+1][m] == 2) {
-                return true;
+        if (n<9) {
+            n++;
+            if (temp[n][m] != 1) {
+                n--;
+                b = true;
             }
+            else n--;
         }
         if (m>0) {
-            if (temp[n][m-1] == 3 || temp[n][m-1] == 2) {
-                return true;
+            m--;
+            if (temp[n][m] != 1) {
+                m++;
+                c = true;
             }
+            else m++;
         }
-        if (m<7) {
-            if (temp[n][m+1] == 3 || temp[n][m+1] == 2) {
-                return true;
+        if (m<0) {
+            m++;
+            if (temp[n][m] != 1) {
+                m--;
+                d = true;
             }
+            else m--;
         }
-        return false;
-    }
-
-    /**
-     * Wird benoetigt, wenn ein mittleres Schiffsteil eines laengeren Schiffs entfernt wird,
-     * damit die markierten Felder um die Schiffsteile, welche an keinem anderen Schiffsteil liegen,
-     * wieder freigegeben werden koennen.
-     */
-    public boolean einzelnesSchiffsteilMitMarkierterUmgebung(int n, int m, int[][] temp) {
-        if (esLiegtEinSchiffsteilAn(n, m, temp) == false && temp[n][m] == 1) {
-            if (esLiegtEineMarkierungAn(n, m, temp)) {
-                return true;
-            }
+        if (a == true && b == true && c == true && d == true) {
+            versenkt = true;
         }
-        return false;
+        else {
+            versenkt = false;
+        }
+        return versenkt;
     }
 
 }
