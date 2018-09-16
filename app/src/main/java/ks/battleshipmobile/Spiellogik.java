@@ -47,110 +47,129 @@ public class Spiellogik {
         if (n>0) { //Wenn es nicht an der oberen Kante des Spielfeldes liegt.
             if (temp[n-1][m] == 1) {
                 if (m>0) { //Wenn es nicht an der linken Kante des Spielfeldes liegt.
-                    if (temp[n-1][m-1] != 2) {
+                    if (temp[n-1][m-1] == 0) {
                         temp[n-1][m-1] = 3;
                     }
-
+                    else if (m-2>0 && temp[n-1][m-1] == 3 && temp[n-1][m-2] == 1) {
+                        temp[n-1][m-1] = 2;
+                    }
                     if (temp[n][m-1] != 3 && temp[n][m-1] != 2) {
                         temp[n][m-1] = 3;
                     }
-                    else if (temp[n][m-1] == 3) {
+                    else if (m-2>0 && temp[n][m-1] == 3 && temp[n][m-2] == 1) {
                         temp[n][m-1] = 2;
                     }
                 }
                 if (m<7) {
-                    if (temp[n-1][m+1] != 2) {
+                    if (temp[n-1][m+1] == 0) {
                         temp[n-1][m+1] = 3;
                     }
-
+                    else if (m+2<7 && temp[n-1][m+1] == 3 && temp[n-1][m+2] == 1) {
+                        temp[n-1][m+1] = 2;
+                    }
                     if (temp[n][m+1] != 3 && temp[n][m+1] != 2) {
                         temp[n][m+1] = 3;
                     }
-                    else if (temp[n][m+1] == 3) {
+                    else if (m+2<7 && temp[n][m+1] == 3 && temp[n][m+2] == 1) {
                         temp[n][m+1] = 2;
                     }
                 }
             }
+
         }
-        if (n<7) {
+        else if (n<7) {
             if (temp[n+1][m] == 1) {
                 if (m>0) {
-                    if (temp[n+1][m-1] != 2) {
+                    if (temp[n+1][m-1] == 0) {
                         temp[n+1][m-1] = 3;
                     }
-
+                    else if (m-2>0 && temp[n+1][m-1] == 3 && temp[n+1][m-2] == 1) {
+                        temp[n+1][m-1] = 2;
+                    }
                     if (temp[n][m-1] != 3 && temp[n][m-1] != 2) {
                         temp[n][m-1] = 3;
                     }
-                    else if (temp[n][m-1] == 3) {
+                    else if (m-2>0 && temp[n][m-1] == 3 && temp [n][m-2] == 1) {
                         temp[n][m-1] = 2;
                     }
                 }
                 if (m<7) {
-                    if (temp[n+1][m+1] != 2) {
+                    if (temp[n+1][m+1] == 0) {
                         temp[n+1][m+1] = 3;
                     }
-
+                    else if (m+2<7 && temp[n+1][m+1] == 3 && temp[n+1][m+2] == 1) {
+                        temp[n+1][m+1] = 2;
+                    }
                     if (temp[n][m+1] != 3 && temp[n][m+1] != 2) {
                         temp[n][m+1] = 3;
                     }
-                    else if (temp[n][m+1] == 3) {
+                    else if (m+2<7 && temp[n][m+1] == 3 && temp[n][m+2] == 1) {
                         temp[n][m+1] = 2;
                     }
                 }
             }
+
         }
         if (m>0) {
             if (temp[n][m-1] == 1) {
                 if (n>0) {
-                    if (temp[n-1][m-1] != 2) {
+                    if (temp[n-1][m-1] == 0) {
                         temp[n-1][m-1] = 3;
                     }
-
+                    else if (n-2>0 && temp[n-1][m-1] == 3 && temp[n-2][m-1] == 1) {
+                        temp[n-1][m-1] = 2;
+                    }
                     if (temp[n-1][m] != 3 && temp[n-1][m] != 2) {
                         temp[n-1][m] = 3;
                     }
-                    else if (temp[n-1][m] == 3) {
+                    else if (n-2>0 && temp[n-1][m] == 3 && temp [n-2][m] == 1) {
                         temp[n-1][m] = 2;
                     }
                 }
                 if (n<7) {
-                    if (temp[n+1][m-1] != 2) {
+                    if (temp[n+1][m-1] == 0) {
                         temp[n+1][m-1] = 3;
                     }
-
+                    else if (n+2<7 && temp[n+1][m-1] == 3 && temp[n+2][m-1] == 1) {
+                        temp[n+1][m-1] = 2;
+                    }
                     if (temp[n+1][m] != 3 && temp[n+1][m] != 2) {
                         temp[n+1][m] = 3;
                     }
-                    else if (temp[n+1][m] == 3) {
+                    else if (n+2<7 && temp[n+1][m] == 3 && temp [n+2][m] == 1) {
                         temp[n+1][m] = 2;
                     }
                 }
             }
+
         }
-        if (m<7) {
+        else if (m<7) {
             if (temp[n][m+1] == 1) {
                 if (n>0) {
-                    if (temp[n-1][m+1] != 2) {
+                    if (temp[n-1][m+1] == 0) {
                         temp[n-1][m+1] = 3;
                     }
-
+                    else if (n-2>0 && temp[n-1][m+1] == 3 && temp[n-2][m+1] == 1) {
+                        temp[n-1][m+1] = 2;
+                    }
                     if (temp[n-1][m] != 3 && temp[n-1][m] != 2) {
                         temp[n-1][m] = 3;
                     }
-                    else if (temp[n-1][m] == 3) {
+                    else if (n-2>0 && temp[n-1][m] == 3 && temp [n-2][m] == 1) {
                         temp[n-1][m] = 2;
                     }
                 }
                 if (n<7) {
-                    if (temp[n+1][m+1] != 2) {
+                    if (temp[n+1][m+1] == 0) {
                         temp[n+1][m+1] = 3;
                     }
-                    else temp[n+1][m+1] = 3;
+                    else if (n+2<7 && temp[n+1][m+1] == 3 && temp[n+2][m+1] == 1) {
+                        temp[n+1][m+1] = 2;
+                    }
                     if (temp[n+1][m] != 3 && temp[n+1][m] != 2) {
                         temp[n+1][m] = 3;
                     }
-                    else if (temp[n+1][m] == 3) {
+                    else if (n+2<7 && temp[n+1][m] == 3 && temp[n+2][m] == 1) {
                         temp[n+1][m] = 2;
                     }
                 }
@@ -381,4 +400,5 @@ public class Spiellogik {
         }
         return false;
     }
+
 }
