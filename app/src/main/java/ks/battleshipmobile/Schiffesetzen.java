@@ -23,9 +23,9 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         R.id.h1, R.id.h2, R.id.h3, R.id.h4, R.id.h5, R.id.h6, R.id.h7, R.id.h8};
     Button [][] spielfeld = new Button[8][8];
     int [][] spielfeldbesetzung = new int [8][8];
-    Button zweierSchiff = (Button) findViewById(R.id.button_zweier);
-    Button dreierSchiff = (Button) findViewById(R.id.button_dreier);
-    Button viererSchiff = (Button) findViewById(R.id.button_vierer);
+    Button zweierSchiff;
+    Button dreierSchiff;
+    Button viererSchiff;
 
     Spiellogik logik = new Spiellogik();
 
@@ -38,9 +38,13 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
         buttonListenerHinzufuegen();
 
-        //zweierSchiff.setOnLongClickListener(longClickListener);
-        //dreierSchiff.setOnLongClickListener(longClickListener);
-        //viererSchiff.setOnLongClickListener(longClickListener);
+        zweierSchiff = findViewById(R.id.button_zweier);
+        dreierSchiff = findViewById(R.id.button_dreier);
+        viererSchiff = findViewById(R.id.button_vierer);
+
+        zweierSchiff.setOnLongClickListener(longClickListener);
+        dreierSchiff.setOnLongClickListener(longClickListener);
+        viererSchiff.setOnLongClickListener(longClickListener);
 
     }
 
@@ -49,7 +53,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         for (int i=0; i<8; i++) {
             for (int j=0; j<8; j++) {
                 spielfeld[i][j] = (Button) findViewById(idArray[k]);
-                //spielfeld[i][j].setOnDragListener(dragListener);
+                spielfeld[i][j].setOnDragListener(dragListener);
                 k++;
             }
         }
@@ -57,7 +61,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
 
 
-    /*View.OnLongClickListener longClickListener = new View.OnLongClickListener() {
+    View.OnLongClickListener longClickListener = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View view) {
             ClipData data = ClipData.newPlainText("", "");
@@ -88,7 +92,6 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             return true;
         }
     };
-*/
     @Override
     public void onClick(View view) { // TODO: Wenn das Feld mit 3 Markiert ist, muss ausgegeben werden, dass keine Schiffe nebeneinander gesetzt werden dürfen.
 
