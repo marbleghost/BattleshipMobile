@@ -1,5 +1,6 @@
 package ks.battleshipmobile;
 
+import android.content.ClipData;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -22,6 +23,9 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         R.id.h1, R.id.h2, R.id.h3, R.id.h4, R.id.h5, R.id.h6, R.id.h7, R.id.h8};
     Button [][] spielfeld = new Button[8][8];
     int [][] spielfeldbesetzung = new int [8][8];
+    Button zweierSchiff = (Button) findViewById(R.id.button_zweier);
+    Button dreierSchiff = (Button) findViewById(R.id.button_dreier);
+    Button viererSchiff = (Button) findViewById(R.id.button_vierer);
 
     Spiellogik logik = new Spiellogik();
 
@@ -33,6 +37,11 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_schiffesetzen);
 
         buttonListenerHinzufuegen();
+
+        //zweierSchiff.setOnLongClickListener(longClickListener);
+        //dreierSchiff.setOnLongClickListener(longClickListener);
+        //viererSchiff.setOnLongClickListener(longClickListener);
+
     }
 
     public void buttonListenerHinzufuegen() {
@@ -40,26 +49,46 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         for (int i=0; i<8; i++) {
             for (int j=0; j<8; j++) {
                 spielfeld[i][j] = (Button) findViewById(idArray[k]);
-                spielfeld[i][j].setOnDragListener(dragListener);
+                //spielfeld[i][j].setOnDragListener(dragListener);
                 k++;
             }
         }
     }
 
-    View.OnLongClickListener longClickListener = new View.OnLongClickListener() {
+
+
+    /*View.OnLongClickListener longClickListener = new View.OnLongClickListener() {
         @Override
         public boolean onLongClick(View view) {
-            return false;
+            ClipData data = ClipData.newPlainText("", "");
+            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+            view.startDrag(data, shadowBuilder, view, 0);
+            return true;
         }
     };
 
     View.OnDragListener dragListener = new View.OnDragListener() {
         @Override
         public boolean onDrag(View view, DragEvent dragEvent) {
-            return false;
+            int de = dragEvent.getAction();
+
+            switch (de) {
+                case DragEvent.ACTION_DRAG_ENTERED:
+                    final View v = (View) dragEvent.getLocalState();
+
+                    if (v.getId() == R.id.button_zweier) {
+                        logik.schiffeSetzen(2, true, 1, 1);
+                    }
+                    break;
+                case DragEvent.ACTION_DRAG_EXITED:
+                    break;
+                case DragEvent.ACTION_DROP:
+                    break;
+            }
+            return true;
         }
     };
-
+*/
     @Override
     public void onClick(View view) { // TODO: Wenn das Feld mit 3 Markiert ist, muss ausgegeben werden, dass keine Schiffe nebeneinander gesetzt werden dürfen.
 
