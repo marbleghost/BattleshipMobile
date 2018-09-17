@@ -1,5 +1,6 @@
 package ks.battleshipmobile;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -31,9 +32,19 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_spielbildschirm);
 
+        //Name und Spielfeldwerte werden uebergeben
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            spielfeldbesetzung = (int [][]) extras.getSerializable("SPIELFELD_UEBERGABE");
+            spielername = intent.getStringExtra("SPIELERNAME");
+        }
+
         spielername_textfeld = findViewById(R.id.Spielername_Anzeige);
+        spielername_textfeld.setText(spielername);
 
         buttonListenerHinzufuegen();
 

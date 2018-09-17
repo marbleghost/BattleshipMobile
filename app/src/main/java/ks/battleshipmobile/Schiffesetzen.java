@@ -259,8 +259,12 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             weiter.startAnimation(weiter_button_schliessen);
         }
         else if (view.getId() == R.id.weiter_zum_spiel) {
-            //KI setzen lassen, richtiges Spielfeld oefnnen,...
-            System.out.println("Fertig");
+            Intent intent = new Intent(Schiffesetzen.this, Spielbildschirm.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("SPIELFELD_UEBERGABE", spielfeldbesetzung);
+            intent.putExtra("SPIELERNAME", spielername);
+            intent.putExtras(bundle);
+            startActivity(intent);
         }
 
         /*for (int i=0; i<8; i++) {
