@@ -117,17 +117,16 @@ public class Spiellogik {
     }
 
     public void schiffSchatten(int markierung, int groesse, boolean vertikal, int n, int m, int [][] temp) {
-        passtDasSchiff(groesse, vertikal, n, m, temp);
-        if (getPasst() == true) {
+        if (passtDasSchiff(groesse, vertikal, n, m, temp)) {
             for (int i = 0; i<groesse;i++) {
                 if (vertikal == true) {
                     if (getPasst() == true) {
-                        temp[n][m] = 9;
+                        temp[n][m] = markierung;
                         n++;
                     }
                 }
                 else {
-                    temp[n][m] = 9;
+                    temp[n][m] = markierung;
                     m++;
                 }
             }
@@ -141,7 +140,7 @@ public class Spiellogik {
                     tempButton[i][j].setBackgroundColor(1);
                 }
                 else if (tempInt[i][j] == 9) {
-                    tempButton[i][j].setBackgroundColor(0101);
+                    tempButton[i][j].setBackgroundColor(0xFFDF33E5);
                 }
                 else if (tempInt[i][j] == 0) {
                     tempButton[i][j].setBackgroundColor(0xFF33B5E5);
@@ -176,25 +175,25 @@ public class Spiellogik {
 
         if (vertikal == true) {
             if (groesse == 4 && groesse + n <= feldgroesse) {
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     eins = true;
                     n++;
                 }
                 else eins = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     zwei = true;
                     n++;
                 }
                 else zwei = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     drei = true;
                     n++;
                 }
                 else drei = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     vier = true;
                 }
                 else vier = false;
@@ -206,19 +205,19 @@ public class Spiellogik {
             }
 
             else if (groesse == 3 && groesse + n <= feldgroesse) {
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     eins = true;
                     n++;
                 }
                 else eins = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     zwei = true;
                     n++;
                 }
                 else zwei = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     drei = true;
                 }
                 else drei = false;
@@ -230,13 +229,13 @@ public class Spiellogik {
             }
 
             else if (groesse == 2 && groesse + n <= feldgroesse) {
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     eins = true;
                     n++;
                 }
                 else eins = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     zwei = true;
                 }
                 else zwei = false;
@@ -254,25 +253,25 @@ public class Spiellogik {
 
         if (vertikal == false) {
             if (groesse == 4 && groesse + m <= feldgroesse) {
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     eins = true;
                     m++;
                 }
                 else eins = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     zwei = true;
                     m++;
                 }
                 else zwei = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     drei = true;
                     m++;
                 }
                 else drei = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     vier = true;
                 }
                 else vier = false;
@@ -284,19 +283,19 @@ public class Spiellogik {
             }
 
             else if (groesse == 3 && groesse + m <= feldgroesse) {
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     eins = true;
                     m++;
                 }
                 else eins = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     zwei = true;
                     m++;
                 }
                 else zwei = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     drei = true;
                 }
                 else drei = false;
@@ -308,13 +307,13 @@ public class Spiellogik {
             }
 
             else if (groesse == 2 && groesse + m <= feldgroesse) {
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     eins = true;
                     m++;
                 }
                 else eins = false;
 
-                if (temp[n][m] == 0) {
+                if (temp[n][m] == 0 || temp[n][m] == 9) {
                     zwei = true;
                 }
                 else zwei = false;
