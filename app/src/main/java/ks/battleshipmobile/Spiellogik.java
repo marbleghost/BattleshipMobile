@@ -92,20 +92,20 @@ public class Spiellogik {
     /**
      * Methode, um die Schiffe je nach Groeße und Richtung zu setzen.
      */
-    public void schiffeSetzen(int markierung, int groesse, boolean vertikal, int n, int m, int[][] temp) {
+    public void schiffeSetzen(int groesse, boolean vertikal, int n, int m, int[][] temp) {
 
         passtDasSchiff(groesse, vertikal, n, m, temp);
         if (getPasst() == true) {
             for (int i = 0; i<groesse;i++) {
                 if (vertikal == true) {
                     if (getPasst() == true) {
-                        temp[n][m] = markierung;
+                        temp[n][m] = 1;
                         testeSchiffUmgebung(n, m, temp);
                         n++;
                     }
                 }
                 else {
-                    temp[n][m] = markierung;
+                    temp[n][m] = 1;
                     testeSchiffUmgebung(n,m, temp);
                     m++;
                 }
@@ -113,6 +113,24 @@ public class Spiellogik {
         }
         else if (getPasst() == false) {
             System.err.println("Nicht genug Platz!");
+        }
+    }
+
+    public void schiffSchatten(int markierung, int groesse, boolean vertikal, int n, int m, int [][] temp) {
+        passtDasSchiff(groesse, vertikal, n, m, temp);
+        if (getPasst() == true) {
+            for (int i = 0; i<groesse;i++) {
+                if (vertikal == true) {
+                    if (getPasst() == true) {
+                        temp[n][m] = 9;
+                        n++;
+                    }
+                }
+                else {
+                    temp[n][m] = 9;
+                    m++;
+                }
+            }
         }
     }
 
