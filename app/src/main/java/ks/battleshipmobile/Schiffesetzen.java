@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -51,9 +52,13 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
         auswahl_schiffsrichtung = findViewById(R.id.auswahl_schiffsrichtung);
 
-        zweierSchiff.setOnLongClickListener(longClickListener);
+        /*zweierSchiff.setOnLongClickListener(longClickListener);
         dreierSchiff.setOnLongClickListener(longClickListener);
-        viererSchiff.setOnLongClickListener(longClickListener);
+        viererSchiff.setOnLongClickListener(longClickListener);*/
+
+        zweierSchiff.setOnTouchListener(touchListener);
+        dreierSchiff.setOnTouchListener(touchListener);
+        viererSchiff.setOnTouchListener(touchListener);
 
         auswahl_schiffsrichtung.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -92,6 +97,16 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         }
     };
 
+    View.OnTouchListener touchListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            ClipData data = ClipData.newPlainText("", "");
+            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+            view.startDrag(data, shadowBuilder, view, 0);
+            return true;
+        }
+    };
+
     View.OnDragListener dragListener = new View.OnDragListener() {
         @Override
         public boolean onDrag(View view, DragEvent dragEvent) {
@@ -99,15 +114,15 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
             switch (de) {
                 case DragEvent.ACTION_DRAG_ENTERED:
+                    break;
+                case DragEvent.ACTION_DRAG_EXITED:
+                    break;
+                case DragEvent.ACTION_DROP:
                     final View v = (View) dragEvent.getLocalState();
 
                     if (v.getId() == R.id.button_zweier) {
                         logik.schiffeSetzen(2, vertikal, 1, 1);
                     }
-                    break;
-                case DragEvent.ACTION_DRAG_EXITED:
-                    break;
-                case DragEvent.ACTION_DROP:
                     break;
             }
             return true;
