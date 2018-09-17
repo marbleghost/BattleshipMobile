@@ -2,6 +2,8 @@ package ks.battleshipmobile;
 
 import android.widget.Button;
 
+import java.util.Random;
+
 /**
  * 0-unbelegt/frei
  * 1-Schiff gesetzt
@@ -29,6 +31,10 @@ public class Spiellogik {
     int anzahlVierer = 1;
     int anzahlDreier = 2;
     int anzahlZweier = 3;
+
+    Random rand = new Random();
+    int n = rand.nextInt(8);
+
 
     boolean passt;
 
@@ -479,6 +485,10 @@ public class Spiellogik {
             return true;
         }
         else return false;
+    }
+
+    public void zufallsPlatzierung() {
+
     }
 
 }
