@@ -37,6 +37,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
     Button dreierSchiff;
     Button viererSchiff;
     ImageButton spielfeldZuruecksetzen;
+    ImageButton weiter;
     Switch auswahl_schiffsrichtung;
 
     boolean vertikal;
@@ -67,6 +68,8 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         viererSchiff = findViewById(R.id.button_vierer);
 
         spielfeldZuruecksetzen = findViewById(R.id.spielfeld_zuruecksetzen);
+        weiter = findViewById(R.id.weiter);
+        weiter.setEnabled(false);
 
         auswahl_schiffsrichtung = findViewById(R.id.auswahl_schiffsrichtung);
 
@@ -75,6 +78,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         viererSchiff.setOnTouchListener(touchListener);
 
         spielfeldZuruecksetzen.setOnClickListener(this);
+        weiter.setOnClickListener(this);
 
         auswahl_schiffsrichtung.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -190,6 +194,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                                 }
                             }
                         }
+
                     }
                     else if (v.getId() == R.id.button_dreier) {
                         for (int i=0; i<8; i++) {
@@ -223,19 +228,31 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                             }
                         }
                     }
+                    if (logik.alleSchiffeGesetzt()) {
+                        weiter.setEnabled(true);
+                    }
                     break;
             }
             return true;
+
         }
     };
     @Override
     public void onClick(View view) { // TODO: Wenn das Feld mit 3 Markiert ist, muss ausgegeben werden, dass keine Schiffe nebeneinander gesetzt werden dürfen.
-        logik.setSchiffsanzahl();
-        logik.spielfeldZuruecksetzen(spielfeldbesetzung);
-        logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
-        zweierSchiff.setEnabled(true);
-        dreierSchiff.setEnabled(true);
-        viererSchiff.setEnabled(true);
+        if (view.getId() == R.id.spielfeld_zuruecksetzen) {
+            logik.setSchiffsanzahl();
+            logik.spielfeldZuruecksetzen(spielfeldbesetzung);
+            logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+            zweierSchiff.setEnabled(true);
+            dreierSchiff.setEnabled(true);
+            viererSchiff.setEnabled(true);
+            weiter.setEnabled(false);
+        }
+        else if (view.getId() == R.id.weiter) {
+            //KI setzen lassen, richtiges Spielfeld oefnnen,...
+            System.out.println("Fertig");
+        }
+
         /*for (int i=0; i<8; i++) {
             for (int j=0; j<8; j++) {
                 if (view.equals(spielfeld[i][j])) {

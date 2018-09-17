@@ -474,4 +474,11 @@ public class Spiellogik {
         }
     }
 
+    public boolean alleSchiffeGesetzt() {
+        if (anzahlZweier == 0 && anzahlDreier == 0 && anzahlVierer == 0) {
+            return true;
+        }
+        return false;
+    }
+
 }
