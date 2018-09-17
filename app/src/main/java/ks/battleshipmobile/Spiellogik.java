@@ -92,20 +92,20 @@ public class Spiellogik {
     /**
      * Methode, um die Schiffe je nach Groeße und Richtung zu setzen.
      */
-    public void schiffeSetzen(int groesse, boolean vertikal, int n, int m, int[][] temp) {
+    public void schiffeSetzen(int markierung, int groesse, boolean vertikal, int n, int m, int[][] temp) {
 
         passtDasSchiff(groesse, vertikal, n, m, temp);
         if (getPasst() == true) {
             for (int i = 0; i<groesse;i++) {
                 if (vertikal == true) {
                     if (getPasst() == true) {
-                        temp[n][m] = 1;
+                        temp[n][m] = markierung;
                         testeSchiffUmgebung(n, m, temp);
                         n++;
                     }
                 }
                 else {
-                    temp[n][m] = 1;
+                    temp[n][m] = markierung;
                     testeSchiffUmgebung(n,m, temp);
                     m++;
                 }
@@ -121,6 +121,12 @@ public class Spiellogik {
             for (int j=0; j<feldgroesse; j++) {
                 if (tempInt[i][j] == 1) {
                     tempButton[i][j].setBackgroundColor(1);
+                }
+                else if (tempInt[i][j] == 9) {
+                    tempButton[i][j].setBackgroundColor(0101);
+                }
+                else if (tempInt[i][j] == 0) {
+                    tempButton[i][j].setBackgroundColor(0xFF33B5E5);
                 }
             }
         }

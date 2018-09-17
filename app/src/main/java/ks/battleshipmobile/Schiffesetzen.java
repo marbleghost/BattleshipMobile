@@ -114,8 +114,32 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
             switch (de) {
                 case DragEvent.ACTION_DRAG_ENTERED:
+                    View v2 = (View) dragEvent.getLocalState();
+
+                    if (v2.getId() == R.id.button_zweier) {
+                        for (int i=0; i<8; i++) {
+                            for (int j=0; j<8; j++) {
+                                if (view.equals(spielfeld[i][j])) {
+                                    logik.schiffeSetzen(9, 2, vertikal, i, j, spielfeldbesetzung);
+                                    logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                                }
+                            }
+                        }
+                    }
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
+                    View v3 = (View) dragEvent.getLocalState();
+
+                    if (v3.getId() == R.id.button_zweier) {
+                        for (int i=0; i<8; i++) {
+                            for (int j=0; j<8; j++) {
+                                if (view.equals(spielfeld[i][j])) {
+                                    logik.schiffeSetzen(0, 2, vertikal, i, j, spielfeldbesetzung);
+                                    logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                                }
+                            }
+                        }
+                    }
                     break;
                 case DragEvent.ACTION_DROP:
                     final View v = (View) dragEvent.getLocalState();
@@ -124,7 +148,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         for (int i=0; i<8; i++) {
                             for (int j=0; j<8; j++) {
                                 if (view.equals(spielfeld[i][j])) {
-                                    logik.schiffeSetzen(2, vertikal, i, j, spielfeldbesetzung);
+                                    logik.schiffeSetzen(1, 2, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                                 }
                             }
