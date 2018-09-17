@@ -256,7 +256,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             dreierSchiff.setEnabled(true);
             viererSchiff.setEnabled(true);
             weiter.setClickable(false);
-            weiter.setAnimation(weiter_button_schliessen);
+            weiter.startAnimation(weiter_button_schliessen);
         }
         else if (view.getId() == R.id.weiter_zum_spiel) {
             //KI setzen lassen, richtiges Spielfeld oefnnen,...
