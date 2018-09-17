@@ -478,7 +478,7 @@ public class Spiellogik {
         if (anzahlZweier == 0 && anzahlDreier == 0 && anzahlVierer == 0) {
             return true;
         }
-        return false;
+        else return false;
     }
 
 }

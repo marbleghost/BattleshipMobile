@@ -46,7 +46,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
     FloatingActionButton weiter;
     Switch auswahl_schiffsrichtung;
 
-    boolean vertikal;
+    boolean vertikal; //Wird benoetigt, damit der Spieler die Schiffe vertikal oder Horizontal setzen kann.
 
     Spiellogik logik = new Spiellogik();
 
@@ -237,7 +237,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         }
                     }
                     if (logik.alleSchiffeGesetzt()) {
-                        weiter.setAnimation(weiter_button_oeffnen);
+                        weiter.startAnimation(weiter_button_oeffnen);
                         weiter.setClickable(true);
                     }
                     break;
