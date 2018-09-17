@@ -481,4 +481,16 @@ public class Spiellogik {
         else return false;
     }
 
+
+    public void schiffsteilGetroffen(int n, int m, int [][] temp, Button[][] tempButton) {
+        if (temp[n][m] == 1) {
+            temp[n][m] = 2;
+            tempButton[n][m].setBackgroundColor(0xFF000000); //TODO: Farbe gegen Bild austauschen
+        }
+        else if (temp[n][m] == 0 || temp[n][m] == 4) {
+            temp[n][m] = 3;
+            tempButton[n][m].setText("X"); //TODO: String gegen Bild austauschen
+        }
+    }
+
 }
