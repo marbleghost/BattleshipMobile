@@ -29,6 +29,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     private int anim_zaehler = 0;
 
     EditText spielername;
+    String name;
     Button weiter;
     String SPIELERNAME_UEBERGABE;
 
@@ -169,8 +170,6 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
                 weiter.setText("Bitte warten");
 
                 //Der Spielername wird ermittelt. Bei keiner Einagbe wird standartmaessig "Spieler" verwendet
-                 final String name;
-
                 if (spielername.getText().toString().length() == 0) {
                     name = "Spieler";
                 }
@@ -183,7 +182,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
                     @Override
                     public void run() {
                         Intent intent = new Intent(Startbildschirm.this, Schiffesetzen.class);
-                        intent.putExtra(SPIELERNAME_UEBERGABE, name);
+                        intent.putExtra("SPIELERNAME_UEBERGABE", name);
                         startActivity(intent);
                     }
                 }, 3050);

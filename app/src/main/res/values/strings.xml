@@ -8,4 +8,5 @@
     <string name="button_zweier">Zweier</string>
     <string name="horizontal">Horizontal</string>
     <string name="vertikal">Vertikal</string>
+    <string name="spielernameText">Spielername</string>
 </resources>

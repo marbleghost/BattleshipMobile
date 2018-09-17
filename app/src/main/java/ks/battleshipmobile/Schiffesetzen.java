@@ -1,6 +1,7 @@
 package ks.battleshipmobile;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.TextView;
 
 public class Schiffesetzen extends AppCompatActivity implements View.OnClickListener {
 
@@ -27,6 +29,8 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
     Button [][] spielfeld = new Button[8][8];
     int [][] spielfeldbesetzung = new int [8][8];
+    String spielername;
+    TextView spielernameAnzeige;
 
     Button zweierSchiff;
     Button dreierSchiff;
@@ -43,6 +47,16 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_schiffesetzen);
+
+        //Der mit dem Intent aus dem Startbildschirm uebergebene Name wird auf das Textfeld oben geschrieben
+        Intent intent = getIntent();
+        Bundle extras = intent.getExtras();
+        if (extras != null) {
+            spielername = extras.getString("SPIELERNAME_UEBERGABE");
+        }
+
+        spielernameAnzeige = findViewById(R.id.Spielername_Anzeige);
+        spielernameAnzeige.setText(spielername);
 
         buttonListenerHinzufuegen();
 
@@ -65,6 +79,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     vertikal = true;
+                    System.out.println(spielername);
                 }
                 else {
                     vertikal = false;
