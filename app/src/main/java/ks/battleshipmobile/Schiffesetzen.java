@@ -191,11 +191,11 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                                 if (view.equals(spielfeld[i][j])) {
                                     logik.schiffeSetzen(2, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
-                                    if (logik.getPasst() ==  true) {
+                                    if (logik.getPasst()) {
                                         logik.anzahlZweier--;
                                     }
                                     if (logik.anzahlZweier == 0) {
-                                        zweierSchiff.setEnabled(false);
+                                        zweierSchiff.setEnabled(false); //graut den Button aus.
                                     }
                                 }
                             }
