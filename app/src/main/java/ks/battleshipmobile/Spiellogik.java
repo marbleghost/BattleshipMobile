@@ -326,14 +326,14 @@ public class Spiellogik {
             }
             n++;
         }
-        if (m<9) {
+        if (m<feldgroesse-1) {
             m++;
             if (temp[n][m] == 0) {
                 temp[n][m] = 4;
             }
             m--;
         }
-        if (n<9) {
+        if (n<feldgroesse-1) {
             n++;
             if (temp[n][m] == 0) {
                 temp[n][m] = 4;
