@@ -121,7 +121,8 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                     final View v = (View) dragEvent.getLocalState();
 
                     if (v.getId() == R.id.button_zweier) {
-                        logik.schiffeSetzen(2, vertikal, 1, 1);
+                        logik.schiffeSetzen(2, vertikal, 1, 1, spielfeldbesetzung);
+                        logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                     }
                     break;
             }

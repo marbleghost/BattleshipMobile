@@ -18,7 +18,7 @@ public class Spiellogik {
 
     int [][] spieler1 = new int[8][8];
     int [][] spieler2 = new int[8][8];
-    int [][] temp = new int[8][8];
+
 
     //Groesse der Schiffe
     final int viererSchiff = 4;
@@ -73,7 +73,7 @@ public class Spiellogik {
      * Wenn ja, wird gewonnen auf true gesetzt.
      * Wenn nicht, bleibt es auf false.
      */
-    public boolean gewonnen() {
+    public boolean gewonnen(int[][] temp) {
         boolean gewonnen = false;
         int zaehler = 0;
         for (int n=0; n<feldgroesse; n++) {
@@ -92,27 +92,37 @@ public class Spiellogik {
     /**
      * Methode, um die Schiffe je nach Groeße und Richtung zu setzen.
      */
-    public void schiffeSetzen(int groesse, boolean vertikal, int n, int m) {
+    public void schiffeSetzen(int groesse, boolean vertikal, int n, int m, int[][] temp) {
 
-        passtDasSchiff(groesse, vertikal, n, m);
+        passtDasSchiff(groesse, vertikal, n, m, temp);
         if (getPasst() == true) {
             for (int i = 0; i<groesse;i++) {
                 if (vertikal == true) {
                     if (getPasst() == true) {
                         temp[n][m] = 1;
-                        testeSchiffUmgebung(n, m);
+                        testeSchiffUmgebung(n, m, temp);
                         n++;
                     }
                 }
                 else {
                     temp[n][m] = 1;
-                    testeSchiffUmgebung(n,m);
+                    testeSchiffUmgebung(n,m, temp);
                     m++;
                 }
             }
         }
         else if (getPasst() == false) {
             System.err.println("Nicht genug Platz!");
+        }
+    }
+
+    public void farbeAnpassen(int [][] tempInt, Button[][] tempButton) {
+        for (int i=0; i<feldgroesse; i++) {
+            for (int j=0; j<feldgroesse; j++) {
+                if (tempInt[i][j] == 1) {
+                    tempButton[i][j].setBackgroundColor(1);
+                }
+            }
         }
     }
 
@@ -131,7 +141,7 @@ public class Spiellogik {
      * @return
      * @author Kirsten und Serdar
      */
-    public boolean passtDasSchiff(int groesse, boolean vertikal, int n, int m) {
+    public boolean passtDasSchiff(int groesse, boolean vertikal, int n, int m, int[][] temp) {
 
         passt = true;
         boolean eins;
@@ -307,7 +317,7 @@ public class Spiellogik {
      * @param m
      * @author Kirsten und Serdar
      */
-    public void testeSchiffUmgebung(int n, int m) {
+    public void testeSchiffUmgebung(int n, int m, int[][] temp) {
 
         if (n>0) {
             n--;
@@ -347,7 +357,7 @@ public class Spiellogik {
      * @param m
      * @return
      */
-    public boolean testeSchiffVersenkt(int n, int m) {
+    public boolean testeSchiffVersenkt(int n, int m, int[][] temp) {
         boolean versenkt;
         boolean a = false;
         boolean b = false;
@@ -398,7 +408,7 @@ public class Spiellogik {
     /**
      * Ueberschreibt die Arrays Spieler1 und Spieler2 mit den Daten des Arrays Temp
      */
-    public void setzeSpielfeldSpieler1() {
+    public void setzeSpielfeldSpieler1(int[][] temp) {
         for (int n = 0; n<feldgroesse; n++) {
             for (int m = 0; m<feldgroesse; m++) {
                 spieler1[n][m] = temp[n][m];
@@ -406,7 +416,7 @@ public class Spiellogik {
         }
     }
 
-    public void setzeSpielfeldSpieler2() {
+    public void setzeSpielfeldSpieler2(int[][] temp) {
         for (int n = 0; n<feldgroesse; n++) {
             for (int m = 0; m<feldgroesse; m++) {
                 spieler2[n][m] = temp[n][m];
@@ -417,7 +427,7 @@ public class Spiellogik {
     /**
      * Ueberschreibt das Array Temp mit den Daten vom Array des jeweiligen Spielers
      */
-    public void setzeTemp() {
+    public void setzeTemp(int[][] temp) {
         if (getSpieler() == 1) {
             for (int n = 0; n<feldgroesse; n++) {
                 for (int m = 0; m<feldgroesse; m++) {
