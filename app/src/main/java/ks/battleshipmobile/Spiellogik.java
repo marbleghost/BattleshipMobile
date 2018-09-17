@@ -94,15 +94,14 @@ public class Spiellogik {
      */
     public void schiffeSetzen(int groesse, boolean vertikal, int n, int m, int[][] temp) {
 
-        passtDasSchiff(groesse, vertikal, n, m, temp);
-        if (getPasst() == true) {
+        if (schiffPasst(groesse, vertikal, n, m, temp)) {
             for (int i = 0; i<groesse;i++) {
                 if (vertikal == true) {
-                    if (getPasst() == true) {
-                        temp[n][m] = 1;
-                        testeSchiffUmgebung(n, m, temp);
-                        n++;
-                    }
+
+                    temp[n][m] = 1;
+                    testeSchiffUmgebung(n, m, temp);
+                    n++;
+
                 }
                 else {
                     temp[n][m] = 1;
@@ -111,19 +110,19 @@ public class Spiellogik {
                 }
             }
         }
-        else if (getPasst() == false) {
+        else if (schiffPasst(groesse, vertikal, n, m, temp) == false) {
             System.err.println("Nicht genug Platz!");
         }
     }
 
     public void schiffSchatten(int markierung, int groesse, boolean vertikal, int n, int m, int [][] temp) {
-        if (passtDasSchiff(groesse, vertikal, n, m, temp)) {
+
+        if (schiffPasst(groesse, vertikal, n, m, temp)) {
             for (int i = 0; i<groesse;i++) {
                 if (vertikal == true) {
-                    if (getPasst() == true) {
-                        temp[n][m] = markierung;
-                        n++;
-                    }
+                    temp[n][m] = markierung;
+                    n++;
+
                 }
                 else {
                     temp[n][m] = markierung;
@@ -164,7 +163,7 @@ public class Spiellogik {
      * @return
      * @author Kirsten und Serdar
      */
-    public boolean passtDasSchiff(int groesse, boolean vertikal, int n, int m, int[][] temp) {
+    public boolean schiffPasst(int groesse, boolean vertikal, int n, int m, int[][] temp) {
 
         passt = true;
         boolean eins;
