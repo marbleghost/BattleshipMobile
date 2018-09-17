@@ -127,15 +127,46 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                             }
                         }
                     }
+                    else if (v2.getId() == R.id.button_dreier) {
+                        for (int i=0; i<8; i++) {
+                            for (int j=0; j<8; j++) {
+                                if (view.equals(spielfeld[i][j])) {
+                                    logik.schiffSchatten(9, 3, vertikal, i, j, spielfeldbesetzung);
+                                    logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                                    System.out.println(spielfeldbesetzung[i][j]);
+                                }
+                            }
+                        }
+                    }
+                    else if (v2.getId() == R.id.button_vierer) {
+                        for (int i=0; i<8; i++) {
+                            for (int j=0; j<8; j++) {
+                                if (view.equals(spielfeld[i][j])) {
+                                    logik.schiffSchatten(9, 4, vertikal, i, j, spielfeldbesetzung);
+                                    logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                                    System.out.println(spielfeldbesetzung[i][j]);
+                                }
+                            }
+                        }
+                    }
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
+                    View v3 = (View) dragEvent.getLocalState();
 
                     for (int i=0; i<8; i++) {
                         for (int j=0; j<8; j++) {
-
-                            logik.schiffSchatten(0,2, vertikal, i, j, spielfeldbesetzung);
-                            logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
-
+                            if(v3.equals(R.id.button_zweier)) {
+                                logik.schiffSchatten(0,2, vertikal, i, j, spielfeldbesetzung);
+                                logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                            }
+                            else if (v3.equals((R.id.button_dreier))) {
+                                logik.schiffSchatten(0,3, vertikal, i, j, spielfeldbesetzung);
+                                logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                            }
+                            else if (v3.equals((R.id.button_vierer))) {
+                                logik.schiffSchatten(0,4, vertikal, i, j, spielfeldbesetzung);
+                                logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                            }
                         }
                     }
 
@@ -148,6 +179,26 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                             for (int j=0; j<8; j++) {
                                 if (view.equals(spielfeld[i][j])) {
                                     logik.schiffeSetzen(2, vertikal, i, j, spielfeldbesetzung);
+                                    logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                                }
+                            }
+                        }
+                    }
+                    else if (v.getId() == R.id.button_dreier) {
+                        for (int i=0; i<8; i++) {
+                            for (int j=0; j<8; j++) {
+                                if (view.equals(spielfeld[i][j])) {
+                                    logik.schiffeSetzen(3, vertikal, i, j, spielfeldbesetzung);
+                                    logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                                }
+                            }
+                        }
+                    }
+                    else if (v.getId() == R.id.button_vierer) {
+                        for (int i=0; i<8; i++) {
+                            for (int j=0; j<8; j++) {
+                                if (view.equals(spielfeld[i][j])) {
+                                    logik.schiffeSetzen(4, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                                 }
                             }
