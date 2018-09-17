@@ -466,4 +466,12 @@ public class Spiellogik {
         }
     }
 
+    public void spielfeldZuruecksetzen(int [][] temp) {
+        for (int i=0; i<feldgroesse; i++) {
+            for (int j=0; j <feldgroesse; j++) {
+                temp[i][j] = 0;
+            }
+        }
+    }
+
 }

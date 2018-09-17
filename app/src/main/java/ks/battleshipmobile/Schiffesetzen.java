@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -35,6 +36,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
     Button zweierSchiff;
     Button dreierSchiff;
     Button viererSchiff;
+    ImageButton spielfeldZuruecksetzen;
     Switch auswahl_schiffsrichtung;
 
     boolean vertikal;
@@ -64,15 +66,15 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         dreierSchiff = findViewById(R.id.button_dreier);
         viererSchiff = findViewById(R.id.button_vierer);
 
-        auswahl_schiffsrichtung = findViewById(R.id.auswahl_schiffsrichtung);
+        spielfeldZuruecksetzen = findViewById(R.id.spielfeld_zuruecksetzen);
 
-        /*zweierSchiff.setOnLongClickListener(longClickListener);
-        dreierSchiff.setOnLongClickListener(longClickListener);
-        viererSchiff.setOnLongClickListener(longClickListener);*/
+        auswahl_schiffsrichtung = findViewById(R.id.auswahl_schiffsrichtung);
 
         zweierSchiff.setOnTouchListener(touchListener);
         dreierSchiff.setOnTouchListener(touchListener);
         viererSchiff.setOnTouchListener(touchListener);
+
+        spielfeldZuruecksetzen.setOnClickListener(this);
 
         auswahl_schiffsrichtung.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -98,18 +100,6 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             }
         }
     }
-
-
-
-    View.OnLongClickListener longClickListener = new View.OnLongClickListener() {
-        @Override
-        public boolean onLongClick(View view) {
-            ClipData data = ClipData.newPlainText("", "");
-            View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
-            view.startDrag(data, shadowBuilder, view, 0);
-            return true;
-        }
-    };
 
     View.OnTouchListener touchListener = new View.OnTouchListener() {
         @Override
@@ -240,7 +230,12 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
     };
     @Override
     public void onClick(View view) { // TODO: Wenn das Feld mit 3 Markiert ist, muss ausgegeben werden, dass keine Schiffe nebeneinander gesetzt werden dürfen.
-
+        logik.setSchiffsanzahl();
+        logik.spielfeldZuruecksetzen(spielfeldbesetzung);
+        logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+        zweierSchiff.setEnabled(true);
+        dreierSchiff.setEnabled(true);
+        viererSchiff.setEnabled(true);
         /*for (int i=0; i<8; i++) {
             for (int j=0; j<8; j++) {
                 if (view.equals(spielfeld[i][j])) {
