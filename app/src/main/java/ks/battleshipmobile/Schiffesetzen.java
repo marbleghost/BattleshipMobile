@@ -2,11 +2,14 @@ package ks.battleshipmobile;
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageButton;
@@ -28,6 +31,9 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         R.id.g1, R.id.g2, R.id.g3, R.id.g4, R.id.g5, R.id.g6, R.id.g7, R.id.g8,
                         R.id.h1, R.id.h2, R.id.h3, R.id.h4, R.id.h5, R.id.h6, R.id.h7, R.id.h8};
 
+    Animation weiter_button_oeffnen;
+    Animation weiter_button_schliessen;
+
     Button [][] spielfeld = new Button[8][8];
     int [][] spielfeldbesetzung = new int [8][8];
     String spielername;
@@ -36,8 +42,8 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
     Button zweierSchiff;
     Button dreierSchiff;
     Button viererSchiff;
-    ImageButton spielfeldZuruecksetzen;
-    ImageButton weiter;
+    FloatingActionButton spielfeldZuruecksetzen;
+    FloatingActionButton weiter;
     Switch auswahl_schiffsrichtung;
 
     boolean vertikal;
@@ -67,15 +73,17 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         dreierSchiff = findViewById(R.id.button_dreier);
         viererSchiff = findViewById(R.id.button_vierer);
 
-        spielfeldZuruecksetzen = findViewById(R.id.spielfeld_zuruecksetzen);
-        weiter = findViewById(R.id.weiter);
-        weiter.setEnabled(false);
+        spielfeldZuruecksetzen = (FloatingActionButton) findViewById(R.id.spielfeld_zuruecksetzen);
+        weiter = (FloatingActionButton) findViewById(R.id.weiter_zum_spiel);
 
         auswahl_schiffsrichtung = findViewById(R.id.auswahl_schiffsrichtung);
 
         zweierSchiff.setOnTouchListener(touchListener);
         dreierSchiff.setOnTouchListener(touchListener);
         viererSchiff.setOnTouchListener(touchListener);
+
+        weiter_button_oeffnen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_gross_oeffnen);
+        weiter_button_schliessen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_gross_schliessen);
 
         spielfeldZuruecksetzen.setOnClickListener(this);
         weiter.setOnClickListener(this);
@@ -229,7 +237,8 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         }
                     }
                     if (logik.alleSchiffeGesetzt()) {
-                        weiter.setEnabled(true);
+                        weiter.setAnimation(weiter_button_oeffnen);
+                        weiter.setClickable(true);
                     }
                     break;
             }
@@ -246,9 +255,10 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             zweierSchiff.setEnabled(true);
             dreierSchiff.setEnabled(true);
             viererSchiff.setEnabled(true);
-            weiter.setEnabled(false);
+            weiter.setClickable(false);
+            weiter.setAnimation(weiter_button_schliessen);
         }
-        else if (view.getId() == R.id.weiter) {
+        else if (view.getId() == R.id.weiter_zum_spiel) {
             //KI setzen lassen, richtiges Spielfeld oefnnen,...
             System.out.println("Fertig");
         }

@@ -534,7 +534,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/auswahl_schiffsrichtung" />
 
-    <ImageButton
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/spielfeld_zuruecksetzen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -542,16 +542,22 @@
         android:layout_marginTop="37dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:fabSize="normal"
+        app:pressedTranslationZ="12dp"
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
-    <ImageButton
-        android:id="@+id/weiter"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/weiter_zum_spiel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="37dp"
+        android:visibility="invisible"
+        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:fabSize="normal"
+        app:pressedTranslationZ="12dp"
         app:srcCompat="@android:drawable/btn_star" />
 
 </android.support.constraint.ConstraintLayout>
