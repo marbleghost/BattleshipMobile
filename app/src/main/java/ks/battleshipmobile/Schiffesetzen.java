@@ -155,15 +155,15 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
                     for (int i=0; i<8; i++) {
                         for (int j=0; j<8; j++) {
-                            if(v3.equals(R.id.button_zweier)) {
+                            if(v3.getId() == R.id.button_zweier) {
                                 logik.schiffSchatten(0,2, vertikal, i, j, spielfeldbesetzung);
                                 logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                             }
-                            else if (v3.equals((R.id.button_dreier))) {
+                            else if (v3.getId() == R.id.button_dreier) {
                                 logik.schiffSchatten(0,3, vertikal, i, j, spielfeldbesetzung);
                                 logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                             }
-                            else if (v3.equals((R.id.button_vierer))) {
+                            else if (v3.getId() == R.id.button_vierer) {
                                 logik.schiffSchatten(0,4, vertikal, i, j, spielfeldbesetzung);
                                 logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                             }
