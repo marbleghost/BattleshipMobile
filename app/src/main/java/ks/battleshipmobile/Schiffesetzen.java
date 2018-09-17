@@ -122,7 +122,6 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                                 if (view.equals(spielfeld[i][j])) {
                                     logik.schiffSchatten(9, 2, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
-                                    System.out.println(spielfeldbesetzung[i][j]);
                                 }
                             }
                         }
@@ -133,7 +132,6 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                                 if (view.equals(spielfeld[i][j])) {
                                     logik.schiffSchatten(9, 3, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
-                                    System.out.println(spielfeldbesetzung[i][j]);
                                 }
                             }
                         }
@@ -144,7 +142,6 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                                 if (view.equals(spielfeld[i][j])) {
                                     logik.schiffSchatten(9, 4, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
-                                    System.out.println(spielfeldbesetzung[i][j]);
                                 }
                             }
                         }
@@ -180,6 +177,12 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                                 if (view.equals(spielfeld[i][j])) {
                                     logik.schiffeSetzen(2, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                                    if (logik.getPasst() ==  true) {
+                                        logik.anzahlZweier--;
+                                    }
+                                    if (logik.anzahlZweier == 0) {
+                                        zweierSchiff.setEnabled(false);
+                                    }
                                 }
                             }
                         }
@@ -190,6 +193,12 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                                 if (view.equals(spielfeld[i][j])) {
                                     logik.schiffeSetzen(3, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                                    if (logik.getPasst() == true) {
+                                        logik.anzahlDreier--;
+                                    }
+                                    if (logik.anzahlDreier == 0) {
+                                        dreierSchiff.setEnabled(false);
+                                    }
                                 }
                             }
                         }
@@ -200,6 +209,12 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                                 if (view.equals(spielfeld[i][j])) {
                                     logik.schiffeSetzen(4, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+                                    if (logik.getPasst() == true) {
+                                        logik.anzahlVierer--;
+                                    }
+                                    if (logik.anzahlVierer == 0) {
+                                        viererSchiff.setEnabled(false);
+                                    }
                                 }
                             }
                         }
