@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.DragEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.Switch;
 
 public class Schiffesetzen extends AppCompatActivity implements View.OnClickListener {
 
@@ -21,11 +23,16 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         R.id.f1, R.id.f2, R.id.f3, R.id.f4, R.id.f5, R.id.f6, R.id.f7, R.id.f8,
                         R.id.g1, R.id.g2, R.id.g3, R.id.g4, R.id.g5, R.id.g6, R.id.g7, R.id.g8,
                         R.id.h1, R.id.h2, R.id.h3, R.id.h4, R.id.h5, R.id.h6, R.id.h7, R.id.h8};
+
     Button [][] spielfeld = new Button[8][8];
     int [][] spielfeldbesetzung = new int [8][8];
+
     Button zweierSchiff;
     Button dreierSchiff;
     Button viererSchiff;
+    Switch auswahl_schiffsrichtung;
+
+    boolean vertikal;
 
     Spiellogik logik = new Spiellogik();
 
@@ -42,9 +49,23 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         dreierSchiff = findViewById(R.id.button_dreier);
         viererSchiff = findViewById(R.id.button_vierer);
 
+        auswahl_schiffsrichtung = findViewById(R.id.auswahl_schiffsrichtung);
+
         zweierSchiff.setOnLongClickListener(longClickListener);
         dreierSchiff.setOnLongClickListener(longClickListener);
         viererSchiff.setOnLongClickListener(longClickListener);
+
+        auswahl_schiffsrichtung.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    vertikal = true;
+                }
+                else {
+                    vertikal = false;
+                }
+            }
+        });
 
     }
 
@@ -81,7 +102,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                     final View v = (View) dragEvent.getLocalState();
 
                     if (v.getId() == R.id.button_zweier) {
-                        logik.schiffeSetzen(2, true, 1, 1);
+                        logik.schiffeSetzen(2, vertikal, 1, 1);
                     }
                     break;
                 case DragEvent.ACTION_DRAG_EXITED:
