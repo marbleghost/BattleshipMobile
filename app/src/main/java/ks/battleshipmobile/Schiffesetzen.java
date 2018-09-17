@@ -71,7 +71,6 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                 }
             }
         });
-
     }
 
     public void buttonListenerHinzufuegen() {
