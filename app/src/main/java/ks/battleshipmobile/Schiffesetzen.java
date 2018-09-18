@@ -258,6 +258,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             zweierSchiff.setEnabled(true);
             dreierSchiff.setEnabled(true);
             viererSchiff.setEnabled(true);
+            auswahl_schiffsrichtung.setEnabled(true);
             weiter.setClickable(false);
             weiter.startAnimation(weiter_button_schliessen);
         }
@@ -271,6 +272,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             zweierSchiff.setEnabled(false);
             dreierSchiff.setEnabled(false);
             viererSchiff.setEnabled(false);
+            auswahl_schiffsrichtung.setEnabled(false);
             weiter.setClickable(true);
             weiter.startAnimation(weiter_button_oeffnen);
         }
