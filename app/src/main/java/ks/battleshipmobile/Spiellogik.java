@@ -37,6 +37,7 @@ public class Spiellogik {
 
 
     boolean passt;
+    boolean treffer = false;
 
     public boolean getPasst() {
         return passt;
@@ -488,17 +489,17 @@ public class Spiellogik {
     }
 
 
-    public boolean schiffsteilGetroffen(int n, int m, int [][] temp, Button[][] tempButton) {
+    public void schiffsteilGetroffen(int n, int m, int [][] temp, Button[][] tempButton) {
         if (temp[n][m] == 1) {
             temp[n][m] = 2;
             tempButton[n][m].setBackgroundColor(0xFF000000); //TODO: Farbe gegen Bild austauschen
+            treffer = true;
         }
         else if (temp[n][m] == 0 || temp[n][m] == 4) {
             temp[n][m] = 3;
             tempButton[n][m].setText("X"); //TODO: String gegen Bild austauschen
-            return false;
+            treffer = false;
         }
-        return true;
     }
 
     public void zufallsPlatzierung() {
