@@ -62,6 +62,8 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
 
         weiter = findViewById(R.id.weiter);
         weiter.setOnClickListener(this);
+        weiter.setClickable(false);
+        weiter.setVisibility(View.INVISIBLE);
 
         buttonListenerHinzufuegen();
 
@@ -86,7 +88,15 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
             if (view.getId() == R.id.weiter) {
                 spielername_textfeld.setText("Gegner");
                 logik.spielfeldStatus(spielfeldbesetzungspieler1, spielfeld);
-                kilogik.kiLeicht(spielfeldbesetzungspieler1, spielfeld, 1);
+                if (ki == 1) {
+                    kilogik.kiLeicht(spielfeldbesetzungspieler1, spielfeld, 1);
+                }
+                else if (ki == 2) {
+                    kilogik.kiMittel(spielfeldbesetzungspieler1, spielfeld, 1);
+                }
+                else if (ki == 3) {
+                    //kilogik.kiSchwierig(spielfeldbesetzungspieler1, spielfeld, 1);
+                }
                 spieler = 2;
             }
             else { //Spieler interagiert mit den Buttons.
@@ -95,14 +105,11 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                         for (int j=0; j<8; j++) {
                             if (view.equals(spielfeld[i][j])) {
                                 logik.schussAbgefeuert(i, j, spielfeldbesetzungspieler2, spielfeld);
-                                if (spielfeldbesetzungspieler2[i][j] == 2) {
-                                    logik.testeSchiffVersenkt(i, j, spielfeldbesetzungspieler2, spielfeld);
-                                }
-                                System.out.println("Feld: "+spielfeldbesetzungspieler2[i][j]);
                                 if (logik.treffer == true) {
+                                    logik.testeSchiffVersenkt(i, j, spielfeldbesetzungspieler2, spielfeld);
                                     versuche = 1;
                                 }
-                                else versuche = 0; //TODO: Zurueck auf 0 stellen
+                                else versuche = 0;
                             }
                         }
                     }
@@ -114,7 +121,8 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                             spielfeld[i][j].setClickable(false);
                         }
                     }
-
+                    weiter.setClickable(true);
+                    weiter.setVisibility(View.VISIBLE);
                 }
             }
         }
@@ -129,6 +137,8 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                         spielfeld[i][j].setClickable(true);
                     }
                 }
+                weiter.setClickable(false);
+                weiter.setVisibility(View.INVISIBLE);
             }
         }
     }

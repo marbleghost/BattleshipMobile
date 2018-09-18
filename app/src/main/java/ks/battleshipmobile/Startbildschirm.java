@@ -17,6 +17,12 @@ import android.widget.TextView;
 import android.widget.VideoView;
 import android.net.Uri;
 
+/**
+ * KI Werte:
+ * 1-Leichte KI
+ * 2-Mittlere KI
+ * 3-Schwierige KI
+ */
 public class Startbildschirm extends AppCompatActivity implements View.OnClickListener {
 
     FloatingActionButton start, anleitung, leichteki, mittlereki, schwierigeki;
