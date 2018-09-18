@@ -71,11 +71,11 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
             for (int i=0; i<8; i++) {
                 for (int j=0; j<8; j++) {
                     if (view.equals(spielfeld[i][j])) {
-                        logik.schiffsteilGetroffen(i, j, spielfeldbesetzungspieler2, spielfeld);
+                        logik.schussAbgefeuert(i, j, spielfeldbesetzungspieler2, spielfeld);
                         if (spielfeldbesetzungspieler2[i][j] == 2) {
                             logik.testeSchiffVersenkt(i, j, spielfeldbesetzungspieler2, spielfeld);
                         }
-                        System.out.println("Feld: "+spielfeldbesetzungspieler1);
+                        System.out.println("Feld: "+spielfeldbesetzungspieler2[i][j]);
                         if (logik.treffer == true) {
                             versuche = 1;
                         }

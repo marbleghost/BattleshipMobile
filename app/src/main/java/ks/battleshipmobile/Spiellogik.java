@@ -403,7 +403,7 @@ public class Spiellogik {
     }
 
 
-    public void schiffsteilGetroffen(int n, int m, int[][] temp, Button[][] tempButton) {
+    public void schussAbgefeuert(int n, int m, int[][] temp, Button[][] tempButton) {
         if (temp[n][m] == 1) {
             temp[n][m] = 2;
             tempButton[n][m].setBackgroundColor(0xFF000000); //TODO: Farbe gegen Bild austauschen
