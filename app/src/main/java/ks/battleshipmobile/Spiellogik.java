@@ -468,7 +468,7 @@ public class Spiellogik {
     }
 
     public void markierungSchiffVersenkt(int n, int m, Button[][] tempButton) {
-        tempButton[n][m].setBackgroundColor(0xFFFF0000);
+        tempButton[n][m].setBackgroundColor(0xFF00FF00);
     }
 
     public boolean testeSchiffVersenkt(int n, int m, int[][] temp, Button[][] tempButton) {
