@@ -41,6 +41,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
     int [][] spielfeldbesetzungspieler2 = new int [8][8];
     String spielername;
     TextView spielernameAnzeige;
+    int ki;
 
     Button zweierSchiff;
     Button dreierSchiff;
@@ -65,6 +66,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         Bundle extras = intent.getExtras();
         if (extras != null) {
             spielername = extras.getString("SPIELERNAME_UEBERGABE");
+            ki = extras.getInt("KI");
         }
 
         spielernameAnzeige = findViewById(R.id.Spielername_Anzeige);
@@ -291,6 +293,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             bundle.putSerializable("SPIELFELD_UEBERGABE", spielfeldbesetzungspieler1);
             bundle.putSerializable("SPIELFELD_UEBERGABE_KI", spielfeldbesetzungspieler2);
             intent.putExtra("SPIELERNAME", spielername);
+            intent.putExtra("KI", ki);
             intent.putExtras(bundle);
             startActivity(intent);
         }

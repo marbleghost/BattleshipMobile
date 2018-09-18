@@ -32,6 +32,8 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     String name;
     Button weiter;
 
+    int ki= 0;
+
     private Handler handler = new Handler();
 
     @Override
@@ -135,12 +137,15 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
 
         }
         if (e.equals(leichteki)) {
+            ki = 1;
             spielStarten();
         }
         if (e.equals(mittlereki)) {
+            ki = 2;
             spielStarten();
         }
         if (e.equals(schwierigeki)) {
+            ki = 3;
             spielStarten();
         }
 
@@ -182,6 +187,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
                     public void run() {
                         Intent intent = new Intent(Startbildschirm.this, Schiffesetzen.class);
                         intent.putExtra("SPIELERNAME_UEBERGABE", name);
+                        intent.putExtra("KI", ki);
                         startActivity(intent);
                     }
                 }, 3050);

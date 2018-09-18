@@ -13,6 +13,7 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
     TextView spielername_textfeld;
 
     String spielername;
+    int ki;
 
     Button[][] spielfeld = new Button[8][8];
     int [][] spielfeldbesetzungspieler1 = new int [8][8];
@@ -44,6 +45,7 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
             spielfeldbesetzungspieler1 = (int [][]) extras.getSerializable("SPIELFELD_UEBERGABE");
             spielfeldbesetzungspieler2 = (int [][]) extras.getSerializable("SPIELFELD_UEBERGABE_KI");
             spielername = intent.getStringExtra("SPIELERNAME");
+            ki = extras.getInt("KI");
         }
 
         spielername_textfeld = findViewById(R.id.Spielername_Anzeige);
@@ -79,7 +81,7 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                         if (logik.treffer == true) {
                             versuche = 1;
                         }
-                        else versuche = 1; //TODO: Zuruecl auf 0 stellen
+                        else versuche = 1; //TODO: Zurueck auf 0 stellen
                     }
                 }
             }
