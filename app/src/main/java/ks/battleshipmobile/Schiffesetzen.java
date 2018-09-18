@@ -89,6 +89,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
         spielfeldZuruecksetzen.setOnClickListener(this);
         weiter.setOnClickListener(this);
+        weiter.setClickable(false);
         spielfeldRandomSetzen.setOnClickListener(this);
 
         auswahl_schiffsrichtung.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
