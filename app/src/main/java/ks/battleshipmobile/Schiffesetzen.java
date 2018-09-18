@@ -254,8 +254,6 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         if (view.getId() == R.id.spielfeld_zuruecksetzen) {
             logik.setSchiffsanzahl();
             logik.spielfeldZuruecksetzen(spielfeldbesetzung);
-            logik.farbeAnpassen(spielfeldbesetzung, spielfeld);//muss nach dem testen geloescht werden
-            logik.zufallsPlatzierung(spielfeldbesetzung);
             logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
             zweierSchiff.setEnabled(true);
             dreierSchiff.setEnabled(true);
@@ -263,6 +261,20 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             weiter.setClickable(false);
             weiter.startAnimation(weiter_button_schliessen);
         }
+
+        else if (view.getId() == R.id.spielfeld_random_setzen) {
+            logik.setSchiffsanzahl();
+            logik.spielfeldZuruecksetzen(spielfeldbesetzung);
+            logik.farbeAnpassen(spielfeldbesetzung, spielfeld);//muss nach dem testen geloescht werden
+            logik.zufallsPlatzierung(spielfeldbesetzung);
+            logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
+            zweierSchiff.setEnabled(false);
+            dreierSchiff.setEnabled(false);
+            viererSchiff.setEnabled(false);
+            weiter.setClickable(true);
+            weiter.startAnimation(weiter_button_oeffnen);
+        }
+
         else if (view.getId() == R.id.weiter_zum_spiel) {
             Intent intent = new Intent(Schiffesetzen.this, Spielbildschirm.class);
             Bundle bundle = new Bundle();
