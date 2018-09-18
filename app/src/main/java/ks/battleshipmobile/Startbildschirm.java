@@ -31,7 +31,6 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     EditText spielername;
     String name;
     Button weiter;
-    String SPIELERNAME_UEBERGABE;
 
     private Handler handler = new Handler();
 
@@ -193,8 +192,14 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         popupbuilder.setView(popupview);
         AlertDialog dialog = popupbuilder.create();
         dialog.show();
+        start.startAnimation(fab_gross_schliessen);
+        start.setClickable(false);
     }
 
+    /**
+     * Ueber die in den XML Dateien angelegten Animaionen werden die Buttons fuer die Auswahl des
+     * Spielmodis eingeblendet und klickbar gemacht
+     */
     public void schwierigkeitsstufenEinblenden() {
         leichteki.startAnimation(fab_oeffnen);
         textleichteki.startAnimation(fab_oeffnen);
@@ -210,6 +215,10 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         schwierigkeitsauswahloffen = true;
     }
 
+    /**
+     * Ueber die in den XML Dateien angelegten Animaionen werden die Buttons fuer die Auswahl des
+     * Spielmodis ausgeblendet und sind nicht mehr klickbar
+     */
     public void schwierigkeitsstufenausblenden() {
         leichteki.startAnimation(fab_schliessen);
         textleichteki.startAnimation(fab_schliessen);

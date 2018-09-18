@@ -80,12 +80,9 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
         }
 
         if (versuche == 0) {
-            int k=0;
             for (int i=0; i<8; i++) {
                 for (int j=0; j<8; j++) {
-                    spielfeld[i][j] = (Button) findViewById(idArray[k]);
                     spielfeld[i][j].setClickable(false);
-                    k++;
                 }
             }
         }

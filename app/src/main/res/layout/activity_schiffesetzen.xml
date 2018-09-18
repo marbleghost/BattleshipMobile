@@ -539,12 +539,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="8dp"
+        app:fabSize="mini"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:fabSize="normal"
         app:pressedTranslationZ="12dp"
         app:srcCompat="@android:drawable/ic_menu_revert" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/spielfeld_random_setzen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        app:fabSize="mini"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@android:drawable/ic_menu_rotate" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/weiter_zum_spiel"

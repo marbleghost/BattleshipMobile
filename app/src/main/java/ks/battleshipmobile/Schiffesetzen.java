@@ -43,7 +43,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
     Button zweierSchiff;
     Button dreierSchiff;
     Button viererSchiff;
-    FloatingActionButton spielfeldZuruecksetzen;
+    FloatingActionButton spielfeldZuruecksetzen, spielfeldRandomSetzen;
     FloatingActionButton weiter;
     Switch auswahl_schiffsrichtung;
 
@@ -76,6 +76,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
         spielfeldZuruecksetzen = (FloatingActionButton) findViewById(R.id.spielfeld_zuruecksetzen);
         weiter = (FloatingActionButton) findViewById(R.id.weiter_zum_spiel);
+        spielfeldRandomSetzen = (FloatingActionButton) findViewById(R.id.spielfeld_random_setzen);
 
         auswahl_schiffsrichtung = findViewById(R.id.auswahl_schiffsrichtung);
 
@@ -88,6 +89,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
         spielfeldZuruecksetzen.setOnClickListener(this);
         weiter.setOnClickListener(this);
+        spielfeldRandomSetzen.setOnClickListener(this);
 
         auswahl_schiffsrichtung.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
