@@ -552,4 +552,9 @@ public class Spiellogik {
              }
         }
     }
+
+    public void kiSchiffeSetzen(int [][] temp) {
+        setSchiffsanzahl();
+        zufallsPlatzierung(temp);
+    }
 }

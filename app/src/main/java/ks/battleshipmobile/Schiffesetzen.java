@@ -37,6 +37,8 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
 
     Button [][] spielfeld = new Button[8][8];
     int [][] spielfeldbesetzung = new int [8][8];
+    int [][] spielfeldbesetzungspieler1 = new int [8][8];
+    int [][] spielfeldbesetzungspieler2 = new int [8][8];
     String spielername;
     TextView spielernameAnzeige;
 
@@ -282,9 +284,12 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         }
 
         else if (view.getId() == R.id.weiter_zum_spiel) {
+            spielfeldbesetzungspieler1 = spielfeldbesetzung;
+            logik.kiSchiffeSetzen(spielfeldbesetzungspieler2);
             Intent intent = new Intent(Schiffesetzen.this, Spielbildschirm.class);
             Bundle bundle = new Bundle();
-            bundle.putSerializable("SPIELFELD_UEBERGABE", spielfeldbesetzung);
+            bundle.putSerializable("SPIELFELD_UEBERGABE", spielfeldbesetzungspieler1);
+            bundle.putSerializable("SPIELFELD_UEBERGABE_KI", spielfeldbesetzungspieler2);
             intent.putExtra("SPIELERNAME", spielername);
             intent.putExtras(bundle);
             startActivity(intent);

@@ -15,7 +15,8 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
     String spielername;
 
     Button[][] spielfeld = new Button[8][8];
-    int [][] spielfeldbesetzung = new int [8][8];
+    int [][] spielfeldbesetzungspieler1 = new int [8][8];
+    int [][] spielfeldbesetzungspieler2 = new int [8][8];
     int versuche = 1;
 
     Spiellogik logik = new Spiellogik();
@@ -40,7 +41,8 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         if (extras != null) {
-            spielfeldbesetzung = (int [][]) extras.getSerializable("SPIELFELD_UEBERGABE");
+            spielfeldbesetzungspieler1 = (int [][]) extras.getSerializable("SPIELFELD_UEBERGABE");
+            spielfeldbesetzungspieler2 = (int [][]) extras.getSerializable("SPIELFELD_UEBERGABE_KI");
             spielername = intent.getStringExtra("SPIELERNAME");
         }
 
@@ -69,7 +71,7 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
             for (int i=0; i<8; i++) {
                 for (int j=0; j<8; j++) {
                     if (view.equals(spielfeld[i][j])) {
-                        logik.schiffsteilGetroffen(i, j, spielfeldbesetzung, spielfeld);
+                        logik.schiffsteilGetroffen(i, j, spielfeldbesetzungspieler2, spielfeld);
                         if (logik.treffer == true) {
                             versuche = 1;
                         }
