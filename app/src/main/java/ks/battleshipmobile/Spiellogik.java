@@ -476,12 +476,15 @@ public class Spiellogik {
             for (int j = 0; j < feldgroesse; j++) {
                 if (temp[i][j] == 0 || temp [i][j] == 1 || temp [i][j] == 4) {
                     tempButton[i][j].setBackgroundColor(0xFF33B5E5);
+                    tempButton[i][j].setText("");
                 }
                 else if (temp[i][j] == 2) {
                     tempButton[i][j].setBackgroundColor(0xFF000000);
+                    tempButton[i][j].setText("");
                 }
                 else if (temp[i][j] == 6) {
                     tempButton[i][j].setBackgroundColor(0xFF00FF00);
+                    tempButton[i][j].setText("");
                 }
                 else if (temp[i][j] == 3) {
                     tempButton[i][j].setText("X");

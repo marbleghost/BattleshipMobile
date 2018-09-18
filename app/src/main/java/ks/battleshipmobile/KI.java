@@ -15,7 +15,7 @@ public class KI {
     }
 
 
-    public void kiDumm(int [][] tempInt, Button [][] tempButton, int versuche) {
+    public void kiLeicht(int [][] tempInt, Button [][] tempButton, int versuche) {
 
         while (versuche != 0) {
             int n = randomInt();
