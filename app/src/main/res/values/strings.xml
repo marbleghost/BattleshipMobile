@@ -9,4 +9,7 @@
     <string name="horizontal">Horizontal</string>
     <string name="vertikal">Vertikal</string>
     <string name="spielernameText">Spielername</string>
+    <string name="gewonnen">Herzlichen Glückwunsch</string>
+    <string name="gewonnen2">Du hast gewonnen!</string>
+    <string name="hauptmenue">Hauptmenü</string>
 </resources>

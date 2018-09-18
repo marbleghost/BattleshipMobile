@@ -108,7 +108,9 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                                 if (logik.treffer == true) {
                                     logik.testeSchiffVersenkt(i, j, spielfeldbesetzungspieler2, spielfeld);
                                     if (logik.gewonnen(spielfeldbesetzungspieler2)) {
-                                        System.out.println("Spieler 1 hat gewonnen");
+                                        Intent intent = new Intent(Spielbildschirm.this, Gewonnenbildschirm.class);
+                                        intent.putExtra("SPIELERNAME_UEBERGABE", spielername);
+                                        startActivity(intent);
                                     }
                                     versuche = 1;
                                 }
