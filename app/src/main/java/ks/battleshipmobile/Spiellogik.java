@@ -105,13 +105,13 @@ public class Spiellogik {
                 if (vertikal == true) {
 
                     temp[n][m] = 1;
-                    testeSchiffUmgebung(n, m, temp);
+                    markiereSchiffUmgebung(n, m, temp);
                     n++;
 
                 }
                 else {
                     temp[n][m] = 1;
-                    testeSchiffUmgebung(n,m, temp);
+                    markiereSchiffUmgebung(n,m, temp);
                     m++;
                 }
             }
@@ -179,7 +179,7 @@ public class Spiellogik {
         boolean fuenf;
 
         if (vertikal == true) {
-            if (groesse == 4 && groesse + n <= feldgroesse) {
+            if (groesse == viererSchiff && groesse + n <= feldgroesse) {
                 if (temp[n][m] == 0 || temp[n][m] == 9) {
                     eins = true;
                     n++;
@@ -209,7 +209,7 @@ public class Spiellogik {
                 else passt = false;
             }
 
-            else if (groesse == 3 && groesse + n <= feldgroesse) {
+            else if (groesse == dreierSchiff && groesse + n <= feldgroesse) {
                 if (temp[n][m] == 0 || temp[n][m] == 9) {
                     eins = true;
                     n++;
@@ -233,7 +233,7 @@ public class Spiellogik {
                 else passt = false;
             }
 
-            else if (groesse == 2 && groesse + n <= feldgroesse) {
+            else if (groesse == zweierSchiff && groesse + n <= feldgroesse) {
                 if (temp[n][m] == 0 || temp[n][m] == 9) {
                     eins = true;
                     n++;
@@ -345,7 +345,7 @@ public class Spiellogik {
      * @param m
      * @author Kirsten und Serdar
      */
-    public void testeSchiffUmgebung(int n, int m, int[][] temp) {
+    public void markiereSchiffUmgebung(int n, int m, int[][] temp) {
 
         if (n>0) {
             n--;
@@ -488,7 +488,7 @@ public class Spiellogik {
     }
 
 
-    public void schiffsteilGetroffen(int n, int m, int [][] temp, Button[][] tempButton) {
+    public boolean schiffsteilGetroffen(int n, int m, int [][] temp, Button[][] tempButton) {
         if (temp[n][m] == 1) {
             temp[n][m] = 2;
             tempButton[n][m].setBackgroundColor(0xFF000000); //TODO: Farbe gegen Bild austauschen
@@ -496,7 +496,9 @@ public class Spiellogik {
         else if (temp[n][m] == 0 || temp[n][m] == 4) {
             temp[n][m] = 3;
             tempButton[n][m].setText("X"); //TODO: String gegen Bild austauschen
+            return false;
         }
+        return true;
     }
 
     public void zufallsPlatzierung() {

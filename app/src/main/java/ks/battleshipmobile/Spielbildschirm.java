@@ -16,6 +16,7 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
 
     Button[][] spielfeld = new Button[8][8];
     int [][] spielfeldbesetzung = new int [8][8];
+    int versuche;
 
     Spiellogik logik = new Spiellogik();
 
@@ -43,6 +44,9 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
             spielername = intent.getStringExtra("SPIELERNAME");
         }
 
+        //Versuche fuer das Schiffe abschießen, ein Versuch zu Anfang, ein weiterer falls ein Schiffsteil getroffen wurde
+        versuche = 1;
+
         spielername_textfeld = findViewById(R.id.Spielername_Anzeige);
         spielername_textfeld.setText(spielername);
 
@@ -67,6 +71,23 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
             for (int j=0; j<8; j++) {
                 if (view.equals(spielfeld[i][j])) {
                     logik.schiffsteilGetroffen(i, j, spielfeldbesetzung, spielfeld);
+                    if (logik.schiffsteilGetroffen(i, j, spielfeldbesetzung, spielfeld) == true) {
+                        versuche = 1;
+                    }
+                    else {
+                        versuche = 0;
+                    }
+                }
+
+                int k = 0;
+                if (versuche == 0) {
+                    for (int o=0; o<8; o++) {
+                        for (int p=0; p<8; p++) {
+                            spielfeld[o][p] = (Button) findViewById(idArray[k]);
+                            spielfeld[o][p].setEnabled(false);
+                            k++;
+                        }
+                    }
                 }
             }
         }

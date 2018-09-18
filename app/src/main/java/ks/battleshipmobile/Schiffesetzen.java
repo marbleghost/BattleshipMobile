@@ -136,7 +136,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         for (int i=0; i<8; i++) {
                             for (int j=0; j<8; j++) {
                                 if (view.equals(spielfeld[i][j])) {
-                                    logik.schiffSchatten(9, 2, vertikal, i, j, spielfeldbesetzung);
+                                    logik.schiffSchatten(9, logik.zweierSchiff, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                                 }
                             }
@@ -146,7 +146,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         for (int i=0; i<8; i++) {
                             for (int j=0; j<8; j++) {
                                 if (view.equals(spielfeld[i][j])) {
-                                    logik.schiffSchatten(9, 3, vertikal, i, j, spielfeldbesetzung);
+                                    logik.schiffSchatten(9, logik.dreierSchiff, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                                 }
                             }
@@ -156,7 +156,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         for (int i=0; i<8; i++) {
                             for (int j=0; j<8; j++) {
                                 if (view.equals(spielfeld[i][j])) {
-                                    logik.schiffSchatten(9, 4, vertikal, i, j, spielfeldbesetzung);
+                                    logik.schiffSchatten(9, logik.viererSchiff, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                                 }
                             }
@@ -169,15 +169,15 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                     for (int i=0; i<8; i++) {
                         for (int j=0; j<8; j++) {
                             if(v3.getId() == R.id.button_zweier) {
-                                logik.schiffSchatten(0,2, vertikal, i, j, spielfeldbesetzung);
+                                logik.schiffSchatten(0,logik.zweierSchiff, vertikal, i, j, spielfeldbesetzung);
                                 logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                             }
                             else if (v3.getId() == R.id.button_dreier) {
-                                logik.schiffSchatten(0,3, vertikal, i, j, spielfeldbesetzung);
+                                logik.schiffSchatten(0,logik.dreierSchiff, vertikal, i, j, spielfeldbesetzung);
                                 logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                             }
                             else if (v3.getId() == R.id.button_vierer) {
-                                logik.schiffSchatten(0,4, vertikal, i, j, spielfeldbesetzung);
+                                logik.schiffSchatten(0,logik.viererSchiff, vertikal, i, j, spielfeldbesetzung);
                                 logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                             }
                         }
@@ -191,7 +191,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         for (int i=0; i<8; i++) {
                             for (int j=0; j<8; j++) {
                                 if (view.equals(spielfeld[i][j])) {
-                                    logik.schiffeSetzen(2, vertikal, i, j, spielfeldbesetzung);
+                                    logik.schiffeSetzen(logik.zweierSchiff, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                                     if (logik.getPasst()) {
                                         logik.anzahlZweier--;
@@ -208,7 +208,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         for (int i=0; i<8; i++) {
                             for (int j=0; j<8; j++) {
                                 if (view.equals(spielfeld[i][j])) {
-                                    logik.schiffeSetzen(3, vertikal, i, j, spielfeldbesetzung);
+                                    logik.schiffeSetzen(logik.dreierSchiff, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                                     if (logik.getPasst() == true) {
                                         logik.anzahlDreier--;
@@ -224,7 +224,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
                         for (int i=0; i<8; i++) {
                             for (int j=0; j<8; j++) {
                                 if (view.equals(spielfeld[i][j])) {
-                                    logik.schiffeSetzen(4, vertikal, i, j, spielfeldbesetzung);
+                                    logik.schiffeSetzen(logik.viererSchiff, vertikal, i, j, spielfeldbesetzung);
                                     logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
                                     if (logik.getPasst() == true) {
                                         logik.anzahlVierer--;
