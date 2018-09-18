@@ -87,9 +87,9 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                 spielername_textfeld.setText("Gegner");
                 logik.spielfeldStatus(spielfeldbesetzungspieler1, spielfeld);
                 kilogik.kiLeicht(spielfeldbesetzungspieler1, spielfeld, 1);
-                spieler =2;
+                spieler = 2;
             }
-            else {
+            else { //Spieler interagiert mit den Buttons.
                 if (versuche == 1) {
                     for (int i=0; i<8; i++) {
                         for (int j=0; j<8; j++) {
@@ -131,7 +131,5 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                 }
             }
         }
-
     }
-
 }

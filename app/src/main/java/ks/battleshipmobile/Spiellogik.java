@@ -487,6 +487,7 @@ public class Spiellogik {
                     tempButton[i][j].setText("");
                 }
                 else if (temp[i][j] == 3) {
+                    tempButton[i][j].setBackgroundColor(0xFF33B5E5);
                     tempButton[i][j].setText("X");
                 }
             }
