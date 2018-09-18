@@ -206,9 +206,9 @@
 
             <Button
                 android:id="@+id/d4"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_blue_light" />
+                android:layout_weight="1"
+                android:background="@android:color/holo_red_dark" />
 
             <Button
                 android:id="@+id/d5"
