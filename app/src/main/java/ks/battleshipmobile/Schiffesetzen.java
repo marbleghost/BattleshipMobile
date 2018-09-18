@@ -259,8 +259,11 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             dreierSchiff.setEnabled(true);
             viererSchiff.setEnabled(true);
             auswahl_schiffsrichtung.setEnabled(true);
-            weiter.setClickable(false);
-            weiter.startAnimation(weiter_button_schliessen);
+            //Animation wird nur abgespielt, wenn das Spielfeld schon fertig gesetzt war
+            if (weiter.isClickable() == true) {
+                weiter.setClickable(false);
+                weiter.startAnimation(weiter_button_schliessen);
+            }
         }
 
         else if (view.getId() == R.id.spielfeld_random_setzen) {
