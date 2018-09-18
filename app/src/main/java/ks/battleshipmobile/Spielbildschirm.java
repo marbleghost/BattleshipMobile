@@ -90,10 +90,6 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                 logik.spielfeldStatus(spielfeldbesetzungspieler1, spielfeld);
                 if (ki == 1) {
                     kilogik.kiLeicht(spielfeldbesetzungspieler1, spielfeld, 1);
-                    logik.gewonnen(spielfeldbesetzungspieler1);
-                    if (logik.gewonnen == true) {
-                        System.out.println("GEWONNEN!");
-                    }
                 }
                 else if (ki == 2) {
                     kilogik.kiMittel(spielfeldbesetzungspieler1, spielfeld, 1);
@@ -111,9 +107,8 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                                 logik.schussAbgefeuert(i, j, spielfeldbesetzungspieler2, spielfeld);
                                 if (logik.treffer == true) {
                                     logik.testeSchiffVersenkt(i, j, spielfeldbesetzungspieler2, spielfeld);
-                                    logik.gewonnen(spielfeldbesetzungspieler1);
-                                    if (logik.gewonnen == true) {
-                                        System.out.println("GEWONNEN!");
+                                    if (logik.gewonnen(spielfeldbesetzungspieler2)) {
+                                        System.out.println("Spieler 1 hat gewonnen");
                                     }
                                     versuche = 1;
                                 }

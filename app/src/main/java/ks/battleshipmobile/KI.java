@@ -26,12 +26,14 @@ public class KI {
                 if (logik.treffer == false) {
                     versuche--;
                 }
+                else {
+                    logik.testeSchiffVersenkt(n, m, tempInt, tempButton);
+                    if (logik.gewonnen(tempInt)) {
+                        System.out.println("KI hat gewonnen");
+                    }
+                }
             }
         }
-
-
-
-
     }
 
     public void kiMittel(int [][] tempInt, Button [][] tempButton, int versuche) {
