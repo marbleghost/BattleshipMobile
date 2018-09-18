@@ -1,6 +1,7 @@
 package ks.battleshipmobile;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,12 +16,17 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
     String spielername;
     int ki;
 
+    Button weiter;
     Button[][] spielfeld = new Button[8][8];
     int [][] spielfeldbesetzungspieler1 = new int [8][8];
     int [][] spielfeldbesetzungspieler2 = new int [8][8];
     int versuche = 1;
+    int spieler;
+
+    private Handler handler = new Handler();
 
     Spiellogik logik = new Spiellogik();
+    KI kilogik = new KI();
 
     //Speichert die Button ID´s in einem Array, um sie später den Buttons leichter zuweisen zu koennen
     int [] idArray =   {R.id.a1, R.id.a2, R.id.a3, R.id.a4, R.id.a5, R.id.a6, R.id.a7, R.id.a8,
@@ -38,6 +44,9 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
         getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_spielbildschirm);
 
+        //Spiel beginnt mit dem Nutzer der App, Spieler 1
+        spieler = 1;
+
         //Name und Spielfeldwerte werden uebergeben
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
@@ -50,6 +59,9 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
 
         spielername_textfeld = findViewById(R.id.Spielername_Anzeige);
         spielername_textfeld.setText(spielername);
+
+        weiter = findViewById(R.id.weiter);
+        weiter.setOnClickListener(this);
 
         buttonListenerHinzufuegen();
 
@@ -68,30 +80,37 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-
-        if (versuche == 1) {
-            for (int i=0; i<8; i++) {
-                for (int j=0; j<8; j++) {
-                    if (view.equals(spielfeld[i][j])) {
-                        logik.schussAbgefeuert(i, j, spielfeldbesetzungspieler2, spielfeld);
-                        if (spielfeldbesetzungspieler2[i][j] == 2) {
-                            logik.testeSchiffVersenkt(i, j, spielfeldbesetzungspieler2, spielfeld);
+        if (view.getId() == R.id.weiter) {
+            spielername_textfeld.setText("Gegner");
+            logik.spielfeldStatus(spielfeldbesetzungspieler1, spielfeld);
+            kilogik.kiDumm(spielfeldbesetzungspieler1, spielfeld, 1);
+        }
+        else {
+            if (versuche == 1) {
+                for (int i=0; i<8; i++) {
+                    for (int j=0; j<8; j++) {
+                        if (view.equals(spielfeld[i][j])) {
+                            logik.schussAbgefeuert(i, j, spielfeldbesetzungspieler2, spielfeld);
+                            if (spielfeldbesetzungspieler2[i][j] == 2) {
+                                logik.testeSchiffVersenkt(i, j, spielfeldbesetzungspieler2, spielfeld);
+                            }
+                            System.out.println("Feld: "+spielfeldbesetzungspieler2[i][j]);
+                            if (logik.treffer == true) {
+                                versuche = 1;
+                            }
+                            else versuche = 0; //TODO: Zurueck auf 0 stellen
                         }
-                        System.out.println("Feld: "+spielfeldbesetzungspieler2[i][j]);
-                        if (logik.treffer == true) {
-                            versuche = 1;
-                        }
-                        else versuche = 1; //TODO: Zurueck auf 0 stellen
                     }
                 }
             }
-        }
 
-        if (versuche == 0) {
-            for (int i=0; i<8; i++) {
-                for (int j=0; j<8; j++) {
-                    spielfeld[i][j].setClickable(false);
+            if (versuche == 0) {
+                for (int i=0; i<8; i++) {
+                    for (int j=0; j<8; j++) {
+                        spielfeld[i][j].setClickable(false);
+                    }
                 }
+
             }
         }
 

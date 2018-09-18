@@ -64,8 +64,8 @@ public class Spiellogik {
      * Wechsel des Spielers.
      * Bei KI Nutzung: spieler = 1 ist der physikalische Spieler, spieler = 2 die KI
      */
-    public void spielerWechsel() {
-        if (getSpieler() < 2) {
+    public void spielerWechsel(int spieler) {
+        if (spieler < 2) {
             spieler++;
         } else {
             spieler = 1;
@@ -469,6 +469,25 @@ public class Spiellogik {
 
     public void markierungSchiffVersenkt(int n, int m, Button[][] tempButton) {
         tempButton[n][m].setBackgroundColor(0xFF00FF00);
+    }
+
+    public void spielfeldStatus(int [][] temp, Button [][] tempButton) {
+        for (int i=0; i<feldgroesse; i++) {
+            for (int j = 0; j < feldgroesse; j++) {
+                if (temp[i][j] == 0 || temp [i][j] == 1 || temp [i][j] == 4) {
+                    tempButton[i][j].setBackgroundColor(0xFF33B5E5);
+                }
+                else if (temp[i][j] == 2) {
+                    tempButton[i][j].setBackgroundColor(0xFF000000);
+                }
+                else if (temp[i][j] == 6) {
+                    tempButton[i][j].setBackgroundColor(0xFF00FF00);
+                }
+                else if (temp[i][j] == 3) {
+                    tempButton[i][j].setText("X");
+                }
+            }
+        }
     }
 
     public boolean testeSchiffVersenkt(int n, int m, int[][] temp, Button[][] tempButton) {
