@@ -83,7 +83,7 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
         if (view.getId() == R.id.weiter) {
             spielername_textfeld.setText("Gegner");
             logik.spielfeldStatus(spielfeldbesetzungspieler1, spielfeld);
-            //kilogik.kiLeicht(spielfeldbesetzungspieler1, spielfeld, 1);
+            kilogik.kiLeicht(spielfeldbesetzungspieler1, spielfeld, 1);
         }
         else {
             if (versuche == 1) {

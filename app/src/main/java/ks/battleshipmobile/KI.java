@@ -23,6 +23,9 @@ public class KI {
 
             if (tempInt[n][m] != 2 && tempInt[n][m] != 3 && tempInt[n][m] != 6) {
                 logik.schussAbgefeuert(n, m, tempInt, tempButton);
+                if (logik.treffer == false) {
+                    versuche--;
+                }
             }
         }
 
