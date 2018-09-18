@@ -39,6 +39,7 @@ public class Spiellogik {
     boolean passt;
     boolean treffer = false;
     boolean versenkt;
+    boolean gewonnen = false;
 
     // Werden benoetigt, um die Koordinaten der einzelnen Schiffsteile zu speichern, wenn ein Schiff versenkt wurde
     int an1, an2, an3, an4, an5, an6 = -1;
@@ -92,7 +93,6 @@ public class Spiellogik {
      * Wenn nicht, bleibt es auf false.
      */
     public boolean gewonnen(int[][] temp) {
-        boolean gewonnen = false;
         int zaehler = 0;
         for (int n = 0; n < feldgroesse; n++) {
             for (int m = 0; m < feldgroesse; m++) {
@@ -347,44 +347,6 @@ public class Spiellogik {
                 temp[n][m] = 4;
             }
             m++;
-        }
-    }
-
-    /**
-     * Ueberschreibt die Arrays Spieler1 und Spieler2 mit den Daten des Arrays Temp
-     */
-    public void setzeSpielfeldSpieler1(int[][] temp) {
-        for (int n = 0; n < feldgroesse; n++) {
-            for (int m = 0; m < feldgroesse; m++) {
-                spieler1[n][m] = temp[n][m];
-            }
-        }
-    }
-
-    public void setzeSpielfeldSpieler2(int[][] temp) {
-        for (int n = 0; n < feldgroesse; n++) {
-            for (int m = 0; m < feldgroesse; m++) {
-                spieler2[n][m] = temp[n][m];
-            }
-        }
-    }
-
-    /**
-     * Ueberschreibt das Array Temp mit den Daten vom Array des jeweiligen Spielers
-     */
-    public void setzeTemp(int[][] temp) {
-        if (getSpieler() == 1) {
-            for (int n = 0; n < feldgroesse; n++) {
-                for (int m = 0; m < feldgroesse; m++) {
-                    temp[n][m] = spieler2[n][m];
-                }
-            }
-        } else if (getSpieler() == 2) {
-            for (int n = 0; n < feldgroesse; n++) {
-                for (int m = 0; m < feldgroesse; m++) {
-                    temp[n][m] = spieler1[n][m];
-                }
-            }
         }
     }
 
