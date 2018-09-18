@@ -80,37 +80,55 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.weiter) {
-            spielername_textfeld.setText("Gegner");
-            logik.spielfeldStatus(spielfeldbesetzungspieler1, spielfeld);
-            kilogik.kiLeicht(spielfeldbesetzungspieler1, spielfeld, 1);
-        }
-        else {
-            if (versuche == 1) {
-                for (int i=0; i<8; i++) {
-                    for (int j=0; j<8; j++) {
-                        if (view.equals(spielfeld[i][j])) {
-                            logik.schussAbgefeuert(i, j, spielfeldbesetzungspieler2, spielfeld);
-                            if (spielfeldbesetzungspieler2[i][j] == 2) {
-                                logik.testeSchiffVersenkt(i, j, spielfeldbesetzungspieler2, spielfeld);
+
+        //Spieler 1 ist am Zug (Nutzer)
+        if (spieler == 1) {
+            if (view.getId() == R.id.weiter) {
+                spielername_textfeld.setText("Gegner");
+                logik.spielfeldStatus(spielfeldbesetzungspieler1, spielfeld);
+                kilogik.kiLeicht(spielfeldbesetzungspieler1, spielfeld, 1);
+                spieler =2;
+            }
+            else {
+                if (versuche == 1) {
+                    for (int i=0; i<8; i++) {
+                        for (int j=0; j<8; j++) {
+                            if (view.equals(spielfeld[i][j])) {
+                                logik.schussAbgefeuert(i, j, spielfeldbesetzungspieler2, spielfeld);
+                                if (spielfeldbesetzungspieler2[i][j] == 2) {
+                                    logik.testeSchiffVersenkt(i, j, spielfeldbesetzungspieler2, spielfeld);
+                                }
+                                System.out.println("Feld: "+spielfeldbesetzungspieler2[i][j]);
+                                if (logik.treffer == true) {
+                                    versuche = 1;
+                                }
+                                else versuche = 0; //TODO: Zurueck auf 0 stellen
                             }
-                            System.out.println("Feld: "+spielfeldbesetzungspieler2[i][j]);
-                            if (logik.treffer == true) {
-                                versuche = 1;
-                            }
-                            else versuche = 0; //TODO: Zurueck auf 0 stellen
                         }
                     }
                 }
-            }
 
-            if (versuche == 0) {
+                if (versuche == 0) {
+                    for (int i=0; i<8; i++) {
+                        for (int j=0; j<8; j++) {
+                            spielfeld[i][j].setClickable(false);
+                        }
+                    }
+
+                }
+            }
+        }
+        else if (spieler == 2) {
+            if (view.getId() == R.id.weiter) {
+                versuche = 1;
+                spielername_textfeld.setText(spielername);
+                logik.spielfeldStatus(spielfeldbesetzungspieler2, spielfeld);
+                spieler = 1;
                 for (int i=0; i<8; i++) {
                     for (int j=0; j<8; j++) {
-                        spielfeld[i][j].setClickable(false);
+                        spielfeld[i][j].setClickable(true);
                     }
                 }
-
             }
         }
 
