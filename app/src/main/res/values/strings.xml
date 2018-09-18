@@ -12,4 +12,5 @@
     <string name="gewonnen">Herzlichen Glückwunsch</string>
     <string name="gewonnen2">Du hast gewonnen!</string>
     <string name="hauptmenue">Hauptmenü</string>
+    <string name="verloren">Du hast leider verloren</string>
 </resources>

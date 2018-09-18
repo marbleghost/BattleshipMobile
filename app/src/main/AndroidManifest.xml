@@ -18,8 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Anleitungsbildschirm"
-            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".Anleitungsbildschirm"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Schiffesetzen"
             android:screenOrientation="portrait" />
@@ -29,6 +30,7 @@
         <activity
             android:name=".Gewonnenbildschirm"
             android:screenOrientation="portrait" />
+        <activity android:name=".Verliererbildschirm"></activity>
     </application>
 
 </manifest>
