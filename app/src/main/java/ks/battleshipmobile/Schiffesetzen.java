@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
@@ -251,6 +252,8 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         if (view.getId() == R.id.spielfeld_zuruecksetzen) {
             logik.setSchiffsanzahl();
             logik.spielfeldZuruecksetzen(spielfeldbesetzung);
+            logik.farbeAnpassen(spielfeldbesetzung, spielfeld);//muss nach dem testen geloescht werden
+            logik.zufallsPlatzierung(spielfeldbesetzung);
             logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
             zweierSchiff.setEnabled(true);
             dreierSchiff.setEnabled(true);

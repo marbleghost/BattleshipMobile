@@ -33,11 +33,13 @@ public class Spiellogik {
     int anzahlZweier = 3;
 
     Random rand = new Random();
-    int n = rand.nextInt(8);
+
 
 
     boolean passt;
     boolean treffer = false;
+
+
 
     public boolean getPasst() {
         return passt;
@@ -502,8 +504,52 @@ public class Spiellogik {
         }
     }
 
-    public void zufallsPlatzierung() {
 
+
+    public void zufallsPlatzierung(int [][] temp) {
+        boolean vertikal;
+
+         while (anzahlVierer > 0 || anzahlDreier > 0 || anzahlZweier > 0) {
+            int i = rand.nextInt(2);
+
+            if (i < 1) {
+                vertikal = true;
+            }
+            else vertikal = false;
+
+
+            if (anzahlVierer > 0) {
+                int n = rand.nextInt(8);
+                int m = rand.nextInt(8);
+
+                schiffeSetzen(viererSchiff, vertikal, n, m, temp);
+
+                if (getPasst() == true) {
+                    anzahlVierer--;
+                }
+            }
+
+             if (anzahlDreier > 0) {
+                 int n = rand.nextInt(8);
+                 int m = rand.nextInt(8);
+
+                 schiffeSetzen(dreierSchiff, vertikal, n, m, temp);
+
+                 if (getPasst() == true) {
+                     anzahlDreier--;
+                 }
+             }
+
+             if (anzahlZweier > 0) {
+                 int n = rand.nextInt(8);
+                 int m = rand.nextInt(8);
+
+                 schiffeSetzen(zweierSchiff, vertikal, n, m, temp);
+
+                 if (getPasst() == true) {
+                     anzahlZweier--;
+                 }
+             }
+        }
     }
-
 }
