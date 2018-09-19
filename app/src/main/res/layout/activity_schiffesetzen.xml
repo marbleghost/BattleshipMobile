@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Schiffesetzen">
 
+    <ImageView
+        android:id="@+id/hintergrund"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/hg_spielfeld"/>
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -145,9 +151,9 @@
 
             <Button
                 android:id="@+id/c3"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:background="@android:color/holo_blue_light" />
+                android:layout_weight="1"
+                android:background="#33b5e5" />
 
             <Button
                 android:id="@+id/c4"

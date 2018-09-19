@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".Spielbildschirm">
 
+    <ImageView
+        android:id="@+id/hintergrund"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/hg_spielfeld"/>
+
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
