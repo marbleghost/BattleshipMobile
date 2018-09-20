@@ -443,14 +443,17 @@ public class Spiellogik {
                 else if (temp[i][j] == 2) {
                     tempButton[i][j].setBackgroundColor(0xFF000000);
                     tempButton[i][j].setText("");
+                    tempButton[i][j].setClickable(false);
                 }
                 else if (temp[i][j] == 6) {
                     tempButton[i][j].setBackgroundColor(0xFF00FF00);
                     tempButton[i][j].setText("");
+                    tempButton[i][j].setClickable(false);
                 }
                 else if (temp[i][j] == 3) {
                     tempButton[i][j].setBackgroundColor(0xFF33B5E5);
                     tempButton[i][j].setText("X");
+                    tempButton[i][j].setClickable(false);
                 }
             }
         }

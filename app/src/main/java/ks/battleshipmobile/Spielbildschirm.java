@@ -110,6 +110,7 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                         for (int j=0; j<8; j++) {
                             if (view.equals(spielfeld[i][j])) {
                                 logik.schussAbgefeuert(i, j, spielfeldbesetzungspieler2, spielfeld);
+                                spielfeld[i][j].setClickable(false);
                                 if (logik.treffer == true) {
                                     logik.testeSchiffVersenkt(i, j, spielfeldbesetzungspieler2, spielfeld);
                                     if (logik.gewonnen(spielfeldbesetzungspieler2)) {
@@ -140,13 +141,13 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
             if (view.getId() == R.id.weiter) {
                 versuche = 1;
                 spielername_textfeld.setText(spielername);
-                logik.spielfeldStatus(spielfeldbesetzungspieler2, spielfeld);
                 spieler = 1;
                 for (int i=0; i<8; i++) {
                     for (int j=0; j<8; j++) {
                         spielfeld[i][j].setClickable(true);
                     }
                 }
+                logik.spielfeldStatus(spielfeldbesetzungspieler2, spielfeld);
                 weiter.setClickable(false);
                 weiter.setVisibility(View.INVISIBLE);
             }
