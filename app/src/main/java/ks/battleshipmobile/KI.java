@@ -98,6 +98,10 @@ public class KI {
                             }
                         }
                     }
+                    else {
+                        tempn = -1;
+                        tempm = -1;
+                    }
                 }
                 if (tempn<logik.feldgroesse-1 && tempn != -1) {
                     if (tempInt[tempn+1][tempm] != 2 && tempInt[tempn+1][tempm] != 3 && tempInt[tempn+1][tempm] != 6) {
@@ -126,6 +130,10 @@ public class KI {
                                 System.out.println("KI hat gewonnen");
                             }
                         }
+                    }
+                    else {
+                        tempn = -1;
+                        tempm = -1;
                     }
 
                 }
@@ -157,6 +165,10 @@ public class KI {
                             }
                         }
                     }
+                    else {
+                        tempn = -1;
+                        tempm = -1;
+                    }
                 }
                 if (tempm<logik.feldgroesse-1 && tempm != -1) {
                     if (tempInt[tempn][tempm+1] != 2 && tempInt[tempn][tempm+1] != 3 && tempInt[tempn][tempm+1] != 6) {
@@ -186,8 +198,53 @@ public class KI {
                             }
                         }
                     }
+                    else {
+                        tempn = -1;
+                        tempm = -1;
+                    }
                 }
             }
         }
+    }
+
+    public boolean umgebungBeschießbar(int n, int m, int [][] temp) {
+        boolean oben = false;
+        boolean unten = false;
+        boolean rechts = false;
+        boolean links = false;
+
+        if (n > 0) {
+            n--;
+            if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
+                oben = true;
+            }
+            n++;
+        }
+        if (m < logik.feldgroesse - 1) {
+            m++;
+            if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
+                rechts = true;
+            }
+            m--;
+        }
+        if (n < logik.feldgroesse - 1) {
+            n++;
+            if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
+                unten = true;
+            }
+            n--;
+        }
+        if (m > 0) {
+            m--;
+            if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
+                links = true;
+            }
+            m++;
+        }
+
+        if (oben == true || unten == true || rechts == true || links == true) {
+            return true;
+        }
+        return false;
     }
 }
