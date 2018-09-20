@@ -48,10 +48,9 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_startbildschirm);
 
-        /**
-         * Achtung! AndroidStudio markiert die "(FloatingActionButton)" Anweisung (und die der anderen) als ueberfluessig, ist diese
-         *jedoch nicht angegeben, wirft der Logcat Fehlermeldungen aus
-         */
+         //Achtung! AndroidStudio markiert die "(FloatingActionButton)" Anweisung (und die der anderen) als ueberfluessig, ist diese
+         //jedoch nicht angegeben, wirft der Logcat Fehlermeldungen aus
+
         start = (FloatingActionButton) findViewById(R.id.button_spielauswahl);
         anleitung = (FloatingActionButton) findViewById(R.id.button_anleitung);
 

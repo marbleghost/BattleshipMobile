@@ -1,6 +1,5 @@
 package ks.battleshipmobile;
 
-import android.graphics.Color;
 import android.widget.Button;
 
 import java.util.Random;
@@ -170,12 +169,7 @@ public class Spiellogik {
      * getestet werden kann, ob das Feld belegbar ist.
      * Eine kuerzere Variante mit mehreren Schleifen war leider nicht moeglich, da die
      * Werte nicht korrekt gesetzt wurden.
-     *
-     * @param groesse
-     * @param vertikal
-     * @param n
-     * @param m
-     * @return
+
      * @author Kirsten und Serdar
      */
     public boolean schiffPasst(int groesse, boolean vertikal, int n, int m, int[][] temp) {
@@ -315,8 +309,6 @@ public class Spiellogik {
      * diese Felder nicht mehr besetzt werden koennen (nur Felder mit dem Wert 0
      * koennen besetzt werden).
      *
-     * @param n
-     * @param m
      * @author Kirsten und Serdar
      */
     public void markiereSchiffUmgebung(int n, int m, int[][] temp) {
