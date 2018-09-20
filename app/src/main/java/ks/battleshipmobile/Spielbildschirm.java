@@ -97,6 +97,11 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                 }
                 else if (ki == 2) {
                     kilogik.kiMittel(spielfeldbesetzungspieler1, spielfeld, 1);
+                    if (logik.gewonnen(spielfeldbesetzungspieler1)) {
+                        Intent intent = new Intent(Spielbildschirm.this, Verliererbildschirm.class);
+                        intent.putExtra("SPIELERNAME_UEBERGABE", spielername);
+                        startActivity(intent);
+                    }
                 }
                 else if (ki == 3) {
                     //kilogik.kiSchwierig(spielfeldbesetzungspieler1, spielfeld, 1);
