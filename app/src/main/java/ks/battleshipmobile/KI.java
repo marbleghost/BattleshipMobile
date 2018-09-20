@@ -217,11 +217,12 @@ public class KI {
         int m = randomInt();
 
         while (versuche != 0) {
+
             if (tempn == -1 && tempm == -1) {
-
-
                 if (umgebungBeschießbar(n, m, tempInt)) {
                     logik.schussAbgefeuert(n, m, tempInt, tempButton);
+                    System.out.println(n + " " + m);
+                    System.out.println(tempInt[n][m]);
 
                     if (logik.treffer) {
                         tempn = n;
@@ -236,6 +237,7 @@ public class KI {
             else {
                 if (tempn > 0 && horizontal == false) {
                     if (umgebungBeschießbar(tempn - 1, tempm, tempInt)) {
+                        logik.schussAbgefeuert(tempn-1, tempm, tempInt, tempButton);
                         if (logik.treffer) {
                             if (logik.testeSchiffVersenkt(tempn - 1, tempm, tempInt, tempButton)) {
                                 tempn = -1;
@@ -262,8 +264,9 @@ public class KI {
                     }
                 }
             }
-            if (tempn < logik.feldgroesse - 1 && horizontal == false) {
+            if (tempn < logik.feldgroesse - 1 && horizontal == false && tempn != -1) {
                 if (umgebungBeschießbar(tempn + 1, tempm, tempInt)) {
+                    logik.schussAbgefeuert(tempn+1, tempm, tempInt, tempButton);
                     if (logik.treffer) {
                         if (logik.testeSchiffVersenkt(tempn + 1, tempm, tempInt, tempButton)) {
                             tempn = -1;
@@ -291,6 +294,7 @@ public class KI {
             }
             if (tempm > 0 && vertikal == false) {
                 if (umgebungBeschießbar(tempn, tempm-1, tempInt)) {
+                    logik.schussAbgefeuert(tempn, tempm-1, tempInt, tempButton);
                     if (logik.treffer) {
                         if (logik.testeSchiffVersenkt(tempn, tempm-1, tempInt, tempButton)) {
                             tempn = -1;
@@ -316,8 +320,9 @@ public class KI {
                     tempm = ursprungsm;
                 }
             }
-            if (tempm<logik.feldgroesse-1 && vertikal == false) {
+            if (tempm<logik.feldgroesse-1 && vertikal == false && tempm != -1) {
                 if (umgebungBeschießbar(tempn, tempm+1, tempInt)) {
+                    logik.schussAbgefeuert(tempn, tempm+1, tempInt, tempButton);
                     if (logik.treffer) {
                         if (logik.testeSchiffVersenkt(tempn, tempm+1, tempInt, tempButton)) {
                             tempn = -1;
