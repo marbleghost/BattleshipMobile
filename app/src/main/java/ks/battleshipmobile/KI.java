@@ -41,7 +41,7 @@ public class KI {
     }
 
     public void kiMittel(int [][] tempInt, Button [][] tempButton, int versuche) {
-
+        boolean versenkt = false;
 
         while (versuche != 0) {
             int n = randomInt();
@@ -70,7 +70,7 @@ public class KI {
                 }
             }
             else {
-                if (tempn>0) {
+                if (tempn>0 ) {
                     if (tempInt[tempn-1][tempm] != 2 && tempInt[tempn-1][tempm] != 3 && tempInt[tempn-1][tempm] != 6) {
                         logik.schussAbgefeuert(tempn-1, tempm, tempInt, tempButton);
                         System.out.println(tempn-1 + " " + tempm);
@@ -80,11 +80,12 @@ public class KI {
                             break;
                         }
                         else {
-                            logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton);
 
                             if (logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton)) {
+                                System.out.println("vor dem zuruecksetzen" + tempn + tempm);
                                 tempn = -1;
                                 tempm = -1;
+                                System.out.println("nach dem zuruecksetzen" + tempn + tempm);
                                 n = randomInt();
                                 m = randomInt();
                             }
@@ -98,7 +99,7 @@ public class KI {
                         }
                     }
                 }
-                if (tempn<logik.feldgroesse-1) {
+                if (tempn<logik.feldgroesse-1 && tempn != -1) {
                     if (tempInt[tempn+1][tempm] != 2 && tempInt[tempn+1][tempm] != 3 && tempInt[tempn+1][tempm] != 6) {
                         logik.schussAbgefeuert(tempn+1, tempm, tempInt, tempButton);
                         System.out.println(tempn+1 + " " + tempm);
@@ -109,10 +110,11 @@ public class KI {
                         }
                         else {
 
-                            logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton);
                             if (logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton)) {
+                                System.out.println("vor dem zuruecksetzen" + tempn + tempm);
                                 tempn = -1;
                                 tempm = -1;
+                                System.out.println("nach dem zuruecksetzen" + tempn + tempm);
                                 n = randomInt();
                                 m = randomInt();
                             }
@@ -138,10 +140,11 @@ public class KI {
                         }
                         else {
 
-                            logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton);
                             if (logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton)) {
+                                System.out.println("vor dem zuruecksetzen" + tempn + tempm);
                                 tempn = -1;
                                 tempm = -1;
+                                System.out.println("nach dem zuruecksetzen" + tempn + tempm);
                                 n = randomInt();
                                 m = randomInt();
                             }
@@ -155,7 +158,7 @@ public class KI {
                         }
                     }
                 }
-                if (tempm<logik.feldgroesse-1) {
+                if (tempm<logik.feldgroesse-1 && tempm != -1) {
                     if (tempInt[tempn][tempm+1] != 2 && tempInt[tempn][tempm+1] != 3 && tempInt[tempn][tempm+1] != 6) {
                         logik.schussAbgefeuert(tempn, tempm+1, tempInt, tempButton);
                         System.out.println(tempn + " " + (tempm+1));
@@ -166,11 +169,11 @@ public class KI {
                         }
                         else {
 
-
-                            logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton);
                             if (logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton)) {
+                                System.out.println("vor dem zuruecksetzen" + tempn + tempm);
                                 tempn = -1;
                                 tempm = -1;
+                                System.out.println("nach dem zuruecksetzen" + tempn + tempm);
                                 n = randomInt();
                                 m = randomInt();
                             }
