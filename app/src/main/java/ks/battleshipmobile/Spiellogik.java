@@ -12,6 +12,7 @@ import java.util.Random;
  * 3-Kein Treffer
  * 4-Platz um ein gesetztes Schiff drumherum, in welchem kein Schiff gesetzt werden darf
  * 6-Schiff versenkt
+ * 9-Felder ueber welchen der Nutzer seinen Finger hat, beim Schiffe setzen
  */
 
 public class Spiellogik {
@@ -151,7 +152,7 @@ public class Spiellogik {
         for (int i = 0; i < feldgroesse; i++) {
             for (int j = 0; j < feldgroesse; j++) {
                 if (tempInt[i][j] == 1) {
-                    tempButton[i][j].setBackgroundColor(1);
+                    tempButton[i][j].setBackgroundColor(0xFFFFFFFF);
                 } else if (tempInt[i][j] == 9) {
                     tempButton[i][j].setBackgroundColor(0xFFDF33E5);
                 } else if (tempInt[i][j] == 0) {
