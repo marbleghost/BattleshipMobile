@@ -12,6 +12,11 @@ public class KI {
 
     int tempn = -1;
     int tempm = -1;
+    int ursprungsn = -1;
+    int ursprungsm = -1;
+
+    boolean vertikal = false;
+    boolean horizontal = false;
 
 
     public int randomInt() {
@@ -41,7 +46,7 @@ public class KI {
     }
 
     public void kiMittel(int [][] tempInt, Button [][] tempButton, int versuche) {
-        boolean versenkt = false;
+
 
         while (versuche != 0) {
             int n = randomInt();
@@ -98,7 +103,7 @@ public class KI {
                             }
                         }
                     }
-                    else {
+                    else if (umgebungBeschießbar(tempn-1, tempm, tempInt) == false) {
                         tempn = -1;
                         tempm = -1;
                     }
@@ -131,7 +136,7 @@ public class KI {
                             }
                         }
                     }
-                    else {
+                    else if (umgebungBeschießbar(tempn+1, tempm, tempInt) == false) {
                         tempn = -1;
                         tempm = -1;
                     }
@@ -165,7 +170,7 @@ public class KI {
                             }
                         }
                     }
-                    else {
+                    else if (umgebungBeschießbar(tempn, tempm-1, tempInt) == false) {
                         tempn = -1;
                         tempm = -1;
                     }
@@ -198,7 +203,7 @@ public class KI {
                             }
                         }
                     }
-                    else {
+                    else if (umgebungBeschießbar(tempn, tempm+1, tempInt) == false) {
                         tempn = -1;
                         tempm = -1;
                     }
@@ -206,6 +211,141 @@ public class KI {
             }
         }
     }
+
+    public void kiSchwer(int [][] tempInt, Button [][] tempButton, int versuche) {
+        int n = randomInt();
+        int m = randomInt();
+
+        while (versuche != 0) {
+            if (tempn == -1 && tempm == -1) {
+
+
+                if (umgebungBeschießbar(n, m, tempInt)) {
+                    logik.schussAbgefeuert(n, m, tempInt, tempButton);
+
+                    if (logik.treffer) {
+                        tempn = n;
+                        tempm = m;
+                    }
+                    else {
+                        versuche--;
+                    }
+                }
+
+            }
+            else {
+                if (tempn > 0 && horizontal == false) {
+                    if (umgebungBeschießbar(tempn - 1, tempm, tempInt)) {
+                        if (logik.treffer) {
+                            if (logik.testeSchiffVersenkt(tempn - 1, tempm, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                vertikal = false;
+
+                                if (logik.gewonnen(tempInt)) {
+                                    System.out.println("KI hat gewonnen");
+                                }
+                            }
+                            else {
+                                ursprungsn = tempn;
+                                tempn = tempn - 1;
+                                vertikal = true;
+                            }
+
+                        }
+                        else {
+                            versuche--;
+                        }
+                    }
+                    else if (vertikal) {
+                        tempn = ursprungsn;
+                    }
+                }
+            }
+            if (tempn < logik.feldgroesse - 1 && horizontal == false) {
+                if (umgebungBeschießbar(tempn + 1, tempm, tempInt)) {
+                    if (logik.treffer) {
+                        if (logik.testeSchiffVersenkt(tempn + 1, tempm, tempInt, tempButton)) {
+                            tempn = -1;
+                            tempm = -1;
+                            vertikal = false;
+
+                            if (logik.gewonnen(tempInt)) {
+                                System.out.println("KI hat gewonnen");
+                            }
+                        }
+                        else {
+                            ursprungsn = tempn;
+                            tempn = tempn + 1;
+                            vertikal = true;
+                        }
+
+                    }
+                    else {
+                        versuche--;
+                    }
+                }
+                else if (vertikal) {
+                    tempn = ursprungsn;
+                }
+            }
+            if (tempm > 0 && vertikal == false) {
+                if (umgebungBeschießbar(tempn, tempm-1, tempInt)) {
+                    if (logik.treffer) {
+                        if (logik.testeSchiffVersenkt(tempn, tempm-1, tempInt, tempButton)) {
+                            tempn = -1;
+                            tempm = -1;
+                            horizontal = false;
+
+                            if (logik.gewonnen(tempInt)) {
+                                System.out.println("KI hat gewonnen");
+                            }
+                        }
+                        else {
+                            ursprungsm = tempm;
+                            tempm = tempm - 1;
+                            horizontal = true;
+                        }
+
+                    }
+                    else {
+                        versuche--;
+                    }
+                }
+                else if (horizontal) {
+                    tempm = ursprungsm;
+                }
+            }
+            if (tempm<logik.feldgroesse-1 && vertikal == false) {
+                if (umgebungBeschießbar(tempn, tempm+1, tempInt)) {
+                    if (logik.treffer) {
+                        if (logik.testeSchiffVersenkt(tempn, tempm+1, tempInt, tempButton)) {
+                            tempn = -1;
+                            tempm = -1;
+                            horizontal = false;
+
+                            if (logik.gewonnen(tempInt)) {
+                                System.out.println("KI hat gewonnen");
+                            }
+                        }
+                        else {
+                            ursprungsm = tempm;
+                            tempm = tempm+1;
+                            horizontal = true;
+                        }
+
+                    }
+                    else {
+                        versuche--;
+                    }
+                }
+                else if (horizontal) {
+                    tempm = ursprungsm;
+                }
+            }
+        }
+    }
+
 
     public boolean umgebungBeschießbar(int n, int m, int [][] temp) {
         boolean oben = false;
@@ -220,14 +360,14 @@ public class KI {
             }
             n++;
         }
-        if (m < logik.feldgroesse - 1) {
+        if (m < logik.feldgroesse - 1 && m != -1) {
             m++;
             if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
                 rechts = true;
             }
             m--;
         }
-        if (n < logik.feldgroesse - 1) {
+        if (n < logik.feldgroesse - 1 && n != -1) {
             n++;
             if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
                 unten = true;
@@ -245,6 +385,9 @@ public class KI {
         if (oben == true || unten == true || rechts == true || links == true) {
             return true;
         }
-        return false;
+        else {
+            return false;
+        }
+
     }
 }
