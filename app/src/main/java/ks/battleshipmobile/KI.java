@@ -206,7 +206,7 @@ public class KI {
         while (versuche != 0) {
 
             if (tempn == -1 && tempm == -1) {
-                if (umgebungBeschießbar(n, m, tempInt)) {
+                if (bereichBeschießbar(n, m, tempInt)) {
                     logik.schussAbgefeuert(n, m, tempInt, tempButton);
                     System.out.println(n + " " + m);
                     System.out.println(tempInt[n][m]);
@@ -223,8 +223,10 @@ public class KI {
             }
             else {
                 if (tempn > 0 && horizontal == false) {
-                    if (umgebungBeschießbar(tempn - 1, tempm, tempInt)) {
+                    if (bereichBeschießbar(tempn-1, tempm, tempInt)) {
                         logik.schussAbgefeuert(tempn-1, tempm, tempInt, tempButton);
+                        System.out.println(tempn-1 + " " + tempm);
+                        System.out.println(tempInt[tempn-1][tempm]);
                         if (logik.treffer) {
                             if (logik.testeSchiffVersenkt(tempn - 1, tempm, tempInt, tempButton)) {
                                 tempn = -1;
@@ -252,8 +254,10 @@ public class KI {
                 }
             }
             if (tempn < logik.feldgroesse - 1 && horizontal == false && tempn != -1) {
-                if (umgebungBeschießbar(tempn + 1, tempm, tempInt)) {
+                if (bereichBeschießbar(tempn + 1, tempm, tempInt)) {
                     logik.schussAbgefeuert(tempn+1, tempm, tempInt, tempButton);
+                    System.out.println(tempn+1 + " " + tempm);
+                    System.out.println(tempInt[tempn+1][tempm]);
                     if (logik.treffer) {
                         if (logik.testeSchiffVersenkt(tempn + 1, tempm, tempInt, tempButton)) {
                             tempn = -1;
@@ -280,8 +284,10 @@ public class KI {
                 }
             }
             if (tempm > 0 && vertikal == false) {
-                if (umgebungBeschießbar(tempn, tempm-1, tempInt)) {
+                if (bereichBeschießbar(tempn, tempm-1, tempInt)) {
                     logik.schussAbgefeuert(tempn, tempm-1, tempInt, tempButton);
+                    System.out.println(tempn + " " + (tempm-1));
+                    System.out.println(tempInt[tempn][tempm-1]);
                     if (logik.treffer) {
                         if (logik.testeSchiffVersenkt(tempn, tempm-1, tempInt, tempButton)) {
                             tempn = -1;
@@ -308,8 +314,10 @@ public class KI {
                 }
             }
             if (tempm<logik.feldgroesse-1 && vertikal == false && tempm != -1) {
-                if (umgebungBeschießbar(tempn, tempm+1, tempInt)) {
+                if (bereichBeschießbar(tempn, tempm+1, tempInt)) {
                     logik.schussAbgefeuert(tempn, tempm+1, tempInt, tempButton);
+                    System.out.println(tempn + " " + tempm+1);
+                    System.out.println(tempInt[tempn][tempm+1]);
                     if (logik.treffer) {
                         if (logik.testeSchiffVersenkt(tempn, tempm+1, tempInt, tempButton)) {
                             tempn = -1;
@@ -381,5 +389,14 @@ public class KI {
             return false;
         }
 
+    }
+
+    public boolean bereichBeschießbar(int n, int m, int [][] temp) {
+        if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
