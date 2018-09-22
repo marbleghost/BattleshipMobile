@@ -225,6 +225,7 @@ public class KI {
                         System.out.println(tempInt[tempn-1][tempm]);
                         if (logik.treffer) {
                             if (logik.testeSchiffVersenkt(tempn - 1, tempm, tempInt, tempButton)) {
+                                System.out.println("schiff versenkt");
                                 tempn = -1;
                                 tempm = -1;
                                 ursprungsn = -1;
@@ -264,6 +265,7 @@ public class KI {
                         System.out.println(tempInt[tempn+1][tempm]);
                         if (logik.treffer) {
                             if (logik.testeSchiffVersenkt(tempn + 1, tempm, tempInt, tempButton)) {
+                                System.out.println("schiff versenkt");
                                 tempn = -1;
                                 tempm = -1;
                                 ursprungsn = -1;
@@ -303,6 +305,7 @@ public class KI {
                         System.out.println(tempInt[tempn][tempm-1]);
                         if (logik.treffer) {
                             if (logik.testeSchiffVersenkt(tempn, tempm-1, tempInt, tempButton)) {
+                                System.out.println("schiff versenkt");
                                 tempn = -1;
                                 tempm = -1;
                                 ursprungsn = -1;
@@ -342,6 +345,7 @@ public class KI {
                         System.out.println(tempInt[tempn][tempm+1]);
                         if (logik.treffer) {
                             if (logik.testeSchiffVersenkt(tempn, tempm+1, tempInt, tempButton)) {
+                                System.out.println("schiff versenkt");
                                 tempn = -1;
                                 tempm = -1;
                                 ursprungsn = -1;
