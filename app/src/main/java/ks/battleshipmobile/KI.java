@@ -212,6 +212,7 @@ public class KI {
                     }
                     else {
                         versuche--;
+                        break;
                     }
                 }
 
@@ -244,14 +245,16 @@ public class KI {
                         }
                         else {
                             versuche--;
+                            break;
                         }
                     }
-                    else if (vertikal && tempInt[tempn-1][tempm] != 2) {
+                    else if (vertikal && tempInt[tempn-1][tempm] != 2 && bereichBeschießbar(tempn-1, tempm, tempInt) == false) {
                         tempn = ursprungsn;
                         tempm = ursprungsm;
                     }
                     else if (vertikal && tempInt[tempn-1][tempm] == 2) {
                         tempn = tempn-1;
+                        kiSchwer(tempInt, tempButton, versuche);
                     }
                 }
                 if (tempn < logik.feldgroesse - 1 && horizontal == false && tempn != -1) {
@@ -281,14 +284,16 @@ public class KI {
                         }
                         else {
                             versuche--;
+                            break;
                         }
                     }
-                    else if (vertikal && tempInt[tempn+1][tempm] != 2) {
+                    else if (vertikal && tempInt[tempn+1][tempm] != 2 && bereichBeschießbar(tempn+1, tempm, tempInt) == false) {
                         tempn = ursprungsn;
                         tempm = ursprungsm;
                     }
                     else if (vertikal && tempInt[tempn+1][tempm] == 2) {
                         tempn = tempn+1;
+                        kiSchwer(tempInt, tempButton, versuche);
                     }
                 }
                 if (tempm > 0 && vertikal == false) {
@@ -318,14 +323,16 @@ public class KI {
                         }
                         else {
                             versuche--;
+                            break;
                         }
                     }
-                    else if (horizontal && tempInt[tempn][tempm-1] != 2) {
+                    else if (horizontal && tempInt[tempn][tempm-1] != 2 && bereichBeschießbar(tempn, tempm-1, tempInt) == false) {
                         tempm = ursprungsm;
                         tempn = ursprungsn;
                     }
                     else if (horizontal && tempInt[tempn][tempm-1] == 2) {
                         tempm = tempm-1;
+                        kiSchwer(tempInt, tempButton, versuche);
                     }
                 }
                 if (tempm<logik.feldgroesse-1 && vertikal == false && tempm != -1) {
@@ -355,14 +362,16 @@ public class KI {
                         }
                         else {
                             versuche--;
+                            break;
                         }
                     }
-                    else if (horizontal && tempInt[tempn][tempm+1] != 2) {
+                    else if (horizontal && tempInt[tempn][tempm+1] != 2 && bereichBeschießbar(tempn, tempm+1, tempInt) == false) {
                         tempm = ursprungsm;
                         tempn = ursprungsn;
                     }
                     else if (horizontal && tempInt[tempn][tempm+1] == 2) {
                         tempm = tempm+1;
+                        kiSchwer(tempInt, tempButton, versuche);
                     }
                 }
             }
