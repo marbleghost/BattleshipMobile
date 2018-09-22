@@ -231,6 +231,8 @@ public class KI {
                             if (logik.testeSchiffVersenkt(tempn - 1, tempm, tempInt, tempButton)) {
                                 tempn = -1;
                                 tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
                                 vertikal = false;
 
                                 if (logik.gewonnen(tempInt)) {
@@ -239,6 +241,7 @@ public class KI {
                             }
                             else {
                                 ursprungsn = tempn;
+                                ursprungsm = tempm;
                                 tempn = tempn - 1;
                                 vertikal = true;
                             }
@@ -248,99 +251,124 @@ public class KI {
                             versuche--;
                         }
                     }
-                    else if (vertikal) {
+                    else if (vertikal && tempInt[tempn-1][tempm] != 2) {
+                        tempn = ursprungsn;
+                        tempm = ursprungsm;
+                    }
+                    else if (vertikal && tempInt[tempn-1][tempm] == 2) {
+                        tempn = tempn-1;
+                    }
+                }
+                if (tempn < logik.feldgroesse - 1 && horizontal == false && tempn != -1) {
+                    if (bereichBeschießbar(tempn + 1, tempm, tempInt)) {
+                        logik.schussAbgefeuert(tempn+1, tempm, tempInt, tempButton);
+                        System.out.println(tempn+1 + " " + tempm);
+                        System.out.println(tempInt[tempn+1][tempm]);
+                        if (logik.treffer) {
+                            if (logik.testeSchiffVersenkt(tempn + 1, tempm, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
+                                vertikal = false;
+
+                                if (logik.gewonnen(tempInt)) {
+                                    System.out.println("KI hat gewonnen");
+                                }
+                            }
+                            else {
+                                ursprungsn = tempn;
+                                ursprungsm = tempm;
+                                tempn = tempn + 1;
+                                vertikal = true;
+                            }
+
+                        }
+                        else {
+                            versuche--;
+                        }
+                    }
+                    else if (vertikal && tempInt[tempn+1][tempm] != 2) {
+                        tempn = ursprungsn;
+                        tempm = ursprungsm;
+                    }
+                    else if (vertikal && tempInt[tempn+1][tempm] == 2) {
+                        tempn = tempn+1;
+                    }
+                }
+                if (tempm > 0 && vertikal == false) {
+                    if (bereichBeschießbar(tempn, tempm-1, tempInt)) {
+                        logik.schussAbgefeuert(tempn, tempm-1, tempInt, tempButton);
+                        System.out.println(tempn + " " + (tempm-1));
+                        System.out.println(tempInt[tempn][tempm-1]);
+                        if (logik.treffer) {
+                            if (logik.testeSchiffVersenkt(tempn, tempm-1, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
+                                horizontal = false;
+
+                                if (logik.gewonnen(tempInt)) {
+                                    System.out.println("KI hat gewonnen");
+                                }
+                            }
+                            else {
+                                ursprungsm = tempm;
+                                ursprungsn = tempn;
+                                tempm = tempm - 1;
+                                horizontal = true;
+                            }
+
+                        }
+                        else {
+                            versuche--;
+                        }
+                    }
+                    else if (horizontal && tempInt[tempn][tempm-1] != 2) {
+                        tempm = ursprungsm;
                         tempn = ursprungsn;
                     }
+                    else if (horizontal && tempInt[tempn][tempm-1] == 2) {
+                        tempm = tempm-1;
+                    }
                 }
-            }
-            if (tempn < logik.feldgroesse - 1 && horizontal == false && tempn != -1) {
-                if (bereichBeschießbar(tempn + 1, tempm, tempInt)) {
-                    logik.schussAbgefeuert(tempn+1, tempm, tempInt, tempButton);
-                    System.out.println(tempn+1 + " " + tempm);
-                    System.out.println(tempInt[tempn+1][tempm]);
-                    if (logik.treffer) {
-                        if (logik.testeSchiffVersenkt(tempn + 1, tempm, tempInt, tempButton)) {
-                            tempn = -1;
-                            tempm = -1;
-                            vertikal = false;
+                if (tempm<logik.feldgroesse-1 && vertikal == false && tempm != -1) {
+                    if (bereichBeschießbar(tempn, tempm+1, tempInt)) {
+                        logik.schussAbgefeuert(tempn, tempm+1, tempInt, tempButton);
+                        System.out.println(tempn + " " + (tempm+1));
+                        System.out.println(tempInt[tempn][tempm+1]);
+                        if (logik.treffer) {
+                            if (logik.testeSchiffVersenkt(tempn, tempm+1, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
+                                horizontal = false;
 
-                            if (logik.gewonnen(tempInt)) {
-                                System.out.println("KI hat gewonnen");
+                                if (logik.gewonnen(tempInt)) {
+                                    System.out.println("KI hat gewonnen");
+                                }
                             }
+                            else {
+                                ursprungsm = tempm;
+                                ursprungsn = tempn;
+                                tempm = tempm+1;
+                                horizontal = true;
+                            }
+
                         }
                         else {
-                            ursprungsn = tempn;
-                            tempn = tempn + 1;
-                            vertikal = true;
+                            versuche--;
                         }
-
                     }
-                    else {
-                        versuche--;
+                    else if (horizontal && tempInt[tempn][tempm+1] != 2) {
+                        tempm = ursprungsm;
+                        tempn = ursprungsn;
                     }
-                }
-                else if (vertikal) {
-                    tempn = ursprungsn;
-                }
-            }
-            if (tempm > 0 && vertikal == false) {
-                if (bereichBeschießbar(tempn, tempm-1, tempInt)) {
-                    logik.schussAbgefeuert(tempn, tempm-1, tempInt, tempButton);
-                    System.out.println(tempn + " " + (tempm-1));
-                    System.out.println(tempInt[tempn][tempm-1]);
-                    if (logik.treffer) {
-                        if (logik.testeSchiffVersenkt(tempn, tempm-1, tempInt, tempButton)) {
-                            tempn = -1;
-                            tempm = -1;
-                            horizontal = false;
-
-                            if (logik.gewonnen(tempInt)) {
-                                System.out.println("KI hat gewonnen");
-                            }
-                        }
-                        else {
-                            ursprungsm = tempm;
-                            tempm = tempm - 1;
-                            horizontal = true;
-                        }
-
+                    else if (horizontal && tempInt[tempn][tempm+1] == 2) {
+                        tempm = tempm+1;
                     }
-                    else {
-                        versuche--;
-                    }
-                }
-                else if (horizontal) {
-                    tempm = ursprungsm;
-                }
-            }
-            if (tempm<logik.feldgroesse-1 && vertikal == false && tempm != -1) {
-                if (bereichBeschießbar(tempn, tempm+1, tempInt)) {
-                    logik.schussAbgefeuert(tempn, tempm+1, tempInt, tempButton);
-                    System.out.println(tempn + " " + tempm+1);
-                    System.out.println(tempInt[tempn][tempm+1]);
-                    if (logik.treffer) {
-                        if (logik.testeSchiffVersenkt(tempn, tempm+1, tempInt, tempButton)) {
-                            tempn = -1;
-                            tempm = -1;
-                            horizontal = false;
-
-                            if (logik.gewonnen(tempInt)) {
-                                System.out.println("KI hat gewonnen");
-                            }
-                        }
-                        else {
-                            ursprungsm = tempm;
-                            tempm = tempm+1;
-                            horizontal = true;
-                        }
-
-                    }
-                    else {
-                        versuche--;
-                    }
-                }
-                else if (horizontal) {
-                    tempm = ursprungsm;
                 }
             }
         }
