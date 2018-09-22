@@ -29,9 +29,9 @@ public class Spiellogik {
     final int zweierSchiff = 2;
 
     //Anzahl der Schiffe
-    int anzahlVierer = 1;
-    int anzahlDreier = 2;
-    int anzahlZweier = 3;
+    int anzahlVierer = 1; //1
+    int anzahlDreier = 2; //2
+    int anzahlZweier = 3; //3
 
     Random rand = new Random();
 

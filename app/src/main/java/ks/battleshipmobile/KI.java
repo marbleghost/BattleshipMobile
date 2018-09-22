@@ -17,6 +17,10 @@ public class KI {
 
     boolean vertikal = false;
     boolean horizontal = false;
+    boolean ignoreh = false;
+    boolean ignorev = false;
+
+    int zaehler = 0;
 
 
     public int randomInt() {
@@ -49,10 +53,9 @@ public class KI {
 
 
         while (versuche != 0) {
-            int n = randomInt();
-            int m = randomInt();
-
             if (tempn == -1 && tempm == -1) {
+                int n = randomInt();
+                int m = randomInt();
                 if (tempInt[n][m] != 2 && tempInt[n][m] != 3 && tempInt[n][m] != 6) {
                     logik.schussAbgefeuert(n, m, tempInt, tempButton);
                     System.out.println(n + " " + m);
@@ -91,8 +94,6 @@ public class KI {
                                 tempn = -1;
                                 tempm = -1;
                                 System.out.println("nach dem zuruecksetzen" + tempn + tempm);
-                                n = randomInt();
-                                m = randomInt();
                             }
                             else {
                                 tempn = tempn-1;
@@ -120,8 +121,6 @@ public class KI {
                                 tempn = -1;
                                 tempm = -1;
                                 System.out.println("nach dem zuruecksetzen" + tempn + tempm);
-                                n = randomInt();
-                                m = randomInt();
                             }
                             else {
                                 tempn = tempn+1;
@@ -149,8 +148,6 @@ public class KI {
                                 tempn = -1;
                                 tempm = -1;
                                 System.out.println("nach dem zuruecksetzen" + tempn + tempm);
-                                n = randomInt();
-                                m = randomInt();
                             }
                             else {
                                 tempm = tempm-1;
@@ -178,8 +175,6 @@ public class KI {
                                 tempn = -1;
                                 tempm = -1;
                                 System.out.println("nach dem zuruecksetzen" + tempn + tempm);
-                                n = randomInt();
-                                m = randomInt();
                             }
                             else {
                                 tempm = tempm+1;
@@ -368,6 +363,251 @@ public class KI {
                     }
                     else if (horizontal && tempInt[tempn][tempm+1] == 2) {
                         tempm = tempm+1;
+                    }
+                }
+            }
+        }
+    }
+
+    public void kiSchwerVersionKiki(int [][] tempInt, Button [][] tempButton, int versuche) {
+
+        while (versuche != 0) {
+
+            if (tempn == -1 && tempm == -1) {
+                int n = randomInt();
+                int m = randomInt();
+                if (tempInt[n][m] != 2 && tempInt[n][m] != 3 && tempInt[n][m] != 6) {
+                    logik.schussAbgefeuert(n, m, tempInt, tempButton);
+
+                    if (logik.treffer == false) {
+                        versuche--;
+                        break;
+                    }
+                    else {
+                        logik.testeSchiffVersenkt(n, m, tempInt, tempButton);
+
+                        if (logik.testeSchiffVersenkt(n, m, tempInt, tempButton) == false) {
+                            tempn = n;
+                            tempm = m;
+                            ursprungsn = n;
+                            ursprungsm = m;
+                        }
+                    }
+                }
+            }
+            else if (versuche == 1 && ignorev == false && ignoreh == false) {
+                if (tempn>0) {
+                    if (bereichBeschießbar(tempn-1, tempm, tempInt)) {
+                        logik.schussAbgefeuert(tempn-1, tempm, tempInt, tempButton);
+                        if (logik.treffer == false) {
+                            versuche--;
+                            break;
+                        }
+                        else {
+                            tempn = tempn-1;
+                            vertikal = true;
+                            ignoreh = true;
+                            break;
+                        }
+                    }
+                    else {
+                        tempn = ursprungsn;
+                        tempm = ursprungsm;
+                    }
+                }
+                if (tempn<logik.feldgroesse-1 && tempn != -1) {
+                    if (bereichBeschießbar(tempn+1, tempm, tempInt)) {
+                        logik.schussAbgefeuert(tempn+1, tempm, tempInt, tempButton);
+
+                        if (logik.treffer == false) {
+                            versuche--;
+                            break;
+                        }
+                        else {
+                            tempn = tempn+1;
+                            vertikal = true;
+                            ignoreh = true;
+                            break;
+                        }
+                    }
+                    else {
+                        tempn = ursprungsn;
+                        tempm = ursprungsm;
+                    }
+                }
+                if (tempm>0) {
+                    if (bereichBeschießbar(tempn, tempm-1, tempInt)) {
+                        logik.schussAbgefeuert(tempn, tempm-1, tempInt, tempButton);
+                        if (logik.treffer == false) {
+                            versuche--;
+                            break;
+                        }
+                        else {
+                            tempm = tempm-1;
+                            horizontal = true;
+                            ignorev = true;
+                            break;
+                        }
+                    }
+                    else {
+                        tempn = ursprungsn;
+                        tempm = ursprungsm;
+                    }
+                }
+                if (tempm<logik.feldgroesse-1 && tempm != -1) {
+                    if (bereichBeschießbar(tempn, tempm+1, tempInt)) {
+                        logik.schussAbgefeuert(tempn, tempm+1, tempInt, tempButton);
+                        if (logik.treffer == false) {
+                            versuche--;
+                            break;
+                        }
+                        else {
+                            tempm = tempm+1;
+                            horizontal = true;
+                            ignorev = true;
+                            break;
+                        }
+                    }
+                    else {
+                        tempn = ursprungsn;
+                        tempm = ursprungsm;
+                    }
+                }
+            }
+            else if (versuche == 1 && ignorev == true || ignoreh == true) {
+                if (tempn>0 && vertikal == true && ignoreh == true) {
+                    if (bereichBeschießbar(tempn-1, tempm, tempInt)) {
+                        logik.schussAbgefeuert(tempn-1, tempm, tempInt, tempButton);
+                        if (logik.treffer == false) {
+                            versuche--;
+                            break;
+                        }
+                        else {
+                            if (logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
+                            }
+                            else {
+                                tempn = tempn-1;
+                            }
+                        }
+                    }
+                    else {
+                        tempn = ursprungsn;
+                        tempm = ursprungsm;
+                        zaehler++;
+                        if (zaehler < 3) {
+                            tempn = -1;
+                            tempm = -1;
+                            ursprungsn = -1;
+                            ursprungsm = -1;
+                            zaehler = 0;
+                        }
+                    }
+                }
+                if (tempn<logik.feldgroesse-1 && tempn != -1 && vertikal == true && ignoreh == true) {
+                    if (bereichBeschießbar(tempn+1, tempm, tempInt)) {
+                        logik.schussAbgefeuert(tempn+1, tempm, tempInt, tempButton);
+
+                        if (logik.treffer == false) {
+                            versuche--;
+                            break;
+                        }
+                        else {
+
+                            if (logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
+                            }
+                            else {
+                                tempn = tempn+1;
+                            }
+                        }
+                    }
+                    else {
+                        tempn = ursprungsn;
+                        tempm = ursprungsm;
+                        zaehler++;
+                        if (zaehler < 3) {
+                            tempn = -1;
+                            tempm = -1;
+                            ursprungsn = -1;
+                            ursprungsm = -1;
+                            zaehler = 0;
+
+                        }
+                    }
+                }
+                if (tempm>0 && horizontal == true && ignorev == true) {
+                    if (bereichBeschießbar(tempn, tempm-1, tempInt)) {
+                        logik.schussAbgefeuert(tempn, tempm-1, tempInt, tempButton);
+                        if (logik.treffer == false) {
+                            versuche--;
+                            break;
+                        }
+                        else {
+
+                            if (logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
+                            }
+                            else {
+                                tempm = tempm-1;
+                            }
+                        }
+                    }
+                    else {
+                        tempn = ursprungsn;
+                        tempm = ursprungsm;
+                        zaehler++;
+                        if (zaehler < 3) {
+                            tempn = -1;
+                            tempm = -1;
+                            ursprungsn = -1;
+                            ursprungsm = -1;
+                            zaehler = 0;
+
+                        }
+                    }
+                }
+                if (tempm<logik.feldgroesse-1 && tempm != -1 && horizontal == true && ignorev == true) {
+                    if (bereichBeschießbar(tempn, tempm+1, tempInt)) {
+                        logik.schussAbgefeuert(tempn, tempm+1, tempInt, tempButton);
+                        if (logik.treffer == false) {
+                            versuche--;
+                            break;
+                        }
+                        else {
+
+                            if (logik.testeSchiffVersenkt(tempn, tempm, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
+                            }
+                            else {
+                                tempm = tempm+1;
+                            }
+                        }
+                    }
+                    else {
+                        tempn = ursprungsn;
+                        tempm = ursprungsm;
+                        zaehler++;
+                        if (zaehler < 3) {
+                            tempn = -1;
+                            tempm = -1;
+                            ursprungsn = -1;
+                            ursprungsm = -1;
+                            zaehler = 0;
+
+                        }
                     }
                 }
             }
