@@ -30,7 +30,9 @@
         <activity
             android:name=".Gewonnenbildschirm"
             android:screenOrientation="portrait" />
-        <activity android:name=".Verliererbildschirm" />
+        <activity
+            android:name=".Verliererbildschirm"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
