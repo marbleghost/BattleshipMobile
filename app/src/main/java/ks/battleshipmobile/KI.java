@@ -1,6 +1,5 @@
 package ks.battleshipmobile;
 
-import android.os.health.SystemHealthManager;
 import android.widget.Button;
 
 import java.util.Random;

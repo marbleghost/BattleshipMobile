@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary" tools:keep="@color/colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark" tools:keep="@color/colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent" tools:keep="@color/colorAccent">#FF4081</color>
     <color name="colorAccentPink">#8e3f5a</color>
-    <color name="colorPrimaryBlue">#2e3565</color>
+    <color name="colorPrimaryBlue" tools:keep="@color/colorPrimaryBlue">#2e3565</color>
     <color name="primary_material_light_bm">#0c3e63</color>
 </resources>
