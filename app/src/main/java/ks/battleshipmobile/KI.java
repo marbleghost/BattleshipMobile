@@ -1,5 +1,6 @@
 package ks.battleshipmobile;
 
+import android.util.Log;
 import android.widget.Button;
 
 import java.util.Random;
@@ -167,11 +168,17 @@ public class KI {
                     if (logik.treffer) {
                         tempn = n;
                         tempm = m;
+                        ursprungsn = n;
+                        ursprungsm = m;
                     }
                     else {
                         versuche--;
                         break;
                     }
+                }
+                else {
+                    n = randomInt();
+                    m = randomInt();
                 }
 
             }
@@ -193,10 +200,9 @@ public class KI {
                                 if (logik.gewonnen(tempInt)) {
                                     System.out.println("KI hat gewonnen");
                                 }
+
                             }
                             else {
-                                ursprungsn = tempn;
-                                ursprungsm = tempm;
                                 tempn = tempn - 1;
                                 vertikal = true;
                             }
@@ -207,13 +213,9 @@ public class KI {
                             break;
                         }
                     }
-                    else if (vertikal && tempInt[tempn-1][tempm] != 2 && bereichBeschiessbar(tempn-1, tempm, tempInt) == false) {
+                    else if ((vertikal && tempInt[tempn-1][tempm] == 3) || tempn == 0) {
                         tempn = ursprungsn;
                         tempm = ursprungsm;
-                    }
-                    else if (vertikal && tempInt[tempn-1][tempm] == 2) {
-                        tempn = tempn-1;
-                        kiMittel(tempInt, tempButton, versuche);
                     }
                 }
                 if (tempn < logik.feldgroesse - 1 && horizontal == false && tempn != -1) {
@@ -233,10 +235,9 @@ public class KI {
                                 if (logik.gewonnen(tempInt)) {
                                     System.out.println("KI hat gewonnen");
                                 }
+
                             }
                             else {
-                                ursprungsn = tempn;
-                                ursprungsm = tempm;
                                 tempn = tempn + 1;
                                 vertikal = true;
                             }
@@ -247,13 +248,9 @@ public class KI {
                             break;
                         }
                     }
-                    else if (vertikal && tempInt[tempn+1][tempm] != 2 && bereichBeschiessbar(tempn+1, tempm, tempInt) == false) {
+                    else if ((vertikal && tempInt[tempn+1][tempm] == 3) || tempn == 7) {
                         tempn = ursprungsn;
                         tempm = ursprungsm;
-                    }
-                    else if (vertikal && tempInt[tempn+1][tempm] == 2) {
-                        tempn = tempn+1;
-                        kiMittel(tempInt, tempButton, versuche);
                     }
                 }
                 if (tempm > 0 && vertikal == false) {
@@ -273,10 +270,9 @@ public class KI {
                                 if (logik.gewonnen(tempInt)) {
                                     System.out.println("KI hat gewonnen");
                                 }
+
                             }
                             else {
-                                ursprungsm = tempm;
-                                ursprungsn = tempn;
                                 tempm = tempm - 1;
                                 horizontal = true;
                             }
@@ -287,13 +283,9 @@ public class KI {
                             break;
                         }
                     }
-                    else if (horizontal && tempInt[tempn][tempm-1] != 2 && bereichBeschiessbar(tempn, tempm-1, tempInt) == false) {
+                    else if ((horizontal && tempInt[tempn][tempm-1] == 3) || tempm == 0) {
                         tempm = ursprungsm;
                         tempn = ursprungsn;
-                    }
-                    else if (horizontal && tempInt[tempn][tempm-1] == 2) {
-                        tempm = tempm-1;
-                        kiMittel(tempInt, tempButton, versuche);
                     }
                 }
                 if (tempm<logik.feldgroesse-1 && vertikal == false && tempm != -1) {
@@ -313,10 +305,9 @@ public class KI {
                                 if (logik.gewonnen(tempInt)) {
                                     System.out.println("KI hat gewonnen");
                                 }
+
                             }
                             else {
-                                ursprungsm = tempm;
-                                ursprungsn = tempn;
                                 tempm = tempm+1;
                                 horizontal = true;
                             }
@@ -327,13 +318,9 @@ public class KI {
                             break;
                         }
                     }
-                    else if (horizontal && tempInt[tempn][tempm+1] != 2 && bereichBeschiessbar(tempn, tempm+1, tempInt) == false) {
+                    else if ((horizontal && tempInt[tempn][tempm+1] == 3) || tempm == 7) {
                         tempm = ursprungsm;
                         tempn = ursprungsn;
-                    }
-                    else if (horizontal && tempInt[tempn][tempm+1] == 2) {
-                        tempm = tempm+1;
-                        kiMittel(tempInt, tempButton, versuche);
                     }
                 }
             }
@@ -579,6 +566,148 @@ public class KI {
                             zaehler = 0;
 
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    public void kiSchwierig(int [][] tempInt, Button [][] tempButton, int versuche) {
+        int n = randomInt();
+        int m = randomInt();
+
+        while (versuche != 0) {
+            if (tempn == -1 && tempm == -1) {
+
+
+                if (bereichBeschiessbar(n, m, tempInt)) {
+                    logik.schussAbgefeuert(n, m, tempInt, tempButton);
+
+                    if (logik.treffer) {
+                        tempn = n;
+                        tempm = m;
+                    }
+                    else {
+                        versuche--;
+                        break;
+                    }
+                }
+                else {
+                    n = randomInt();
+                    m = randomInt();
+                }
+            }
+            else {
+                if (tempn>0 && horizontal == false) {
+                    if (bereichBeschiessbar(tempn-1, tempm, tempInt)) {
+                        logik.schussAbgefeuert(tempn-1, tempm, tempInt, tempButton);
+
+                        if (logik.treffer) {
+                            if (logik.testeSchiffVersenkt(tempn-1, tempm, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
+                                vertikal = false;
+                            }
+                            else {
+                                vertikal = true;
+                                ursprungsn = tempn;
+                                ursprungsm = tempm;
+                                tempn = tempn-1;
+                            }
+                        }
+                        else {
+                            versuche--;
+                            break;
+                        }
+                    }
+                    else if (bereichBeschiessbar(tempn-1, tempm, tempInt) == false) {
+                        tempn = ursprungsn;
+                    }
+                }
+                if (tempn<logik.feldgroesse-1 && horizontal == false && tempn != -1) {
+                    if (bereichBeschiessbar(tempn+1, tempm, tempInt)) {
+                        logik.schussAbgefeuert(tempn+1, tempm, tempInt, tempButton);
+
+                        if (logik.treffer) {
+                            if (logik.testeSchiffVersenkt(tempn+1, tempm, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
+                                vertikal = false;
+                            }
+                            else {
+                                vertikal = true;
+                                ursprungsn = tempn;
+                                ursprungsm = tempm;
+                                tempn = tempn+1;
+                            }
+                        }
+                        else {
+                            versuche--;
+                            break;
+                        }
+                    }
+                    else if (bereichBeschiessbar(tempn+1, tempm, tempInt) == false) {
+                        tempn = ursprungsn;
+                    }
+                }
+                if (tempm>0 && vertikal == false) {
+                    if (bereichBeschiessbar(tempn, tempm-1, tempInt)) {
+                        logik.schussAbgefeuert(tempn, tempm-1, tempInt, tempButton);
+
+                        if (logik.treffer) {
+                            if (logik.testeSchiffVersenkt(tempn, tempm-1, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
+                                horizontal = false;
+                            }
+                            else {
+                                horizontal = true;
+                                ursprungsn = tempn;
+                                ursprungsm = tempm;
+                                tempm = tempm-1;
+                            }
+                        }
+                        else {
+                            versuche--;
+                            break;
+                        }
+                    }
+                    else if (bereichBeschiessbar(tempn, tempm-1, tempInt) == false) {
+                        tempm = ursprungsm;
+                    }
+                }
+                if (tempm<logik.feldgroesse-1 && vertikal == false && tempm != -1) {
+                    if (bereichBeschiessbar(tempn, tempm+1, tempInt)) {
+                        logik.schussAbgefeuert(tempn, tempm+1, tempInt, tempButton);
+
+                        if (logik.treffer) {
+                            if (logik.testeSchiffVersenkt(tempn, tempm+1, tempInt, tempButton)) {
+                                tempn = -1;
+                                tempm = -1;
+                                ursprungsn = -1;
+                                ursprungsm = -1;
+                                horizontal = false;
+                            }
+                            else {
+                                horizontal = true;
+                                ursprungsn = tempn;
+                                ursprungsm = tempm;
+                                tempm = tempm+1;
+                            }
+                        }
+                        else {
+                            versuche--;
+                            break;
+                        }
+                    }
+                    else if (bereichBeschiessbar(tempn, tempm+1, tempInt) == false) {
+                        tempm = ursprungsm;
                     }
                 }
             }
