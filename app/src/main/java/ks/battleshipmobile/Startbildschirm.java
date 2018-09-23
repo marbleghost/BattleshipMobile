@@ -50,20 +50,16 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_startbildschirm);
 
-         //Achtung! AndroidStudio markiert die "(FloatingActionButton)" Anweisung (und die der anderen) als ueberfluessig, ist diese
-         //jedoch nicht angegeben, wirft der Logcat Fehlermeldungen aus
+        start = findViewById(R.id.button_spielauswahl);
+        anleitung = findViewById(R.id.button_anleitung);
 
-        start = (FloatingActionButton) findViewById(R.id.button_spielauswahl);
-        anleitung = (FloatingActionButton) findViewById(R.id.button_anleitung);
+        leichteki = findViewById(R.id.button_kileicht);
+        mittlereki = findViewById(R.id.button_kimittel);
+        schwierigeki = findViewById(R.id.button_kischwer);
 
-        leichteki = (FloatingActionButton) findViewById(R.id.button_kileicht);
-        mittlereki = (FloatingActionButton) findViewById(R.id.button_kimittel);
-        schwierigeki = (FloatingActionButton) findViewById(R.id.button_kischwer);
-
-        textleichteki = (TextView) findViewById(R.id.textkileicht);
-        textmittlereki = (TextView) findViewById(R.id.textkimittel);
-        textschwierigeki = (TextView) findViewById(R.id.textkischwer);
-
+        textleichteki = findViewById(R.id.textkileicht);
+        textmittlereki = findViewById(R.id.textkimittel);
+        textschwierigeki = findViewById(R.id.textkischwer);
 
 
         //OnClickListener fuer jeden Button initialisieren
@@ -74,7 +70,6 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         schwierigeki.setOnClickListener(this);
 
 
-
         //Animationsdateien
         fab_oeffnen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_oeffnen);
         fab_schliessen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_schliessen);
@@ -82,7 +77,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
         fab_gross_schliessen = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_gross_schliessen);
 
         //VideoViewer fuer die Hintergrundanimation hinzufuegen und Animation starten
-        hganimview = (VideoView) findViewById(R.id.hg_animation);
+        hganimview = findViewById(R.id.hg_animation);
         Uri anim_steigendes_wasser = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_ansteigendes_wasser);
         final Uri anim_einfahren_schiff = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_einfahren_schiff);
         final Uri anim_schiff_idle = Uri.parse("android.resource://"+getPackageName()+"/"+R.raw.anim_schiff_idle);
@@ -166,8 +161,8 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     public void spielStarten() {
         AlertDialog.Builder popupbuilder = new AlertDialog.Builder(Startbildschirm.this);
         View popupview = getLayoutInflater().inflate(R.layout.popup_spielername, null);
-        spielername = (EditText) popupview.findViewById(R.id.label_spielername_eigeben);
-        weiter = (Button) popupview.findViewById(R.id.button_spierlername_weiter);
+        spielername = popupview.findViewById(R.id.label_spielername_eigeben);
+        weiter = popupview.findViewById(R.id.button_spierlername_weiter);
 
         weiter.setOnClickListener(new View.OnClickListener() {
             @Override

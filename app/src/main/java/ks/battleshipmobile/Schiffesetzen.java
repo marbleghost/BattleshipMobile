@@ -76,9 +76,9 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         dreierSchiff = findViewById(R.id.button_dreier);
         viererSchiff = findViewById(R.id.button_vierer);
 
-        spielfeldZuruecksetzen = (FloatingActionButton) findViewById(R.id.spielfeld_zuruecksetzen);
-        weiter = (FloatingActionButton) findViewById(R.id.weiter_zum_spiel);
-        spielfeldRandomSetzen = (FloatingActionButton) findViewById(R.id.spielfeld_random_setzen);
+        spielfeldZuruecksetzen = findViewById(R.id.spielfeld_zuruecksetzen);
+        weiter = findViewById(R.id.weiter_zum_spiel);
+        spielfeldRandomSetzen = findViewById(R.id.spielfeld_random_setzen);
 
         auswahl_schiffsrichtung = findViewById(R.id.auswahl_schiffsrichtung);
 
@@ -112,7 +112,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         int k=0;
         for (int i=0; i<8; i++) {
             for (int j=0; j<8; j++) {
-                spielfeld[i][j] = (Button) findViewById(idArray[k]);
+                spielfeld[i][j] = findViewById(idArray[k]);
                 spielfeld[i][j].setOnDragListener(dragListener);
                 k++;
             }
