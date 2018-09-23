@@ -39,16 +39,128 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_anleitung"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="173dp"
         android:layout_marginStart="173dp"
         android:layout_marginTop="16dp"
         android:text="@string/anleitung"
+        android:textAllCaps="false"
         android:textSize="24sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_anleitungstart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="173dp"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="67dp"
+        android:text="@string/anleitung_start"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_schiffesetzen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="173dp"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/anleitung_schiffesetzen"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_start" />
+
+    <TextView
+        android:id="@+id/text_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/hintergrund"
+        app:layout_constraintStart_toStartOf="@+id/hintergrund"
+        app:layout_constraintTop_toBottomOf="@+id/tv_anleitungstart" />
+
+    <TextView
+        android:id="@+id/text_schiffesetzen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/hintergrund"
+        app:layout_constraintStart_toStartOf="@+id/hintergrund"
+        app:layout_constraintTop_toBottomOf="@+id/tv_schiffesetzen" />
+
+    <TextView
+        android:id="@+id/text_schiffesetzen2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/hintergrund"
+        app:layout_constraintStart_toStartOf="@+id/hintergrund"
+        app:layout_constraintTop_toBottomOf="@+id/text_schiffesetzen" />
+
+    <TextView
+        android:id="@+id/text_schiffesetzen3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/hintergrund"
+        app:layout_constraintStart_toStartOf="@+id/hintergrund"
+        app:layout_constraintTop_toBottomOf="@+id/text_schiffesetzen2" />
+
+    <TextView
+        android:id="@+id/tv_dasspiel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="173dp"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="22dp"
+        android:text="@string/dasspiel"
+        android:textAllCaps="true"
+        android:textSize="18sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="@+id/hintergrund"
+        app:layout_constraintStart_toStartOf="@+id/hintergrund"
+        app:layout_constraintTop_toBottomOf="@+id/text_schiffesetzen3" />
+
+    <TextView
+        android:id="@+id/text_dasspiel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/hintergrund"
+        app:layout_constraintStart_toStartOf="@+id/hintergrund"
+        app:layout_constraintTop_toBottomOf="@+id/tv_dasspiel" />
+
 </android.support.constraint.ConstraintLayout>
