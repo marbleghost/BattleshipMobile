@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 public class Anleitungsbildschirm extends AppCompatActivity {
 
     Button hauptmenue;
@@ -18,7 +20,7 @@ public class Anleitungsbildschirm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
+        Objects.requireNonNull(getSupportActionBar()).hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_anleitungsbildschirm);
 
         //ANleitungstexte

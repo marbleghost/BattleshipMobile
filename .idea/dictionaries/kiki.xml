@@ -4,6 +4,7 @@
       <w>abgefeuert</w>
       <w>abgespielt</w>
       <w>achtung</w>
+      <w>aktuellen</w>
       <w>alle</w>
       <w>anderen</w>
       <w>angegeben</w>
@@ -14,6 +15,8 @@
       <w>anleitung</w>
       <w>anleitungsbildschirm</w>
       <w>anleitungsbutton</w>
+      <w>anleitungstart</w>
+      <w>anleitungtext</w>
       <w>anliegt</w>
       <w>anpassen</w>
       <w>anweisung</w>
@@ -21,6 +24,7 @@
       <w>anzeige</w>
       <w>appnamen</w>
       <w>arbeit</w>
+      <w>arfst</w>
       <w>auch</w>
       <w>aufgerufen</w>
       <w>ausgangswert</w>
@@ -39,67 +43,97 @@
       <w>benoetigt</w>
       <w>bereich</w>
       <w>bereits</w>
+      <w>beschiessbar</w>
       <w>beschießbar</w>
       <w>besetzbar</w>
       <w>besetzt</w>
+      <w>bestimmten</w>
+      <w>bestätige</w>
+      <w>bestätigen</w>
+      <w>bidlschirm</w>
       <w>bild</w>
       <w>bildschirm</w>
+      <w>bist</w>
       <w>bitte</w>
       <w>bleibt</w>
       <w>boolsche</w>
+      <w>dafuer</w>
       <w>dafür</w>
       <w>damit</w>
+      <w>danach</w>
       <w>darf</w>
+      <w>darfst</w>
       <w>darueber</w>
       <w>dass</w>
+      <w>dasspiel</w>
+      <w>dasspieltext</w>
       <w>dateien</w>
+      <w>dein</w>
+      <w>deine</w>
+      <w>deines</w>
+      <w>derjenige</w>
       <w>diese</w>
+      <w>dieser</w>
       <w>drei</w>
       <w>dreier</w>
       <w>drumherum</w>
       <w>durch</w>
       <w>dürfen</w>
       <w>ebendieser</w>
+      <w>ebenfalls</w>
       <w>eigeben</w>
       <w>einagbe</w>
       <w>einblenden</w>
       <w>eine</w>
       <w>einem</w>
+      <w>eines</w>
       <w>einfahren</w>
       <w>eingabe</w>
       <w>eingeben</w>
       <w>eingeblendet</w>
+      <w>einmal</w>
       <w>eins</w>
       <w>einzelne</w>
       <w>einzelnen</w>
       <w>entdeckt</w>
       <w>entfernen</w>
+      <w>enthaelt</w>
       <w>ermittelt</w>
+      <w>faerbt</w>
       <w>farbe</w>
       <w>fehlermeldungen</w>
       <w>feld</w>
       <w>felder</w>
+      <w>feldes</w>
       <w>feldgroesse</w>
       <w>fenster</w>
       <w>fertig</w>
+      <w>finden</w>
+      <w>findet</w>
       <w>fordert</w>
       <w>frei</w>
       <w>fuenf</w>
       <w>fuer</w>
+      <w>funktion</w>
+      <w>färbt</w>
+      <w>ganz</w>
       <w>gedrueckt</w>
       <w>gegen</w>
       <w>gegner</w>
       <w>gegnerisches</w>
       <w>gegners</w>
       <w>geklickt</w>
+      <w>gelangen</w>
       <w>geloescht</w>
       <w>gemacht</w>
       <w>genug</w>
+      <w>genutzt</w>
       <w>geoeffnet</w>
       <w>geschaut</w>
       <w>geschrieben</w>
       <w>gesetzt</w>
       <w>gesetztes</w>
+      <w>gespielt</w>
       <w>gestartet</w>
       <w>getestet</w>
       <w>getroffen</w>
@@ -107,16 +141,20 @@
       <w>gewinnername</w>
       <w>gewonnen</w>
       <w>gewonnenbildschirm</w>
+      <w>gibt</w>
       <w>glückwunsch</w>
       <w>grafik</w>
       <w>graut</w>
       <w>groesse</w>
       <w>groeße</w>
+      <w>grün</w>
       <w>haben</w>
       <w>hauptmenue</w>
+      <w>hauptmenues</w>
       <w>hauptmenü</w>
       <w>herzlichen</w>
       <w>hganimview</w>
+      <w>hier</w>
       <w>hintergrund</w>
       <w>hintergrundanimation</w>
       <w>hinzufuegen</w>
@@ -132,20 +170,27 @@
       <w>jedes</w>
       <w>jedoch</w>
       <w>kann</w>
+      <w>kannst</w>
       <w>kein</w>
       <w>keine</w>
+      <w>keinen</w>
       <w>keiner</w>
       <w>kiki</w>
       <w>kileicht</w>
       <w>kilogik</w>
       <w>kimittel</w>
       <w>kischwer</w>
+      <w>klasse</w>
+      <w>klick</w>
       <w>klickbar</w>
+      <w>klicke</w>
       <w>koennen</w>
+      <w>komplett</w>
       <w>koordinaten</w>
       <w>korrekt</w>
       <w>kuerzere</w>
       <w>laeuft</w>
+      <w>leeren</w>
       <w>leicht</w>
       <w>leichte</w>
       <w>leichteki</w>
@@ -163,18 +208,22 @@
       <w>mehr</w>
       <w>mehreren</w>
       <w>methode</w>
+      <w>methoden</w>
       <w>mittel</w>
       <w>mittlere</w>
       <w>mittlereki</w>
       <w>moeglich</w>
       <w>moeglichen</w>
+      <w>musst</w>
       <w>nach</w>
       <w>nachbarfeld</w>
       <w>namens</w>
       <w>nebeneinander</w>
       <w>neue</w>
       <w>nicht</w>
+      <w>nleitungstexte</w>
       <w>noch</w>
+      <w>nutze</w>
       <w>nutzer</w>
       <w>nutzung</w>
       <w>oben</w>
@@ -182,6 +231,7 @@
       <w>oeffnen</w>
       <w>oeffnet</w>
       <w>offen</w>
+      <w>passend</w>
       <w>passt</w>
       <w>physikalische</w>
       <w>platz</w>
@@ -190,12 +240,20 @@
       <w>popupview</w>
       <w>rechte</w>
       <w>rechts</w>
+      <w>reffer</w>
+      <w>reihe</w>
+      <w>richtig</w>
+      <w>richtige</w>
       <w>richtung</w>
       <w>schatten</w>
+      <w>schaut</w>
+      <w>schießen</w>
       <w>schiff</w>
       <w>schiffe</w>
+      <w>schiffen</w>
       <w>schiffes</w>
       <w>schiffesetzen</w>
+      <w>schiffesetzentext</w>
       <w>schiffsanzahl</w>
       <w>schiffsrichtung</w>
       <w>schiffsteil</w>
@@ -206,17 +264,22 @@
       <w>schliessen</w>
       <w>schließt</w>
       <w>schon</w>
+      <w>schwarz</w>
       <w>schwer</w>
+      <w>schwierig</w>
       <w>schwierige</w>
       <w>schwierigeki</w>
       <w>schwierigkeitsauswahloffen</w>
       <w>schwierigkeitsgrad</w>
       <w>schwierigkeitsstufen</w>
       <w>schwierigkeitsstufenausblenden</w>
+      <w>sehen</w>
       <w>seinen</w>
+      <w>setze</w>
       <w>setzen</w>
       <w>setzt</w>
       <w>sich</w>
+      <w>siehst</w>
       <w>sind</w>
       <w>sinkend</w>
       <w>sinkenden</w>
@@ -225,11 +288,14 @@
       <w>sodass</w>
       <w>solange</w>
       <w>sorgt</w>
+      <w>sowohl</w>
       <w>spaeter</w>
       <w>speichern</w>
       <w>speichert</w>
+      <w>spielanleitung</w>
       <w>spielauswahl</w>
       <w>spielbildschirm</w>
+      <w>spielbildschirms</w>
       <w>spieler</w>
       <w>spielername</w>
       <w>spielernamen</w>
@@ -238,16 +304,22 @@
       <w>spielfeld</w>
       <w>spielfeldbesetzung</w>
       <w>spielfeldbesetzungspieler</w>
+      <w>spielfelds</w>
       <w>spielfeldwerte</w>
       <w>spiellogik</w>
+      <w>spielmechanik</w>
+      <w>spielmodi</w>
       <w>spielmodis</w>
       <w>spielstart</w>
+      <w>spielzug</w>
       <w>spierlername</w>
       <w>später</w>
       <w>standartmaessig</w>
       <w>startbildschirm</w>
       <w>starten</w>
+      <w>statt</w>
       <w>steigendes</w>
+      <w>stelle</w>
       <w>teil</w>
       <w>tempm</w>
       <w>tempn</w>
@@ -262,6 +334,9 @@
       <w>textschwierigeki</w>
       <w>titelleiste</w>
       <w>treffer</w>
+      <w>triffst</w>
+      <w>tust</w>
+      <w>udnd</w>
       <w>ueber</w>
       <w>ueberfluessig</w>
       <w>uebergabe</w>
@@ -278,6 +353,7 @@
       <w>untersucht</w>
       <w>ursprungsm</w>
       <w>ursprungsn</w>
+      <w>ursprungszustand</w>
       <w>variante</w>
       <w>verliererbildschirm</w>
       <w>verlierername</w>
@@ -285,6 +361,7 @@
       <w>verschiedene</w>
       <w>versenkt</w>
       <w>versenktes</w>
+      <w>versuch</w>
       <w>versuche</w>
       <w>vertikal</w>
       <w>vertikalfalse</w>
@@ -297,25 +374,36 @@
       <w>weiter</w>
       <w>welchem</w>
       <w>welchen</w>
+      <w>welcher</w>
       <w>welches</w>
       <w>wenn</w>
       <w>werden</w>
       <w>wert</w>
       <w>werte</w>
+      <w>werten</w>
+      <w>wichtigen</w>
       <w>wieder</w>
       <w>wird</w>
       <w>wirft</w>
       <w>wurde</w>
       <w>wurden</w>
+      <w>wähle</w>
       <w>zaehler</w>
       <w>zeile</w>
+      <w>zuerst</w>
+      <w>zufaellig</w>
+      <w>zufaelligsetzen</w>
       <w>zufalls</w>
+      <w>zufällig</w>
       <w>zurueck</w>
       <w>zuruecksetzen</w>
+      <w>zurücksetzen</w>
       <w>zuweisen</w>
       <w>zwei</w>
       <w>zweier</w>
       <w>zweispieler</w>
+      <w>zweite</w>
+      <w>zwischen</w>
     </words>
   </dictionary>
 </component>

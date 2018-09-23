@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
 
+import java.util.Objects;
+
 /**
  * Source Code des Bidlschirm welcher aufgerufen wird, wenn der Spieler das Spiel gewonnen hat
  */
@@ -19,7 +21,7 @@ public class Gewonnenbildschirm extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
+        Objects.requireNonNull(getSupportActionBar()).hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_gewonnenbildschirm);
 
         Intent intent = getIntent();

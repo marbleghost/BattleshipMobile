@@ -15,6 +15,8 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.util.Objects;
+
 /**
  * Source Code der Klasse fuer das Schiffe setzen.
  */
@@ -56,7 +58,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
+        Objects.requireNonNull(getSupportActionBar()).hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_schiffesetzen);
 
         //Der mit dem Intent aus dem Startbildschirm uebergebene Name wird auf das Textfeld oben geschrieben

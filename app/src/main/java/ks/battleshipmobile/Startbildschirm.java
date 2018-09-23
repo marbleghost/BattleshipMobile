@@ -17,6 +17,8 @@ import android.widget.TextView;
 import android.widget.VideoView;
 import android.net.Uri;
 
+import java.util.Objects;
+
 /**
  * Source Code des Hauptmenues fuer das Spiel
  *
@@ -47,7 +49,7 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
+        Objects.requireNonNull(getSupportActionBar()).hide(); // sorgt dafür, dass die Titelleiste mit dem Appnamen nicht mehr oben angezeigt wird.
         setContentView(R.layout.activity_startbildschirm);
 
         start = findViewById(R.id.button_spielauswahl);
