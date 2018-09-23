@@ -203,7 +203,10 @@ public class KI {
 
                             }
                             else {
-                                tempn = tempn - 1;
+                                if (tempn != 1) {//Wird benoetigt, da er sonst in eine Schleife geraet, wenn oben links ein Schiff versenkt werden muss.
+                                    tempn = tempn - 1;
+                                }
+
                                 vertikal = true;
                             }
 
