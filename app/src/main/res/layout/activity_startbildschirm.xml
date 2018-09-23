@@ -86,7 +86,6 @@
         android:layout_marginBottom="300dp"
         android:layout_marginLeft="150dp"
         android:visibility="invisible"
-        android:editable="false"
         android:text="Schwer" />
 
     <TextView
@@ -96,7 +95,6 @@
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="280dp"
         android:visibility="invisible"
-        android:editable="false"
         android:text="Mittel" />
 
     <TextView
@@ -107,7 +105,6 @@
         android:layout_marginBottom="300dp"
         android:layout_marginRight="150dp"
         android:visibility="invisible"
-        android:editable="false"
         android:text="Leicht" />
 
 </android.support.design.widget.CoordinatorLayout>
