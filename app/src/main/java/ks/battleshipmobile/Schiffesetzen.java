@@ -15,12 +15,12 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+/**
+ * Source Code der Klasse fuer das Schiffe setzen.
+ */
 public class Schiffesetzen extends AppCompatActivity implements View.OnClickListener {
 
-
-    /**
-     * Speichert die Button ID´s in einem Array, um sie später den Buttons leichter zuweisen zu koennen
-     */
+    //Speichert die Button ID´s in einem Array, um sie später den Buttons leichter zuweisen zu koennen
     int [] idArray =   {R.id.a1, R.id.a2, R.id.a3, R.id.a4, R.id.a5, R.id.a6, R.id.a7, R.id.a8,
                         R.id.b1, R.id.b2, R.id.b3, R.id.b4, R.id.b5, R.id.b6, R.id.b7, R.id.b8,
                         R.id.c1, R.id.c2, R.id.c3, R.id.c4, R.id.c5, R.id.c6, R.id.c7, R.id.c8,
@@ -295,28 +295,5 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
             intent.putExtras(bundle);
             startActivity(intent);
         }
-
-        /*for (int i=0; i<8; i++) {
-            for (int j=0; j<8; j++) {
-                if (view.equals(spielfeld[i][j])) {
-                    System.out.println(spielfeldbesetzung[i][j]);
-                    if (spielfeldbesetzung[i][j] == 0 && logik.platzIstBesetzbar(i, j, spielfeldbesetzung)) {
-                        spielfeldbesetzung[i][j] = 1;
-                        //spielfeld[i][j].setBackgroundColor(1);
-                        logik.umgebungMarkieren(i, j, spielfeldbesetzung);
-                        logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
-                    }
-                    else if (spielfeldbesetzung[i][j] == 1) {
-                        spielfeldbesetzung[i][j] = 0;
-                        //spielfeld[i][j].setBackgroundColor(0xFF33B5E5);
-                        logik.markierungenEntfernen(i, j, spielfeldbesetzung);
-                        logik.farbeAnpassen(spielfeldbesetzung, spielfeld);
-                    }
-
-                }
-            }
-        }*/
     }
-
-
 }

@@ -5,6 +5,9 @@ import android.widget.Button;
 import java.util.Random;
 
 /**
+ * Diese Java Klasse enthaelt die Logik des Spiels. Alle fuer die Spielmechanik wichtigen
+ * Methoden sind hier zu finden
+ *
  * 0-unbelegt/frei
  * 1-Schiff gesetzt
  * 2-Gegnerisches Schiffteil getroffen
@@ -437,6 +440,10 @@ public class Spiellogik {
         }
     }
 
+    /**
+     * Methode fuer die KI zum Schiffe setzen
+     * @param temp
+     */
     public void kiSchiffeSetzen(int[][] temp) {
         setSchiffsanzahl();
         zufallsPlatzierung(temp);

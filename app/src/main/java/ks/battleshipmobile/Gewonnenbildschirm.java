@@ -7,6 +7,9 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Button;
 
+/**
+ * Source Code des Bidlschirm welcher aufgerufen wird, wenn der Spieler das Spiel gewonnen hat
+ */
 public class Gewonnenbildschirm extends AppCompatActivity {
 
     TextView name;

@@ -18,6 +18,8 @@ import android.widget.VideoView;
 import android.net.Uri;
 
 /**
+ * Source Code des Hauptmenues fuer das Spiel
+ *
  * KI Werte:
  * 1-Leichte KI
  * 2-Mittlere KI

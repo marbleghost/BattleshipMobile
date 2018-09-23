@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+/**
+ * Source Code des Spielbildschirms. Hier findet das Spiel statt.
+ */
 public class Spielbildschirm extends AppCompatActivity implements View.OnClickListener {
 
     TextView spielername_textfeld;
