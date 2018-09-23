@@ -130,7 +130,6 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View e) {
         if (e.equals(start)) {
-            //Snackbar.make(e, "was auch immer das ist", Snackbar.LENGTH_LONG).setAction("action", null).show();
             if (schwierigkeitsauswahloffen == false) { // Oeffnet das Auswahlfenster für den Schwierigkeitsgrad.
                 schwierigkeitsstufenEinblenden();
             }
@@ -139,7 +138,8 @@ public class Startbildschirm extends AppCompatActivity implements View.OnClickLi
             }
         }
         if (e.equals(anleitung)) {
-
+            Intent intent = new Intent(Startbildschirm.this, Anleitungsbildschirm.class);
+            startActivity(intent);
         }
         if (e.equals(leichteki)) {
             ki = 1;

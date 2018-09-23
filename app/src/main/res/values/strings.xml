@@ -14,4 +14,5 @@
     <string name="hauptmenue">Hauptmenü</string>
     <string name="verloren">Du hast leider verloren</string>
     <string name="spieler">Spieler</string>
+    <string name="anleitung">Spielanleitung</string>
 </resources>
