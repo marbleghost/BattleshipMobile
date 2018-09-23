@@ -91,7 +91,7 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
         if (spieler == 1) {
             if (view.getId() == R.id.weiter) {
                 spielername_textfeld.setText("Gegner");
-                logik.spielfeldStatus(spielfeldbesetzungspieler1, spielfeld);
+                logik.spielfeldStatus(spielfeldbesetzungspieler1, spielfeld, ki);
                 if (ki == 1) {
                     kilogik.kiLeicht(spielfeldbesetzungspieler1, spielfeld, 1);
                     if (logik.gewonnen(spielfeldbesetzungspieler1)) {
@@ -123,7 +123,13 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                     for (int i=0; i<8; i++) {
                         for (int j=0; j<8; j++) {
                             if (view.equals(spielfeld[i][j])) {
-                                logik.schussAbgefeuert(i, j, spielfeldbesetzungspieler2, spielfeld);
+                                if (ki == 1 || ki == 2) {
+                                    logik.schussAbgefeuert(i, j, spielfeldbesetzungspieler2, spielfeld);
+                                }
+                                else if (ki == 3) {
+                                    logik.schussAbgefeuertSchwer(i, j, spielfeldbesetzungspieler2, spielfeld);
+                                }
+
                                 spielfeld[i][j].setClickable(false);
                                 if (logik.treffer == true) {
                                     logik.testeSchiffVersenkt(i, j, spielfeldbesetzungspieler2, spielfeld);
@@ -151,7 +157,7 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                 }
             }
         }
-        else if (spieler == 2) {
+        else if (spieler == 2) { //Wenn die KI an der Reihe war
             if (view.getId() == R.id.weiter) {
                 versuche = 1;
                 spielername_textfeld.setText(spielername);
@@ -161,7 +167,7 @@ public class Spielbildschirm extends AppCompatActivity implements View.OnClickLi
                         spielfeld[i][j].setClickable(true);
                     }
                 }
-                logik.spielfeldStatus(spielfeldbesetzungspieler2, spielfeld);
+                logik.spielfeldStatus(spielfeldbesetzungspieler2, spielfeld, ki);
                 weiter.setClickable(false);
                 weiter.setVisibility(View.INVISIBLE);
             }

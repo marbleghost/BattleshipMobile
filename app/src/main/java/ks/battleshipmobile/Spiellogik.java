@@ -388,6 +388,17 @@ public class Spiellogik {
         }
     }
 
+    public void schussAbgefeuertSchwer(int n, int m, int[][] temp, Button[][] tempButton) {
+        if (temp[n][m] == 1) {
+            temp[n][m] = 2;
+            tempButton[n][m].setBackgroundColor(0xFF25170E);
+            treffer = true;
+        } else if (temp[n][m] == 0 || temp[n][m] == 4) {
+            temp[n][m] = 3;
+            treffer = false;
+        }
+    }
+
     /**
      * Die richtige Anzahl an Schiffen wird zufaellig gesetzt.
      * Diese Methode wird sowohl fuer die Zufaelligsetzen Funktion des Spielers
@@ -459,27 +470,53 @@ public class Spiellogik {
      * @param temp
      * @param tempButton
      */
-    public void spielfeldStatus(int [][] temp, Button [][] tempButton) {
-        for (int i=0; i<feldgroesse; i++) {
-            for (int j = 0; j < feldgroesse; j++) {
-                if (temp[i][j] == 0 || temp [i][j] == 1 || temp [i][j] == 4) {
-                    tempButton[i][j].setBackgroundColor(0xFF33B5E5);
-                    tempButton[i][j].setText("");
+    public void spielfeldStatus(int [][] temp, Button [][] tempButton, int schwierigkeit) {
+        if (schwierigkeit == 1 || schwierigkeit == 2) {
+            for (int i=0; i<feldgroesse; i++) {
+                for (int j = 0; j < feldgroesse; j++) {
+                    if (temp[i][j] == 0 || temp [i][j] == 1 || temp [i][j] == 4) {
+                        tempButton[i][j].setBackgroundColor(0xFF33B5E5);
+                        tempButton[i][j].setText("");
+                    }
+                    else if (temp[i][j] == 2) {
+                        tempButton[i][j].setBackgroundColor(0xFF25170E);
+                        tempButton[i][j].setText("");
+                        tempButton[i][j].setClickable(false);
+                    }
+                    else if (temp[i][j] == 6) {
+                        tempButton[i][j].setBackgroundColor(0xFF00FF00);
+                        tempButton[i][j].setText("");
+                        tempButton[i][j].setClickable(false);
+                    }
+                    else if (temp[i][j] == 3) {
+                        tempButton[i][j].setBackgroundColor(0xFF33B5E5);
+                        tempButton[i][j].setText("X");
+                        tempButton[i][j].setClickable(false);
+                    }
                 }
-                else if (temp[i][j] == 2) {
-                    tempButton[i][j].setBackgroundColor(0xFF25170E);
-                    tempButton[i][j].setText("");
-                    tempButton[i][j].setClickable(false);
-                }
-                else if (temp[i][j] == 6) {
-                    tempButton[i][j].setBackgroundColor(0xFF00FF00);
-                    tempButton[i][j].setText("");
-                    tempButton[i][j].setClickable(false);
-                }
-                else if (temp[i][j] == 3) {
-                    tempButton[i][j].setBackgroundColor(0xFF33B5E5);
-                    tempButton[i][j].setText("X");
-                    tempButton[i][j].setClickable(false);
+            }
+        }
+        else if (schwierigkeit == 3) {
+            for (int i=0; i<feldgroesse; i++) {
+                for (int j = 0; j < feldgroesse; j++) {
+                    if (temp[i][j] == 0 || temp [i][j] == 1 || temp [i][j] == 4) {
+                        tempButton[i][j].setBackgroundColor(0xFF33B5E5);
+                        tempButton[i][j].setText("");
+                    }
+                    else if (temp[i][j] == 2) {
+                        tempButton[i][j].setBackgroundColor(0xFF25170E);
+                        tempButton[i][j].setText("");
+                        tempButton[i][j].setClickable(false);
+                    }
+                    else if (temp[i][j] == 6) {
+                        tempButton[i][j].setBackgroundColor(0xFF00FF00);
+                        tempButton[i][j].setText("");
+                        tempButton[i][j].setClickable(false);
+                    }
+                    else if (temp[i][j] == 3) {
+                        tempButton[i][j].setBackgroundColor(0xFF33B5E5);
+                        tempButton[i][j].setClickable(true);
+                    }
                 }
             }
         }
