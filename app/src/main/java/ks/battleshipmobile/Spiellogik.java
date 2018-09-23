@@ -19,10 +19,6 @@ public class Spiellogik {
     int spieler = 1;
     int feldgroesse = 8;
 
-    int[][] spieler1 = new int[8][8];
-    int[][] spieler2 = new int[8][8];
-
-
     //Groesse der Schiffe
     final int viererSchiff = 4;
     final int dreierSchiff = 3;
@@ -52,26 +48,20 @@ public class Spiellogik {
     int dm1, dm2, dm3, dm4, dm5, dm6 = -1;
 
 
+    /**
+     * Gibt zurueck ob ein Schiff an dieser Stelle gesetzt werden kann
+     * @return
+     */
     public boolean getPasst() {
         return passt;
     }
 
+    /**
+     * Gibt den aktuellen Spieler zurueck
+     * @return
+     */
     public int getSpieler() {
         return spieler;
-    }
-
-    /**
-     * Fuer moeglichen lokalen Zweispieler oder KI Nutzung,
-     * Wechsel des Spielers.
-     * Bei KI Nutzung: spieler = 1 ist der physikalische Spieler, spieler = 2 die KI
-     */
-    public void spielerWechsel(int spieler) {
-        if (spieler < 2) {
-            spieler++;
-        } else {
-            spieler = 1;
-        }
-
     }
 
     /**
@@ -131,6 +121,15 @@ public class Spiellogik {
         }
     }
 
+    /**
+     * Methode fuer den Schatten des Schiffes beim Drag und Drop setzen der Schiffe
+     * @param markierung
+     * @param groesse
+     * @param vertikal
+     * @param n
+     * @param m
+     * @param temp
+     */
     public void schiffSchatten(int markierung, int groesse, boolean vertikal, int n, int m, int[][] temp) {
 
         if (schiffPasst(groesse, vertikal, n, m, temp)) {
@@ -147,6 +146,11 @@ public class Spiellogik {
         }
     }
 
+    /**
+     * Farbe der Buttons wird passend zu den Werten gesetzt
+     * @param tempInt
+     * @param tempButton
+     */
     public void farbeAnpassen(int[][] tempInt, Button[][] tempButton) {
         for (int i = 0; i < feldgroesse; i++) {
             for (int j = 0; j < feldgroesse; j++) {
@@ -169,8 +173,6 @@ public class Spiellogik {
      * getestet werden kann, ob das Feld belegbar ist.
      * Eine kuerzere Variante mit mehreren Schleifen war leider nicht moeglich, da die
      * Werte nicht korrekt gesetzt wurden.
-
-     * @author Kirsten und Serdar
      */
     public boolean schiffPasst(int groesse, boolean vertikal, int n, int m, int[][] temp) {
 
@@ -308,8 +310,6 @@ public class Spiellogik {
      * Diese Methode setzt die Felder um das Schiff auf den Wert 4, sodass spaeter
      * diese Felder nicht mehr besetzt werden koennen (nur Felder mit dem Wert 0
      * koennen besetzt werden).
-     *
-     * @author Kirsten und Serdar
      */
     public void markiereSchiffUmgebung(int n, int m, int[][] temp) {
 
@@ -343,6 +343,10 @@ public class Spiellogik {
         }
     }
 
+    /**
+     * Setzt das Spielfeld auf seinen leeren Ursprungszustand zurueck
+     * @param temp
+     */
     public void spielfeldZuruecksetzen(int[][] temp) {
         for (int i = 0; i < feldgroesse; i++) {
             for (int j = 0; j < feldgroesse; j++) {
@@ -351,13 +355,24 @@ public class Spiellogik {
         }
     }
 
+    /**
+     * Ueberprueft ob alle Schiffe gesetzt wurden
+     * @return
+     */
     public boolean alleSchiffeGesetzt() {
         if (anzahlZweier == 0 && anzahlDreier == 0 && anzahlVierer == 0) {
             return true;
         } else return false;
     }
 
-
+    /**
+     * Schaut ob der Spielzug des Spielers oder der KI ein TReffer oder keiner war und faerbt die Felder
+     * richtig ein
+     * @param n
+     * @param m
+     * @param temp
+     * @param tempButton
+     */
     public void schussAbgefeuert(int n, int m, int[][] temp, Button[][] tempButton) {
         if (temp[n][m] == 1) {
             temp[n][m] = 2;
@@ -370,7 +385,12 @@ public class Spiellogik {
         }
     }
 
-
+    /**
+     * Die richtige Anzahl an Schiffen wird zufaellig gesetzt.
+     * Diese Methode wird sowohl fuer die Zufaelligsetzen Funktion des Spielers
+     * als auch zum setzen des Spielfelds der KI genutzt
+     * @param temp
+     */
     public void zufallsPlatzierung(int[][] temp) {
         boolean vertikal;
 
@@ -426,6 +446,12 @@ public class Spiellogik {
         tempButton[n][m].setBackgroundColor(0xFF00FF00);
     }
 
+    /**
+     * Diese Methode wird dafuer genutzt, das Spielfeld auf den Status des SpielfeldArrays eines bestimmten
+     *Spielers zu setzen
+     * @param temp
+     * @param tempButton
+     */
     public void spielfeldStatus(int [][] temp, Button [][] tempButton) {
         for (int i=0; i<feldgroesse; i++) {
             for (int j = 0; j < feldgroesse; j++) {
@@ -452,6 +478,14 @@ public class Spiellogik {
         }
     }
 
+    /**
+     * Diese Methode ueberprueft ob ein Schiff komplett versenkt wurde
+     * @param n
+     * @param m
+     * @param temp
+     * @param tempButton
+     * @return
+     */
     public boolean testeSchiffVersenkt(int n, int m, int[][] temp, Button[][] tempButton) {
         boolean a = false;
         boolean b = false;
