@@ -158,7 +158,7 @@ public class Spiellogik {
         for (int i = 0; i < feldgroesse; i++) {
             for (int j = 0; j < feldgroesse; j++) {
                 if (tempInt[i][j] == 1) {
-                    tempButton[i][j].setBackgroundColor(0xFFFFFFFF);
+                    tempButton[i][j].setBackgroundColor(0xFF714B33);
                 } else if (tempInt[i][j] == 9) {
                     tempButton[i][j].setBackgroundColor(0xFFDF33E5);
                 } else if (tempInt[i][j] == 0) {
@@ -379,11 +379,11 @@ public class Spiellogik {
     public void schussAbgefeuert(int n, int m, int[][] temp, Button[][] tempButton) {
         if (temp[n][m] == 1) {
             temp[n][m] = 2;
-            tempButton[n][m].setBackgroundColor(0xFF000000); //TODO: Farbe gegen Bild austauschen
+            tempButton[n][m].setBackgroundColor(0xFF25170E);
             treffer = true;
         } else if (temp[n][m] == 0 || temp[n][m] == 4) {
             temp[n][m] = 3;
-            tempButton[n][m].setText("X"); //TODO: String gegen Bild austauschen
+            tempButton[n][m].setText("X");
             treffer = false;
         }
     }
@@ -467,7 +467,7 @@ public class Spiellogik {
                     tempButton[i][j].setText("");
                 }
                 else if (temp[i][j] == 2) {
-                    tempButton[i][j].setBackgroundColor(0xFF000000);
+                    tempButton[i][j].setBackgroundColor(0xFF25170E);
                     tempButton[i][j].setText("");
                     tempButton[i][j].setClickable(false);
                 }

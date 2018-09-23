@@ -24,7 +24,7 @@
     <string name="dasspiel">Das Spiel</string>
     <string name="dasspieltext">Klicke ein Feld an um zu schießen. Triffst du KEIN Schiffsteil, hast du keinen Versuch mehr und du musst mit WEITER bestätigen.
     Danach siehst du das Feld deines Gegners und kannst sehen wie dieser gespielt hat. Bestätige dies wieder mit einem Klick auf WEITER.
-    Du bist wieder an der Reihe. Färbt sich ein Feld nach einem Schuss schwarz, hast du eine Schiffsteil getroffen und darfst noch einmal schießen.
-    Färbt sich ein Teil deines Feldes grün, so hast du ein Schiff versenkt udnd arfst ebenfalls noch einmal schießen.
+    Du bist wieder an der Reihe. Färbt sich ein Feld nach einem Schuss braun, hast du eine Schiffsteil getroffen und darfst noch einmal schießen.
+    Färbt sich ein Teil deines Feldes grün, so hast du ein Schiff versenkt und darfst ebenfalls noch einmal schießen.
     Gewonnen hat derjenige, der zuerst alle Schiffe seines Gegners versenkt hat.</string>
 </resources>
