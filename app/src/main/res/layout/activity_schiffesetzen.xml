@@ -574,12 +574,12 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="37dp"
-        android:visibility="invisible"
         android:clickable="false"
+        android:visibility="invisible"
+        app:fabSize="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:fabSize="normal"
         app:pressedTranslationZ="12dp"
-        app:srcCompat="@android:drawable/btn_star" />
+        app:srcCompat="@android:drawable/ic_media_play" />
 
 </android.support.constraint.ConstraintLayout>
