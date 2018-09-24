@@ -289,7 +289,7 @@ public class KI {
                             break;
                         }
                     }
-                    else if ((vertikal && tempInt[tempn-1][tempm] == 3) || (vertikal && tempn == 1 && tempInt[tempn-1][tempm] == 2 && bereichBeschiessbar(tempn+1, tempm, tempInt))) {
+                    else if ((vertikal && tempInt[tempn-1][tempm] == 3) || (vertikal && tempn == 1 && tempInt[tempn-1][tempm] == 2 && bereichBeschiessbar(ursprungsn+1, tempm, tempInt))) {
                         tempn = ursprungsn;
                         tempm = ursprungsm;
                     }
@@ -361,7 +361,7 @@ public class KI {
                             break;
                         }
                     }
-                    else if ((horizontal && tempInt[tempn][tempm-1] == 3) || (horizontal && tempm == 1 && tempInt[tempn][tempm-1] == 2 && bereichBeschiessbar(tempn, tempm+1, tempInt))) {
+                    else if ((horizontal && tempInt[tempn][tempm-1] == 3) || (horizontal && tempm == 1 && tempInt[tempn][tempm-1] == 2 && bereichBeschiessbar(tempn, ursprungsm+1, tempInt))) {
                         tempm = ursprungsm;
                         tempn = ursprungsn;
                     }
