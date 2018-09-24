@@ -169,7 +169,9 @@ public class KI {
 
                             }
                             else {
-                                tempm = tempm - 1;
+                                if (tempm != 1) {
+                                    tempm = tempm - 1;
+                                }
                                 horizontal = true;
                             }
 
@@ -347,7 +349,9 @@ public class KI {
 
                             }
                             else {
-                                tempm = tempm - 1;
+                                if (tempm != 1) {
+                                    tempm = tempm - 1;
+                                }
                                 horizontal = true;
                             }
 
