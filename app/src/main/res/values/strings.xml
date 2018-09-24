@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">BattleshipMobile</string>
     <string name="spielername_eingeben">Bitte Spielernamen eingeben:</string>
+    <string name="normal">Normal</string>
+    <string name="schwierig">Schwierig</string>
+    <string name="sehrschwierig">Sehr schwierig</string>
     <string name="spielername">Spieler</string>
     <string name="button_weiter">Weiter</string>
     <string name="button_vierer">Vierer</string>
