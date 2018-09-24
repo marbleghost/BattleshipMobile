@@ -255,7 +255,7 @@ public class Schiffesetzen extends AppCompatActivity implements View.OnClickList
         }
     };
     @Override
-    public void onClick(View view) { // TODO: Wenn das Feld mit 3 Markiert ist, muss ausgegeben werden, dass keine Schiffe nebeneinander gesetzt werden dürfen.
+    public void onClick(View view) {
         if (view.getId() == R.id.spielfeld_zuruecksetzen) {
             logik.setSchiffsanzahl();
             logik.spielfeldZuruecksetzen(spielfeldbesetzung);

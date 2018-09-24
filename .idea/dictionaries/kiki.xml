@@ -1,6 +1,7 @@
 <component name="ProjectDictionaryState">
   <dictionary name="kiki">
     <words>
+      <w>aber</w>
       <w>abgefeuert</w>
       <w>abgespielt</w>
       <w>achtung</w>
@@ -17,6 +18,7 @@
       <w>anleitungsbutton</w>
       <w>anleitungstart</w>
       <w>anleitungtext</w>
+      <w>anliegendes</w>
       <w>anliegt</w>
       <w>anpassen</w>
       <w>anweisung</w>
@@ -39,6 +41,7 @@
       <w>befindet</w>
       <w>beginnt</w>
       <w>beim</w>
+      <w>beinhaltet</w>
       <w>belegbar</w>
       <w>benoetigt</w>
       <w>bereich</w>
@@ -57,6 +60,7 @@
       <w>bitte</w>
       <w>bleibt</w>
       <w>boolsche</w>
+      <w>braun</w>
       <w>dafuer</w>
       <w>dafür</w>
       <w>damit</w>
@@ -68,6 +72,7 @@
       <w>dasspiel</w>
       <w>dasspieltext</w>
       <w>dateien</w>
+      <w>dazu</w>
       <w>dein</w>
       <w>deine</w>
       <w>deines</w>
@@ -86,6 +91,7 @@
       <w>einblenden</w>
       <w>eine</w>
       <w>einem</w>
+      <w>einen</w>
       <w>eines</w>
       <w>einfahren</w>
       <w>eingabe</w>
@@ -98,10 +104,12 @@
       <w>entdeckt</w>
       <w>entfernen</w>
       <w>enthaelt</w>
+      <w>erkennt</w>
       <w>ermittelt</w>
       <w>faerbt</w>
       <w>farbe</w>
       <w>fehlermeldungen</w>
+      <w>fehltreffer</w>
       <w>feld</w>
       <w>felder</w>
       <w>feldes</w>
@@ -118,6 +126,7 @@
       <w>färbt</w>
       <w>ganz</w>
       <w>gedrueckt</w>
+      <w>gefunden</w>
       <w>gegen</w>
       <w>gegner</w>
       <w>gegnerisches</w>
@@ -129,6 +138,7 @@
       <w>genug</w>
       <w>genutzt</w>
       <w>geoeffnet</w>
+      <w>geraet</w>
       <w>geschaut</w>
       <w>geschrieben</w>
       <w>gesetzt</w>
@@ -136,6 +146,7 @@
       <w>gespielt</w>
       <w>gestartet</w>
       <w>getestet</w>
+      <w>getroffe</w>
       <w>getroffen</w>
       <w>gewinnerbildschirm</w>
       <w>gewinnername</w>
@@ -152,6 +163,7 @@
       <w>hauptmenue</w>
       <w>hauptmenues</w>
       <w>hauptmenü</w>
+      <w>herum</w>
       <w>herzlichen</w>
       <w>hganimview</w>
       <w>hier</w>
@@ -161,6 +173,7 @@
       <w>horizontalfalse</w>
       <w>ignoreh</w>
       <w>ignorev</w>
+      <w>ihre</w>
       <w>immer</w>
       <w>initialisieren</w>
       <w>inkrementiert</w>
@@ -190,6 +203,7 @@
       <w>korrekt</w>
       <w>kuerzere</w>
       <w>laeuft</w>
+      <w>laueft</w>
       <w>leeren</w>
       <w>leicht</w>
       <w>leichte</w>
@@ -207,8 +221,12 @@
       <w>markierungen</w>
       <w>mehr</w>
       <w>mehreren</w>
+      <w>menschlicher</w>
+      <w>merk</w>
+      <w>merkt</w>
       <w>methode</w>
       <w>methoden</w>
+      <w>mindestens</w>
       <w>mittel</w>
       <w>mittlere</w>
       <w>mittlereki</w>
@@ -223,6 +241,7 @@
       <w>nicht</w>
       <w>nleitungstexte</w>
       <w>noch</w>
+      <w>normale</w>
       <w>nutze</w>
       <w>nutzer</w>
       <w>nutzung</w>
@@ -238,6 +257,7 @@
       <w>platzierung</w>
       <w>popupbuilder</w>
       <w>popupview</w>
+      <w>punkt</w>
       <w>rechte</w>
       <w>rechts</w>
       <w>reffer</w>
@@ -260,26 +280,33 @@
       <w>schiffsteile</w>
       <w>schiffteil</w>
       <w>schiffteile</w>
+      <w>schleife</w>
       <w>schleifen</w>
       <w>schliessen</w>
       <w>schließt</w>
       <w>schon</w>
+      <w>schuesse</w>
       <w>schwarz</w>
       <w>schwer</w>
       <w>schwierig</w>
       <w>schwierige</w>
       <w>schwierigeki</w>
+      <w>schwierigen</w>
+      <w>schwierigkeit</w>
       <w>schwierigkeitsauswahloffen</w>
       <w>schwierigkeitsgrad</w>
       <w>schwierigkeitsstufen</w>
       <w>schwierigkeitsstufenausblenden</w>
       <w>sehen</w>
+      <w>sehr</w>
+      <w>sehrschwierig</w>
       <w>seinen</w>
       <w>setze</w>
       <w>setzen</w>
       <w>setzt</w>
       <w>sich</w>
       <w>siehst</w>
+      <w>sieht</w>
       <w>sind</w>
       <w>sinkend</w>
       <w>sinkenden</w>
@@ -287,6 +314,7 @@
       <w>sobald</w>
       <w>sodass</w>
       <w>solange</w>
+      <w>sonst</w>
       <w>sorgt</w>
       <w>sowohl</w>
       <w>spaeter</w>
@@ -320,6 +348,7 @@
       <w>statt</w>
       <w>steigendes</w>
       <w>stelle</w>
+      <w>stellen</w>
       <w>teil</w>
       <w>tempm</w>
       <w>tempn</w>
@@ -343,6 +372,7 @@
       <w>uebergeben</w>
       <w>uebergebene</w>
       <w>ueberprueft</w>
+      <w>uerberpreuft</w>
       <w>umgebung</w>
       <w>unbelegt</w>
       <w>uneditierbar</w>
@@ -372,6 +402,8 @@
       <w>wasser</w>
       <w>wechsel</w>
       <w>weiter</w>
+      <w>weiteren</w>
+      <w>welche</w>
       <w>welchem</w>
       <w>welchen</w>
       <w>welcher</w>
@@ -390,14 +422,17 @@
       <w>wähle</w>
       <w>zaehler</w>
       <w>zeile</w>
+      <w>zieht</w>
       <w>zuerst</w>
       <w>zufaellig</w>
       <w>zufaelligsetzen</w>
       <w>zufalls</w>
+      <w>zufallszahlen</w>
       <w>zufällig</w>
       <w>zurueck</w>
       <w>zuruecksetzen</w>
       <w>zurücksetzen</w>
+      <w>zusaetlich</w>
       <w>zuweisen</w>
       <w>zwei</w>
       <w>zweier</w>
