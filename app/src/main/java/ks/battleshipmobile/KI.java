@@ -109,7 +109,7 @@ public class KI {
                             break;
                         }
                     }
-                    else if ((vertikal && tempInt[tempn-1][tempm] == 3) || tempn == 0) {
+                    else if ((vertikal && tempInt[tempn-1][tempm] == 3) || (tempn == 1 && tempInt[tempn-1][tempm] == 2)) {
                         tempn = ursprungsn;
                         tempm = ursprungsm;
                     }
@@ -181,7 +181,7 @@ public class KI {
                             break;
                         }
                     }
-                    else if ((horizontal && tempInt[tempn][tempm-1] == 3) || tempm == 0) {
+                    else if ((horizontal && tempInt[tempn][tempm-1] == 3) || (tempm == 1 && tempInt[tempn][tempm-1] == 2)) {
                         tempm = ursprungsm;
                         tempn = ursprungsn;
                     }
@@ -289,7 +289,7 @@ public class KI {
                             break;
                         }
                     }
-                    else if ((vertikal && tempInt[tempn-1][tempm] == 3) || tempn == 0) {
+                    else if ((vertikal && tempInt[tempn-1][tempm] == 3) || (tempn == 1 && tempInt[tempn-1][tempm] == 2)) {
                         tempn = ursprungsn;
                         tempm = ursprungsm;
                     }
@@ -361,7 +361,7 @@ public class KI {
                             break;
                         }
                     }
-                    else if ((horizontal && tempInt[tempn][tempm-1] == 3) || tempm == 0) {
+                    else if ((horizontal && tempInt[tempn][tempm-1] == 3) || (tempm == 1 && tempInt[tempn][tempm-1] == 2)) {
                         tempm = ursprungsm;
                         tempn = ursprungsn;
                     }

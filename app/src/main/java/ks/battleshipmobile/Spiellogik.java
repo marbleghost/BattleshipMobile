@@ -393,7 +393,7 @@ public class Spiellogik {
             temp[n][m] = 2;
             tempButton[n][m].setBackgroundColor(0xFF25170E);
             treffer = true;
-        } else if (temp[n][m] == 0 || temp[n][m] == 4) {
+        } else if (temp[n][m] == 0 || temp[n][m] == 4 || temp[n][m] == 3) {
             temp[n][m] = 3;
             treffer = false;
         }
