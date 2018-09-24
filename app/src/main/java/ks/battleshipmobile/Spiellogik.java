@@ -160,7 +160,7 @@ public class Spiellogik {
                 if (tempInt[i][j] == 1) {
                     tempButton[i][j].setBackgroundColor(0xFF714B33);
                 } else if (tempInt[i][j] == 9) {
-                    tempButton[i][j].setBackgroundColor(0xFFDF33E5);
+                    tempButton[i][j].setBackgroundColor(0xFF76C7D5);
                 } else if (tempInt[i][j] == 0) {
                     tempButton[i][j].setBackgroundColor(0xFF33B5E5);
                 }
