@@ -14,7 +14,7 @@ import java.util.Random;
  * 3-Kein Treffer
  * 4-Platz um ein gesetztes Schiff drumherum, in welchem kein Schiff gesetzt werden darf
  * 6-Schiff versenkt
- * 9-Felder ueber welchen der Nutzer seinen Finger hat, beim Schiffe setzen
+ * 9-Felder, ueber welchen der Nutzer seinen Finger hat, beim Schiffe setzen
  */
 
 public class Spiellogik {
@@ -184,7 +184,6 @@ public class Spiellogik {
         boolean zwei;
         boolean drei;
         boolean vier;
-        boolean fuenf;
 
         if (vertikal == true) {
             if (groesse == viererSchiff && groesse + n <= feldgroesse) {

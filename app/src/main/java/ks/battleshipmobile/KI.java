@@ -54,7 +54,7 @@ public class KI {
      * Schwierige KI.
      * Merkt sich wo sie getroffe hat und laueft danach die Stellen drum herum ab.
      * Sie erkennt ob ein Schiff vertikal oder horizontal gesetzt worden ist, aber erst
-     * wenn sie wie ein menschlicher Spieler auch, mindestens einen weiteren punkt des Schiffes
+     * wenn sie wie ein menschlicher Spieler auch, mindestens ein weiteres Teil des Schiffes
      * dazu gefunden hat.
      * @param tempInt
      * @param tempButton
@@ -245,7 +245,7 @@ public class KI {
      * Sie erkennt ob ein Schiff vertikal oder horizontal gesetzt worden ist, aber erst
      * wenn sie wie ein menschlicher Spieler auch, mindestens einen weiteren punkt des Schiffes
      * dazu gefunden hat.
-     * Zusaetlich zur schwierigen KI, sieht der Spieler hier seine und die Fehltreffer der KI nicht
+     * Zusaetlich zur mittleren KI, sieht der Spieler hier seine und die Fehltreffer der KI nicht
      * @param tempInt
      * @param tempButton
      * @param versuche
