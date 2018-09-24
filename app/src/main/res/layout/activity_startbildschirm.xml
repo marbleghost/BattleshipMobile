@@ -85,8 +85,8 @@
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="300dp"
         android:layout_marginLeft="150dp"
-        android:visibility="invisible"
-        android:text="Schwer" />
+        android:text="@string/sehrschwierig"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/textkimittel"
@@ -94,8 +94,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="280dp"
-        android:visibility="invisible"
-        android:text="Mittel" />
+        android:text="@string/schwierig"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/textkileicht"
@@ -104,7 +104,7 @@
         android:layout_gravity="bottom|center"
         android:layout_marginBottom="300dp"
         android:layout_marginRight="150dp"
-        android:visibility="invisible"
-        android:text="Leicht" />
+        android:text="@string/normal"
+        android:visibility="invisible" />
 
 </android.support.design.widget.CoordinatorLayout>
