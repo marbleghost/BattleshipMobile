@@ -1,10 +1,12 @@
 package ks.battleshipmobile;
 
-import android.util.Log;
 import android.widget.Button;
 
 import java.util.Random;
 
+/**
+ * Klasse welche die drei KIs des Spiels beinhaltet
+ */
 public class KI {
 
     Spiellogik logik = new Spiellogik();
@@ -17,17 +19,19 @@ public class KI {
 
     boolean vertikal = false;
     boolean horizontal = false;
-    boolean ignoreh = false;
-    boolean ignorev = false;
 
-    int zaehler = 0;
-
-
+    //Diese Methode zieht die Zufallszahlen
     public int randomInt() {
         return random.nextInt(8);
     }
 
-
+    /**
+     * Die normale KI.
+     * Setzt zufaellig ihre Schuesse und merk sich nicht ob bereits ein Teil getroffen ist
+     * @param tempInt
+     * @param tempButton
+     * @param versuche
+     */
     public void kiLeicht(int [][] tempInt, Button [][] tempButton, int versuche) {
 
         while (versuche != 0) {
@@ -46,6 +50,16 @@ public class KI {
         }
     }
 
+    /**
+     * Schwierige KI.
+     * Merkt sich wo sie getroffe hat und laueft danach die Stellen drum herum ab.
+     * Sie erkennt ob ein Schiff vertikal oder horizontal gesetzt worden ist, aber erst
+     * wenn sie wie ein menschlicher Spieler auch, mindestens einen weiteren punkt des Schiffes
+     * dazu gefunden hat.
+     * @param tempInt
+     * @param tempButton
+     * @param versuche
+     */
     public void kiMittel(int [][] tempInt, Button [][] tempButton, int versuche) {
         int n = randomInt();
         int m = randomInt();
@@ -225,7 +239,17 @@ public class KI {
         }
     }
 
-
+    /**
+     * Sehr schwierige KI.
+     * Merkt sich wo sie getroffe hat und laueft danach die Stellen drum herum ab.
+     * Sie erkennt ob ein Schiff vertikal oder horizontal gesetzt worden ist, aber erst
+     * wenn sie wie ein menschlicher Spieler auch, mindestens einen weiteren punkt des Schiffes
+     * dazu gefunden hat.
+     * Zusaetlich zur schwierigen KI, sieht der Spieler hier seine und die Fehltreffer der KI nicht
+     * @param tempInt
+     * @param tempButton
+     * @param versuche
+     */
     public void kiSchwer(int [][] tempInt, Button [][] tempButton, int versuche) {
         int n = randomInt();
         int m = randomInt();
@@ -405,50 +429,14 @@ public class KI {
         }
     }
 
-    public boolean umgebungBeschiessbar(int n, int m, int [][] temp) {
-        boolean oben = false;
-        boolean unten = false;
-        boolean rechts = false;
-        boolean links = false;
-
-        if (n > 0) {
-            n--;
-            if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
-                oben = true;
-            }
-            n++;
-        }
-        if (m < logik.feldgroesse - 1 && m != -1) {
-            m++;
-            if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
-                rechts = true;
-            }
-            m--;
-        }
-        if (n < logik.feldgroesse - 1 && n != -1) {
-            n++;
-            if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
-                unten = true;
-            }
-            n--;
-        }
-        if (m > 0) {
-            m--;
-            if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
-                links = true;
-            }
-            m++;
-        }
-
-        if (oben == true || unten == true || rechts == true || links == true) {
-            return true;
-        }
-        else {
-            return false;
-        }
-
-    }
-
+    /**
+     * Diese Methode uerberpreuft ob vom ausgewaehlten Feld aus, ein anliegendes Feld
+     * noch beschiessbar ist
+     * @param n
+     * @param m
+     * @param temp
+     * @return
+     */
     public boolean bereichBeschiessbar(int n, int m, int [][] temp) {
         if (temp[n][m] != 2 && temp[n][m] != 3 && temp[n][m] != 6) {
             return true;
